@@ -8,6 +8,8 @@
 
 **Work2Skill 通过操作录制、多模态证据分析与技能归纳，将人类 GUI 操作演示转化为可复用的 Agent 技能。**
 
+访问项目主页：[Work2Skill](https://china-qijizhifeng.github.io/Work2Skill/)，了解研究概览、浏览数据集结构，并交互查看评测结果。
+
 论文：[Work2Skill: Capturing Human GUI Experience for Reusable Agent Skill Induction](https://arxiv.org/abs/2610.12984)。
 
 人类操作演示数据集请访问 Hugging Face：[WorkDemo-350](https://huggingface.co/datasets/yuqi777/WorkDemo-350)。
