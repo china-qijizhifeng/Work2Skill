@@ -8,6 +8,8 @@
 
 **Work2Skill connects human GUI demonstrations with reusable agent skills through operation recording, multimodal evidence inspection, and skill induction.**
 
+Visit the project website: [Work2Skill](https://china-qijizhifeng.github.io/Work2Skill/) for the research overview, dataset explorer, and interactive benchmark results.
+
 Read the paper: [Work2Skill: Capturing Human GUI Experience for Reusable Agent Skill Induction](https://arxiv.org/abs/2610.12984).
 
 Find the human operation demonstration dataset on Hugging Face: [WorkDemo-350](https://huggingface.co/datasets/yuqi777/WorkDemo-350).
