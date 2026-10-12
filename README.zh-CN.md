@@ -1,5 +1,6 @@
 # Work2Skill
 
+[![Website](https://img.shields.io/badge/Website-Work2Skill-2457B8)](https://china-qijizhifeng.github.io/Work2Skill/)
 [![arXiv](https://img.shields.io/badge/arXiv-2610.12984-b31b1b.svg)](https://arxiv.org/abs/2610.12984)
 [![Hugging Face: WorkDemo-350](https://img.shields.io/badge/Hugging%20Face-WorkDemo--350-FFD21E?logo=huggingface&logoColor=FFD21E)](https://huggingface.co/datasets/yuqi777/WorkDemo-350)
 
