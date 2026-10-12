@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>安全治理 | WorkRecorder</title>
+    <meta name="description" content="WorkRecorder 的主动记录、默认私有、证据分级和 Agent 使用审计设计。" />
+    <link rel="icon" href="assets/app-icon.png" type="image/png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="主导航">
+        <a class="brand" href="index.html" aria-label="WorkRecorder 首页">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>WorkRecorder</span>
+        </a>
+        <button class="menu-toggle" data-menu-toggle type="button" aria-label="打开导航" aria-expanded="false">
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="index.html">概览</a>
+          <a href="product.html">产品体验</a>
+          <a href="architecture.html">技术架构</a>
+          <a href="agents.html">Agent 接口</a>
+          <a class="active" href="governance.html">安全治理</a>
+        </div>
+        <a class="nav-action" href="architecture.html">阅读架构</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero compact-hero">
+        <div class="shell hero-stack">
+          <div class="hero-copy">
+            <p class="eyebrow">安全治理</p>
+            <h1>默认少给，使用留痕，敏感证据单独授权。</h1>
+            <p class="lead">
+              WorkRecorder 的治理不是后台开关，而是一条贯穿记录、入库、检索和 Agent 使用的产品路径。
+            </p>
+          </div>
+
+          <div class="trust-contract trust-hero reveal">
+            <div><span>01</span><strong>主动记录</strong><p>状态可见，可暂停、可删除，不默认后台保存屏幕。</p></div>
+            <div><span>02</span><strong>最小证据</strong><p>默认给摘要、片段和引用；原图和完整 thread 单独授权。</p></div>
+            <div><span>03</span><strong>全程留痕</strong><p>查询、打包、引用和高风险动作建议都写入 usage event。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <p class="kicker">信任路径</p>
+              <h2>每次上下文使用，都经过同一条信任路径。</h2>
+            </div>
+            <p>用户知道什么时候能记，Agent 知道能拿什么，管理员能复核谁在什么时候用过哪些证据。</p>
+          </div>
+
+          <div class="trust-lab reveal" data-tabs>
+            <div class="trust-rail" role="tablist" aria-label="WorkRecorder trust path">
+              <button class="trust-step tab-button active" data-tab="before" type="button" role="tab" aria-selected="true">
+                <span>记录前</span><strong>能不能记</strong>
+              </button>
+              <button class="trust-step tab-button" data-tab="store" type="button" role="tab" aria-selected="false">
+                <span>入库时</span><strong>存什么级别</strong>
+              </button>
+              <button class="trust-step tab-button" data-tab="retrieve" type="button" role="tab" aria-selected="false">
+                <span>检索时</span><strong>先过滤再召回</strong>
+              </button>
+              <button class="trust-step tab-button" data-tab="after" type="button" role="tab" aria-selected="false">
+                <span>使用后</span><strong>写回审计</strong>
+              </button>
+            </div>
+
+            <div class="trust-detail">
+              <section class="tab-panel active" data-panel="before" role="tabpanel">
+                <p class="diagram-label">记录前</p>
+                <h3>敏感来源直接阻断或只允许本地保存。</h3>
+                <div class="trust-visual before-visual" aria-hidden="true">
+                  <span>1Password</span><span>HR / payroll</span><span>private chat</span><b>block / local only</b>
+                </div>
+                <div class="trust-detail-grid">
+                  <div><strong>阻断</strong><span>密码管理器、银行、HR/payroll、隐私浏览、个人聊天。</span></div>
+                  <div><strong>默认</strong><span>新事件仅自己可见，企业策略可设置 app/domain blocklist。</span></div>
+                  <div><strong>用户控制</strong><span>托盘状态、暂停、删除、按来源清理。</span></div>
+                </div>
+              </section>
+              <section class="tab-panel" data-panel="store" role="tabpanel">
+                <p class="diagram-label">入库时</p>
+                <h3>同一个事件里的证据分级保存。</h3>
+                <div class="trust-visual store-policy-visual" aria-hidden="true">
+                  <span>摘要</span><span>脱敏片段</span><span>缩略图</span><span>原图</span>
+                </div>
+                <div class="trust-detail-grid">
+                  <div><strong>低敏</strong><span>事件摘要、实体、来源 metadata，可用于候选排序。</span></div>
+                  <div><strong>中敏</strong><span>脱敏片段、缩略图、selected DOM，可进入 Context Bundle。</span></div>
+                  <div><strong>高敏</strong><span>原图、完整 DOM、完整聊天 thread，需要独立授权。</span></div>
+                </div>
+              </section>
+              <section class="tab-panel" data-panel="retrieve" role="tabpanel">
+                <p class="diagram-label">检索时</p>
+                <h3>先做权限过滤，再做关键词或语义召回。</h3>
+                <div class="trust-visual retrieve-visual" aria-hidden="true">
+                  <span>权限</span><span>策略</span><span>召回</span><span>脱敏</span>
+                </div>
+                <div class="trust-detail-grid">
+                  <div><strong>过滤</strong><span>用户、项目、来源、文档权限、敏感等级。</span></div>
+                  <div><strong>召回</strong><span>只在允许范围内做 BM25、vector、entity、time/source 检索。</span></div>
+                  <div><strong>脱敏</strong><span>手机号、token、API key、身份证和敏感金额二次处理。</span></div>
+                </div>
+              </section>
+              <section class="tab-panel" data-panel="after" role="tabpanel">
+                <p class="diagram-label">使用后</p>
+                <h3>Agent 用过什么，要能被用户和管理员复核。</h3>
+                <div class="trust-visual usage-visual" aria-hidden="true">
+                  <span>agent</span><span>bundle</span><span>purpose</span><span>evidence refs</span>
+                </div>
+                <div class="trust-detail-grid">
+                  <div><strong>记录</strong><span>agent、bundle、purpose、events_used、evidence_refs。</span></div>
+                  <div><strong>引用</strong><span>输出中的事实必须能回到 event id 和 artifact。</span></div>
+                  <div><strong>动作</strong><span>发邮件、改工单、读取原图等高风险动作需要额外授权。</span></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <p class="kicker">Agent 边界</p>
+              <h2>默认给 Agent 看什么，什么时候要额外授权。</h2>
+            </div>
+          </div>
+
+          <div class="boundary-grid reveal">
+            <article>
+              <span>默认可用</span>
+              <h3>摘要、脱敏片段、实体、evidence ref</h3>
+              <p>足够完成 briefing、PRD、排障记录和邮件草稿等大多数任务。</p>
+            </article>
+            <article>
+              <span>需要放行</span>
+              <h3>原图、完整 DOM、完整聊天 thread</h3>
+              <p>只有视觉判断、复核争议或授权工作流明确需要时才开放。</p>
+            </article>
+            <article>
+              <span>永远隔离</span>
+              <h3>证据里的指令不能成为系统指令</h3>
+              <p>网页、OCR、聊天和邮件内容只作为数据，不能改变 Agent 的规则。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-grid">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>WorkRecorder</span></a>
+        <a class="button" href="architecture.html">阅读技术架构</a>
+      </div>
+    </footer>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>

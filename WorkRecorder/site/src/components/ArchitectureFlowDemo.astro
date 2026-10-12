@@ -1,0 +1,128 @@
+---
+---
+
+<div class="architecture-flow-demo reveal" data-tabs data-architecture-flow aria-label="截图和录制工作原理动画">
+  <div class="arch-flow-head">
+    <div>
+    <span>工作原理</span>
+      <strong>截图和录制都写进同一本本机使用记录。</strong>
+    </div>
+    <div class="arch-flow-tabs" role="tablist" aria-label="选择链路">
+      <button class="tab-button active" data-tab="screenshot" type="button" role="tab" aria-selected="true">截图关键帧</button>
+      <button class="tab-button" data-tab="recording" type="button" role="tab" aria-selected="false">记录片段</button>
+    </div>
+  </div>
+
+  <section class="arch-flow-panel tab-panel active" data-panel="screenshot" role="tabpanel">
+    <div class="arch-material-journey" aria-label="截图材料从保存到 Agent 使用的旅程">
+      <article class="arch-source-card">
+        <span>用户框选一块屏幕</span>
+        <strong>完整截图 + 备注 + 时间 + 主 App</strong>
+        <em>先保存下来，不因为网页增强失败而丢失。</em>
+      </article>
+      <div class="arch-split-rail" aria-hidden="true"><i></i><i></i></div>
+      <div class="arch-lanes">
+        <article class="arch-lane raw">
+          <span>完整材料</span>
+          <strong>完整截图、原始网页、本地文件</strong>
+          <em>本机锁住。Agent 想打开，必须指定记录并得到确认。</em>
+        </article>
+        <article class="arch-lane safe">
+          <span>安全文本</span>
+          <strong>备注、标题、App、时间、OCR、清洗正文</strong>
+          <em>进入安全索引，只用于查找、打开记录和引用。</em>
+        </article>
+      </div>
+      <article class="arch-agent-card">
+        <span>Agent 只能拿允许内容</span>
+        <strong>先看短卡，再选中某条记录打开需要的证据。</strong>
+        <em>回答后留下搜过什么、看过什么、引用了什么。</em>
+      </article>
+    </div>
+    <div class="arch-quick-tags" aria-label="截图链路边界">
+      <span>输入：选区、备注、窗口命中、完整截图</span>
+      <span>默认搜索：时间、App、标题、备注、OCR</span>
+      <span>需确认：完整原图、原始网页、本地路径</span>
+    </div>
+    <div class="arch-swimlane-system" aria-label="截图链路的数据边界">
+      <div class="arch-swimlane-packet">capture event</div>
+      <article>
+        <span>完整材料</span>
+        <b>完整截图 / 原始网页 / 本地文件</b>
+        <em>留在本机锁定区，默认不交给 Agent。</em>
+      </article>
+      <article>
+        <span>可读文本</span>
+        <b>备注 / 时间 / App / 标题 / OCR / 清洗正文</b>
+        <em>进入安全索引，用来查找、打开记录和引用。</em>
+      </article>
+      <article>
+        <span>证据账单</span>
+        <b>搜过什么 / 打开什么 / 引用什么 / 拒绝什么</b>
+        <em>记录 Agent 实际拿到什么，以及哪些材料被挡住。</em>
+      </article>
+    </div>
+  </section>
+
+  <section class="arch-flow-panel tab-panel" data-panel="recording" role="tabpanel">
+    <div class="arch-material-journey recording" aria-label="记录片段从视频到底层证据的旅程">
+      <article class="arch-source-card">
+        <span>用户选择窗口并开始记录</span>
+        <strong>视频回放 + 开始/结束时间 + 用户标记</strong>
+        <em>只记录用户主动选择的片段，不做后台无限录屏。</em>
+      </article>
+      <div class="arch-split-rail" aria-hidden="true"><i></i><i></i></div>
+      <div class="arch-lanes">
+        <article class="arch-lane raw">
+          <span>人类回看</span>
+          <strong>完整视频、完整帧图</strong>
+          <em>作为本机底片保存，默认不交给 Agent。</em>
+        </article>
+        <article class="arch-lane safe">
+          <span>Agent 可用</span>
+          <strong>关键时刻、OCR、操作线索、步骤草稿</strong>
+          <em>用户确认后，Agent 才能在相似页面安全试跑。</em>
+        </article>
+      </div>
+      <article class="arch-agent-card">
+        <span>安全试跑</span>
+        <strong>复演到提交、购买、发送之前停住。</strong>
+        <em>每一步继续留下可回看的证据账单。</em>
+      </article>
+    </div>
+    <div class="arch-quick-tags recording" aria-label="记录片段边界">
+      <span>输入：窗口范围、开始/结束时间、用户标记</span>
+      <span>默认查看：片段标题、时长、关键时刻说明</span>
+      <span>需确认：原始视频、完整帧图、提交动作</span>
+    </div>
+    <div class="arch-swimlane-system recording" aria-label="记录片段的数据边界">
+      <div class="arch-swimlane-packet">recording session</div>
+      <article>
+        <span>完整视频</span>
+        <b>完整视频 / 原始帧图</b>
+        <em>给人回看，默认锁定，不进 Agent 默认上下文。</em>
+      </article>
+      <article>
+        <span>关键时刻</span>
+        <b>关键帧 / OCR / 步骤说明 / 操作线索</b>
+        <em>整理成 Agent 可查看的片段时间线。</em>
+      </article>
+      <article>
+        <span>步骤草稿</span>
+        <b>待确认步骤 / 安全试跑记录</b>
+        <em>用户确认后才安全试跑，高风险动作前停住。</em>
+      </article>
+    </div>
+  </section>
+
+  <aside class="arch-flow-inspector">
+    <b>统一原则</b>
+    <p>这里只说明材料怎么分开：哪些能搜索，哪些必须确认，回答后怎么对账。</p>
+    <div class="arch-cli-chain" aria-label="Agent 到本机账本的调用边界">
+      <span>Agent 提出问题</span>
+      <span>本机检查权限</span>
+      <span>只交付允许内容</span>
+    </div>
+    <span>原始视频 / 未确认完整材料默认锁定</span>
+  </aside>
+</div>

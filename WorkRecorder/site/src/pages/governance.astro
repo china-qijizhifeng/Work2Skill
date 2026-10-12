@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import GovernanceAuditDemo from "../components/GovernanceAuditDemo.astro";
+import { disclosureRows } from "../data/site";
+---
+
+<BaseLayout
+  title="安全治理"
+  description="WorkRecorder 的渐进式披露、完整材料确认、Agent 使用清单和本机优先安全边界。"
+  activePath="governance.html"
+>
+  <PageHero
+    eyebrow="安全与可见性"
+    title="Agent 看过什么，回答后能对账。"
+    lead="WorkRecorder 会记录这次回答搜了什么、点开哪些记录、拿到哪些字段、引用了哪些证据。完整截图、原始网页和视频默认锁住；真要打开，也会留下批准记录。"
+    primaryHref="#audit"
+    primaryLabel="看证据账单"
+    secondaryHref="agents.html"
+    secondaryLabel="看 Agent 使用"
+  >
+    <div class="governance-card reveal">
+      <span>本次回答</span>
+      <strong>run_acme_042</strong>
+      <div class="governance-bill-lines" aria-label="本次回答读取账单">
+        <div><b>搜了什么</b><em>“ACME 续约” · 3 条短卡</em></div>
+        <div><b>打开了哪几条</b><em>报价截图 + 协作讨论</em></div>
+        <div><b>交给 Agent 什么</b><em>备注、时间、标题、识别文字</em></div>
+        <div><b>挡住了什么</b><em>完整截图、原始网页、视频</em></div>
+      </div>
+      <em>完整截图、原始视频、原始网页和本地路径没有默认读取</em>
+      <div class="governance-request-demo" aria-label="完整材料请求示例">
+        <b>Agent 请求完整截图</b>
+        <small>默认拒绝 · 等待用户确认</small>
+        <i>写入：谁请求、为何请求、是否批准、何时过期</i>
+      </div>
+    </div>
+  </PageHero>
+
+  <section class="section soft" id="audit">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">可追溯示例</p>
+        <h2>不是只说“安全”，而是把每次读取写成账单。</h2>
+        <p>下面这张账单展示一次 Agent 回答的完整路径：它搜了什么、看了哪些字段、哪些材料被拒绝、最后引用了哪些证据。</p>
+      </div>
+      <GovernanceAuditDemo />
+    </div>
+  </section>
+
+  <section class="section" id="disclosure">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">披露层级</p>
+        <h2>默认少给，需要更多时再按记录展开。</h2>
+        <p>这不是一张抽象权限表，而是 Agent 每次读取时真正执行的边界。</p>
+      </div>
+      <div class="disclosure-table reveal">
+        {disclosureRows.map(([tier, fields, purpose]) => (
+          <article>
+            <span>{tier}</span>
+            <strong>{fields}</strong>
+            <p>{purpose}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import type { Capability } from "../data/site";
+
+type Props = {
+  items: Capability[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="capability-grid">
+  {items.map((item) => (
+    <article class:list={["glass-card reveal", `tone-${item.tone}`]}>
+      <span class="card-label">{item.label}</span>
+      <h3>{item.title}</h3>
+      <p>{item.body}</p>
+    </article>
+  ))}
+</div>

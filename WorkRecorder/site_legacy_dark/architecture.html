@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>技术架构 | WorkRecorder</title>
+    <meta name="description" content="WorkRecorder 从主动记录到可引用 Context Bundle 的端到端架构。" />
+    <link rel="icon" href="assets/app-icon.png" type="image/png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>WorkRecorder</span></a>
+        <button class="menu-toggle" data-menu-toggle type="button" aria-label="打开导航" aria-expanded="false"><span></span></button>
+        <div class="nav-links">
+          <a href="index.html">概览</a>
+          <a href="product.html">产品体验</a>
+          <a class="active" href="architecture.html">技术架构</a>
+          <a href="agents.html">Agent 接口</a>
+          <a href="governance.html">安全治理</a>
+        </div>
+        <a class="nav-action" href="agents.html">进入 Agent 接口</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero compact-hero">
+        <div class="shell hero-stack">
+          <div class="hero-copy">
+            <div class="eyebrow">技术架构</div>
+            <h1>一次截图，生成 Agent 可引用上下文。</h1>
+            <p class="lead">
+              WorkRecorder 不把截图直接塞进模型。它先保存现场证据，再补齐来源、抽取结构、建立索引，
+              最后按任务生成给 Agent 使用的 Context Bundle。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">系统链路</div>
+              <h2>主链路先看全局，再点开每段看输入、处理和产出。</h2>
+            </div>
+            <p>核心原则很简单：证据先落地，补全可失败，派生结果可重算，Bundle 只在检索时生成。</p>
+          </div>
+
+          <div class="architecture-console reveal" data-tabs data-arch-console>
+            <div class="arch-console-head">
+              <div>
+                <span>设计原则</span>
+                <strong>先保留可复核证据，再让模型和索引慢慢变聪明。</strong>
+              </div>
+              <div class="arch-principle-pills">
+                <span>先落证据</span>
+                <span>补全可失败</span>
+                <span>派生可重算</span>
+                <span>检索时打包</span>
+              </div>
+              <button class="replay-button arch-replay" data-stage-replay type="button">重放当前阶段</button>
+            </div>
+
+            <div class="arch-system-map" role="tablist" aria-label="WorkRecorder 六段系统链路">
+              <button class="arch-stage-node tab-button active" data-tab="trigger" type="button" role="tab" aria-selected="true">
+                <span>01</span><strong>触发</strong><small>快捷键 / 浏览器按钮</small>
+              </button>
+              <button class="arch-stage-node tab-button" data-tab="capture" type="button" role="tab" aria-selected="false">
+                <span>02</span><strong>采集</strong><small>截图、坐标、来源、意图</small>
+              </button>
+              <button class="arch-stage-node tab-button" data-tab="enrich" type="button" role="tab" aria-selected="false">
+                <span>03</span><strong>补全 / 去噪</strong><small>来源补齐 + 目标判断</small>
+              </button>
+              <button class="arch-stage-node tab-button" data-tab="store" type="button" role="tab" aria-selected="false">
+                <span>04</span><strong>入库</strong><small>事件、证据、观察、实体</small>
+              </button>
+              <button class="arch-stage-node tab-button" data-tab="index" type="button" role="tab" aria-selected="false">
+                <span>05</span><strong>索引</strong><small>关键词、语义、实体、权限</small>
+              </button>
+              <button class="arch-stage-node tab-button" data-tab="bundle" type="button" role="tab" aria-selected="false">
+                <span>06</span><strong>Bundle / Agent</strong><small>按任务打包给 Agent</small>
+              </button>
+              <div class="arch-data-packet" aria-hidden="true"></div>
+            </div>
+
+            <div class="arch-stage-panels">
+              <section class="tab-panel active arch-stage-panel" data-panel="trigger" role="tabpanel">
+                <div class="arch-stage-visual trigger-visual" aria-hidden="true">
+                  <div class="trigger-source-card"><span>当前版本</span><b>⌘⇧2</b><em>用户主动选区截图</em></div>
+                  <div class="trigger-arrow-line"></div>
+                  <div class="envelope-card">
+                    <b>trigger envelope</b>
+                    <span><i>谁</i> user_123 / 当前租户</span>
+                    <span><i>哪里</i> Chrome · ACME Pricing</span>
+                    <span><i>选区</i> selected region + 屏幕坐标</span>
+                    <span><i>策略</i> 默认私有 / 保留 90 天</span>
+                    <span><i>后续</i> 可扩展成浏览器按钮、短时缓存或系统事件</span>
+                  </div>
+                  <div class="trigger-type-strip">
+                    <span class="active">手动截图</span>
+                    <span>浏览器按钮</span>
+                    <span>短时缓存确认</span>
+                    <span>未来系统事件</span>
+                  </div>
+                </div>
+                <div class="arch-stage-copy">
+                  <p class="diagram-label">01 / 触发</p>
+                  <h3>把快捷键变成统一事件入口。</h3>
+                  <div class="stage-io-grid">
+                    <div><strong>消费什么</strong><span>用户动作、当前窗口、选区坐标、页面来源、时间和企业策略快照。</span></div>
+                    <div><strong>怎么处理</strong><span>统一包成 trigger envelope。后续管线只认这个 envelope，不绑定具体快捷键。</span></div>
+                    <div><strong>产出什么</strong><span>事件草稿 id、触发类型、来源线索和权限边界，供采集阶段继续补证据。</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel arch-stage-panel" data-panel="capture" role="tabpanel">
+                <div class="arch-stage-visual capture-visual" aria-hidden="true">
+                  <div class="capture-mini-desktop">
+                    <div class="mini-app-head"><span>Chrome · Pricing</span><b>ACME</b></div>
+                    <div class="mini-kpi-line"><span>Renewal</span><b>$428k</b><span>Variance</span><b class="amber-text">+18%</b></div>
+                    <div class="mini-risk-grid">
+                      <span>预算偏差</span><b>+18%</b><i>需解释</i>
+                      <span>采购负责人</span><b>未确认</b><i>跟进</i>
+                    </div>
+                    <div class="mini-selection-box"></div>
+                  </div>
+                  <div class="artifact-palette">
+                    <span><b>图像</b> 原截图 + 缩略图</span>
+                    <span><b>坐标</b> 屏幕 / 窗口 / 视口 bbox</span>
+                    <span><b>来源</b> app、窗口、URL、tab 标题</span>
+                    <span><b>网页</b> DOM 节点、表格、选中文本</span>
+                    <span><b>界面</b> a11y tree 片段</span>
+                    <span><b>文字</b> OCR blocks 兜底</span>
+                    <span><b>意图</b> 用户 note</span>
+                    <span><b>校验</b> hash、版本、重试 key</span>
+                  </div>
+                  <div class="capture-quality-row">
+                    <span>同一时间戳配对</span>
+                    <span>采集器版本</span>
+                    <span>策略快照</span>
+                    <span>失败可重试</span>
+                  </div>
+                  <div class="durable-write">热路径先写入 evidence queue，补全失败也不丢现场。</div>
+                </div>
+                <div class="arch-stage-copy">
+                  <p class="diagram-label">02 / 采集</p>
+                  <h3>先保存现场，不等待模型和外部系统。</h3>
+                  <div class="stage-io-grid">
+                    <div><strong>消费什么</strong><span>选区截图、缩略图、坐标、窗口/URL、DOM、a11y、OCR 和一句用户用途。</span></div>
+                    <div><strong>怎么处理</strong><span>只做确定性采集和配对写入；外部 API、模型和复杂理解都放到异步阶段。</span></div>
+                    <div><strong>产出什么</strong><span>event draft、原始证据引用、来源 metadata、策略快照和可重试任务。</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel arch-stage-panel" data-panel="enrich" role="tabpanel">
+                <div class="arch-stage-visual enrich-visual" aria-hidden="true">
+                  <div class="enrich-board">
+                    <div class="enrich-desktop">
+                      <div class="enrich-desktop-bar">
+                        <span>ACME renewal workspace</span>
+                        <i>截图证据 + 来源线索</i>
+                      </div>
+                      <div class="enrich-window enrich-browser">
+                        <div class="enrich-window-top"><b>Chrome · Pricing Dashboard</b><span>internal/pricing/acme</span></div>
+                        <div class="enrich-kpis">
+                          <span><small>Renewal ARR</small><b>$1.42M</b></span>
+                          <span class="warn"><small>Budget variance</small><b>+18%</b></span>
+                          <span><small>Procurement</small><b>pending</b></span>
+                        </div>
+                        <div class="enrich-risk-table">
+                          <span>Item</span><span>Delta</span><span>Risk</span>
+                          <b>Enterprise plan</b><b>+18%</b><b class="hot">High</b>
+                          <b>Security add-on</b><b>+9%</b><b>Med</b>
+                          <b>Support credit</b><b>-4%</b><b>Low</b>
+                        </div>
+                        <div class="enrich-chart">
+                          <span style="--bar: 72%"></span>
+                          <span style="--bar: 44%"></span>
+                          <span style="--bar: 88%"></span>
+                          <span style="--bar: 61%"></span>
+                        </div>
+                        <div class="enrich-focus-box enrich-primary">
+                          <b>主目标</b>
+                          <span>报价风险表 + 预算偏差 · 0.91</span>
+                        </div>
+                      </div>
+                      <div class="enrich-window enrich-chat">
+                        <div class="enrich-window-top"><b>Feishu Thread</b><span>Renewal room</span></div>
+                        <p><strong>采购：</strong>审批要到下周确认。</p>
+                        <p><strong>CS：</strong>会前需要风险方案和替代话术。</p>
+                        <div class="enrich-focus-box enrich-support">
+                          <b>支撑上下文</b>
+                          <span>解释采购延期 · 0.74</span>
+                        </div>
+                      </div>
+                      <div class="enrich-window enrich-crm">
+                        <div class="enrich-window-top"><b>CRM Account</b><span>承诺记录</span></div>
+                        <span>上季度承诺：不超过预算线</span>
+                        <span>Owner: Elaine</span>
+                      </div>
+                      <div class="enrich-window enrich-noise">
+                        <div class="enrich-window-top"><b>Calendar</b><span>internal</span></div>
+                        <span>内部同步会</span>
+                        <div class="enrich-focus-box enrich-noise-box">
+                          <b>降权噪声</b>
+                          <span>无 ACME / 无报价语义</span>
+                        </div>
+                      </div>
+                      <div class="enrich-resolver-rail">
+                        <span><b>选区重叠</b><i>报价表 83%</i></span>
+                        <span><b>意图命中</b><i>续约 briefing</i></span>
+                        <span><b>来源置信</b><i>URL + thread</i></span>
+                        <span><b>噪声降权</b><i>Calendar -0.42</i></span>
+                      </div>
+                    </div>
+                    <div class="source-connector-rail enrich-source-rail">
+                      <span><b>浏览器 DOM</b><em>补齐页面标题、表格结构、当前 URL 和可见区域对应节点。</em><small>已补齐</small></span>
+                      <span><b>飞书 thread</b><em>按授权拉取前后消息、发言人、时间戳和群上下文。</em><small>已授权</small></span>
+                      <span><b>CRM 字段</b><em>关联客户、owner、续约日期、历史承诺和 deal 状态。</em><small>已关联</small></span>
+                      <span><b>多模态兜底</b><em>对图表、低质截图和不可访问 app 做 OCR/VLM 补洞。</em><small>兜底</small></span>
+                    </div>
+                    <div class="enrich-output-strip">
+                      <span><b>目标投影</b><em>主目标、支撑上下文、降权噪声</em></span>
+                      <span><b>证据摘要</b><em>风险、原因、缺口</em></span>
+                      <span><b>实体关系</b><em>ACME / 预算 / 采购</em></span>
+                      <span><b>表格图表</b><em>可引用数据片段</em></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="arch-stage-copy">
+                  <p class="diagram-label">03 / 补全与去噪</p>
+                  <h3>补齐截图之外的来源，并判断真正目标。</h3>
+                  <div class="stage-io-grid">
+                    <div><strong>消费什么</strong><span>事件草稿、选区坐标、来源线索、用户 intent、已保存证据和可用连接器权限。</span></div>
+                    <div><strong>怎么处理</strong><span>先用来源 API/DOM 补全；再用布局、重叠区域和 note 信号区分主目标、支撑上下文和噪声。</span></div>
+                    <div><strong>产出什么</strong><span>补全文本、结构化观察、实体、摘要、表格/图表抽取和 focus projection。</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel arch-stage-panel" data-panel="store" role="tabpanel">
+                <div class="arch-stage-visual store-visual" aria-hidden="true">
+                  <div class="store-ledger"><b>事件账本</b><span>event id</span><span>发生时间</span><span>触发来源</span><span>策略快照</span><small>事实层只追加，不被模型改写。</small></div>
+                  <div class="store-vault"><b>证据仓库</b><span>截图</span><span>缩略图</span><span>DOM JSON</span><span>OCR blocks</span><small>大对象加密存放，数据库只留引用。</small></div>
+                  <div class="store-observations">
+                    <b>观察对象</b>
+                    <span>表格行</span><span>聊天消息</span><span>bbox 坐标</span><span>UI 元素</span><span>图表标签</span><small>把证据拆成可检索的小事实。</small>
+                  </div>
+                  <div class="store-entities">
+                    <b>实体关系</b>
+                    <i>ACME</i><i>续约</i><i>预算偏差</i><i>采购</i><small>事件关联到客户、项目、任务和人。</small>
+                  </div>
+                  <div class="store-provenance-line">provenance: 用户截图 → DOM 补全 → OCR 兜底 → 实体抽取 → 派生版本</div>
+                </div>
+                <div class="arch-stage-copy">
+                  <p class="diagram-label">04 / 结构化入库</p>
+                  <h3>事实层和派生层分开存，方便复核和重算。</h3>
+                  <div class="stage-io-grid">
+                    <div><strong>消费什么</strong><span>原始证据、补全结果、观察对象、实体、关系和每个抽取器的来源记录。</span></div>
+                    <div><strong>怎么处理</strong><span>事件账本只追加；摘要、实体、向量等派生数据带版本号，后续可以重算。</span></div>
+                    <div><strong>产出什么</strong><span>context events、artifact refs、observations、entities、relations 和 provenance。</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel arch-stage-panel" data-panel="index" role="tabpanel">
+                <div class="arch-stage-visual index-visual" aria-hidden="true">
+                  <div class="index-query"><span>用户问题</span><b>“ACME 续约风险”</b></div>
+                  <div class="index-gate">先过权限门</div>
+                  <div class="index-fanout">
+                    <span><b>关键词</b><em>金额、客户名、错误码</em></span>
+                    <span><b>语义</b><em>“预算风险”这类模糊问法</em></span>
+                    <span><b>实体</b><em>客户、项目、人员、指标</em></span>
+                    <span><b>多模态</b><em>截图视觉、图表、UI 布局</em></span>
+                    <span><b>时间 / 来源</b><em>最近两小时、Chrome、飞书</em></span>
+                    <span><b>空间</b><em>选区、表格行、图表区域</em></span>
+                  </div>
+                  <div class="index-score-board">
+                    <span><b>0.91</b> 报价页：+18% 命中</span>
+                    <span><b>0.84</b> 飞书：审批延期</span>
+                    <span><b>0.78</b> CRM：预算承诺</span>
+                  </div>
+                  <div class="index-result-card"><b>evt_9cq</b><span>命中原因：ACME + 预算偏差 + 报价表选区</span><em>已脱敏：手机号 / token / 私密字段</em></div>
+                </div>
+                <div class="arch-stage-copy">
+                  <p class="diagram-label">05 / 建立索引</p>
+                  <h3>先过滤权限，再做关键词、语义和空间召回。</h3>
+                  <div class="stage-io-grid">
+                    <div><strong>消费什么</strong><span>规范文本、实体、来源、时间、选区坐标、artifact 权限和脱敏状态。</span></div>
+                    <div><strong>怎么处理</strong><span>先用权限缩小候选，再并行做关键词、语义、实体、时间/来源和空间索引召回。</span></div>
+                    <div><strong>产出什么</strong><span>可解释候选：score、命中原因、证据引用、脱敏状态和是否可展开原文。</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel arch-stage-panel" data-panel="bundle" role="tabpanel">
+                <div class="arch-stage-visual bundle-visual" aria-hidden="true">
+                  <div class="bundle-input-card"><span>用户问题</span><b>生成 ACME 续约 brief，列风险、话术和证据。</b><em>budget: 8k · citations required</em></div>
+                  <div class="bundle-card-mini">
+                    <b>Context Bundle</b>
+                    <span>6 条事实</span>
+                    <span>16 个引用</span>
+                    <span>原图默认关闭</span>
+                    <span>网页 / 飞书 / CRM / 邮件</span>
+                  </div>
+                  <div class="agent-card-mini">
+                    <b>Agent 回答</b>
+                    <span>风险摘要</span>
+                    <span>建议话术</span>
+                    <span>引用回溯</span>
+                  </div>
+                  <div class="usage-event-mini"><span>使用记录</span><b>agent_id、bundle_id、purpose、events_used、evidence_refs 写回审计。</b></div>
+                </div>
+                <div class="arch-stage-copy">
+                  <p class="diagram-label">06 / Context Bundle</p>
+                  <h3>按任务生成最小必要上下文包。</h3>
+                  <div class="stage-io-grid">
+                    <div><strong>消费什么</strong><span>用户问题、token 预算、权限范围、候选事件、证据引用和输出要求。</span></div>
+                    <div><strong>怎么处理</strong><span>把事实、片段、实体和引用压成任务输入；原图和完整 thread 默认不进入 Agent。</span></div>
+                    <div><strong>产出什么</strong><span>Context Bundle、引用列表、使用约束和 usage event，供 Agent 回答后复核。</span></div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-grid">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>WorkRecorder</span></a>
+        <a class="button" href="agents.html">继续进入 Agent 接口</a>
+      </div>
+    </footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

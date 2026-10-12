@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="WorkRecorder mark">
+  <defs>
+    <linearGradient id="auroraA" x1="18" y1="22" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#79F4EE"/>
+      <stop offset="0.42" stop-color="#46D7D3"/>
+      <stop offset="1" stop-color="#138A92"/>
+    </linearGradient>
+    <linearGradient id="auroraB" x1="18" y1="104" x2="114" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D8F7FF" stop-opacity="0.88"/>
+      <stop offset="0.46" stop-color="#74F1EC"/>
+      <stop offset="1" stop-color="#29B4C7"/>
+    </linearGradient>
+    <linearGradient id="film" x1="14" y1="12" x2="114" y2="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B5FFF2" stop-opacity="0.42"/>
+      <stop offset="0.34" stop-color="#D7CAFF" stop-opacity="0.24"/>
+      <stop offset="0.67" stop-color="#FFE6A6" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#7EEFE8" stop-opacity="0.34"/>
+    </linearGradient>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="2.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <path d="M18 65C34 40 48 26 64 25c14-.8 29 8 46 25-18 8-34 15-48 23-14 8-27 18-42 32 5-15 13-28 25-40-9 1-18 1-27 0Z" fill="url(#auroraA)" opacity="0.96"/>
+  <path d="M110 50C88 58 70 67 55 81 44 91 35 102 25 116c-1-12 3-27 13-42 12-18 30-34 55-48 8 7 13 15 17 24Z" fill="url(#auroraB)" filter="url(#softGlow)"/>
+  <path d="M20 33c24-14 48-17 72-8M20 92c31-14 62-15 93-3" fill="none" stroke="url(#film)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M69 17v93M23 64h86" stroke="#E9FFFF" stroke-opacity="0.56" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="64" cy="64" r="6" fill="#F3FFFF" opacity="0.9"/>
+</svg>

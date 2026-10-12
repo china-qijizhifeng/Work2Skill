@@ -1,0 +1,22 @@
+MyPCBench
+Copyright (c) 2026 Lawrence Jang
+
+This product includes software developed by third parties:
+
+- OSWorld (https://github.com/xlang-ai/OSWorld), Apache License 2.0.
+  The agent-harness's OSWorld-compatible runner/agent conventions and the
+  vendored paper-results Qwen3.5-VL agent under
+  agent-harness/agents/vendored_paper_results/ derive from / are vendored
+  from OSWorld and its upstream Qwen-VL utilities (qwen_vl_utils),
+  retained substantially verbatim for paper reproducibility. The Apache
+  License 2.0 applies to that derived/vendored code; see
+  https://www.apache.org/licenses/LICENSE-2.0.
+
+- The rubric-judge implementation — agent-harness/utils/osworld_full_traj_judge.py,
+  the paper "full-trajectory per-rubric" judge — is ported and adapted from
+  Odysseys' scripts/python/run_full_trajectory_per_rubric.py
+  (https://github.com/ljang0/Odysseys/blob/main/scripts/python/run_full_trajectory_per_rubric.py),
+  licensed CC-BY-4.0 (https://creativecommons.org/licenses/by/4.0/).
+
+The MyPCBench code outside the vendored directory is under the MIT
+License; see LICENSE.

@@ -1,0 +1,75 @@
+---
+---
+
+<div class="acme-evidence-demo reveal" data-evidence-demo aria-label="ACME 续约上下文演示">
+  <div class="demo-console-head">
+    <span>ACME 续约现场 · 会前 12 分钟</span>
+    <button class="demo-mini-pause" data-evidence-replay type="button">重放流程</button>
+  </div>
+
+  <div class="acme-sources">
+    <article class="source-window pricing-source active" data-evidence="pricing">
+      <span class="source-number">1</span>
+      <div class="mini-app-head"><span>浏览器来源 · Pricing Dashboard</span><b>报价页</b></div>
+      <div class="pricing-kpis">
+        <div><span>Renewal</span><strong>$428k</strong></div>
+        <div><span>Budget variance</span><strong class="amber-text">+18%</strong></div>
+      </div>
+      <div class="mini-table">
+        <span>预算线</span><b>$362k</b><i>超出</i>
+        <span>采购负责人</span><b>未确认</b><i>跟进</i>
+        <span>竞品报价</span><b>出现</b><i>比较</i>
+      </div>
+      <div class="capture-box in-pricing" aria-hidden="true"></div>
+      <div class="capture-chip">主动记录：预算偏差 +18%</div>
+    </article>
+
+    <article class="source-window chat-source" data-evidence="chat">
+      <span class="source-number">2</span>
+      <div class="mini-app-head"><span>协作 App · Renewal Thread</span><b>讨论</b></div>
+      <div class="chat-bubble">采购审批要下周才确认，客户希望先看到风险方案。</div>
+      <div class="chat-bubble muted">会前需要涨幅解释和替代方案。</div>
+      <div class="capture-box in-chat" aria-hidden="true"></div>
+      <div class="capture-chip">主动记录：采购延期</div>
+    </article>
+
+    <div class="acme-demo-cursor" aria-hidden="true"></div>
+    <div class="acme-floating-note" aria-hidden="true">
+      <span data-note="pricing">拖选报价风险区 · 记录预算偏差</span>
+      <span data-note="chat">拖选协作讨论 · 记录审批延期</span>
+    </div>
+  </div>
+
+  <div class="bundle-column">
+    <p class="card-label">WorkRecorder 保存的记录</p>
+    <h3>ACME Renewal 上下文包</h3>
+    <div class="bundle-query">
+      <span>用户提问</span>
+      <b>生成会前 brief，列风险、建议话术和证据。</b>
+    </div>
+    <div class="evidence-map">
+      <button class="evidence-ref active" data-evidence="pricing" type="button" aria-pressed="true"><span><i>1</i> 报价页</span><b>预算偏差 +18%</b><em>报价表格行 · 可追溯</em></button>
+      <button class="evidence-ref" data-evidence="chat" type="button" aria-pressed="false"><span><i>2</i> 协作讨论</span><b>采购审批延期</b><em>讨论片段 · 可追溯</em></button>
+    </div>
+    <div class="bundle-policy-note">原图默认不直接给 Agent；每条结论都能回到记录和证据。</div>
+  </div>
+
+  <aside class="agent-answer-panel">
+    <div class="panel-head">
+      <span>Agent 回答预览</span>
+      <b>带证据</b>
+    </div>
+    <div class="brief-card">
+      <strong>ACME 会前 brief</strong>
+      <ol>
+        <li class="active" data-evidence="pricing">核心风险：报价超预算 18%，需要先解释涨幅原因。<em>引用 1</em></li>
+        <li data-evidence="chat">会议策略：采购审批延后，先给风险方案和替代选项。<em>引用 2</em></li>
+      </ol>
+    </div>
+    <div class="agent-metrics">
+      <span><b>2</b> 来源</span>
+      <span><b>2</b> 记录</span>
+      <span><b>2</b> 引用</span>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,28 @@
+type: tool
+name: read_visual_evidence
+description: >-
+  Read 1 to 20 evidence images in one call and return path-labeled multimodal
+  content. Use glob first to select representative evidence images. Paths
+  remain restricted to the benchmark input and generated output roots. Use
+  read_file for text files and the dedicated video tools for videos.
+input_schema:
+  type: object
+  properties:
+    file_paths:
+      type: array
+      minItems: 1
+      maxItems: 20
+      uniqueItems: true
+      items:
+        type: string
+      description: Ordered list of 1 to 20 evidence image paths.
+    image_detail:
+      type: string
+      enum: [low, high, auto]
+      description: Optional image detail hint applied to every image. Defaults to auto.
+    image_max_size:
+      type: number
+      description: Optional maximum width applied to every image while preserving aspect ratio.
+  required: [file_paths]
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#

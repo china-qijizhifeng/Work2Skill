@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="560" viewBox="0 0 1180 560" role="img" aria-labelledby="title desc">
+  <title id="title">WorkRecorder overall capture flow</title>
+  <desc id="desc">A six stage flow from hotkey trigger to agent replay.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#eef4ff"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1d3557" flood-opacity=".12"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .label{font:700 18px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a}
+      .body{font:400 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#475569}
+      .tiny{font:600 11px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#64748b}
+      .num{font:800 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#2563eb}
+      .line{stroke:#64748b;stroke-width:2;marker-end:url(#arrow);fill:none}
+      .rail{stroke:#cbd5e1;stroke-width:2;stroke-dasharray:4 7}
+    </style>
+  </defs>
+  <rect width="1180" height="560" rx="28" fill="url(#bg)"/>
+  <text x="54" y="58" class="label" font-size="24">一次截图触发，不是存一张图，而是生成一条可审计上下文事件</text>
+  <text x="54" y="84" class="body">daemon 统一编排：系统证据、App provider、入库、增强、索引披露、Agent 使用留痕都在同一条链路里。</text>
+
+  <g filter="url(#shadow)">
+    <rect x="48" y="130" width="160" height="150" rx="18" fill="url(#card)" stroke="#dbeafe"/>
+    <text x="70" y="160" class="num">01</text>
+    <text x="70" y="188" class="label">触发</text>
+    <text x="70" y="216" class="body">hotkey + bbox</text>
+    <text x="70" y="238" class="body">OS screenshot</text>
+    <text x="70" y="260" class="body">window hints + note</text>
+  </g>
+  <path class="line" d="M208 205 H250"/>
+
+  <g filter="url(#shadow)">
+    <rect x="250" y="130" width="170" height="150" rx="18" fill="url(#card)" stroke="#dbeafe"/>
+    <text x="272" y="160" class="num">02</text>
+    <text x="272" y="188" class="label">识别与路由</text>
+    <text x="272" y="216" class="body">surface detection</text>
+    <text x="272" y="238" class="body">provider routing</text>
+    <text x="272" y="260" class="body">0..N route plan</text>
+  </g>
+  <path class="line" d="M420 205 H462"/>
+
+  <g filter="url(#shadow)">
+    <rect x="462" y="106" width="214" height="198" rx="18" fill="url(#card)" stroke="#dbeafe"/>
+    <text x="486" y="136" class="num">03</text>
+    <text x="486" y="164" class="label">现场采集</text>
+    <text x="486" y="194" class="body">system: screenshot / a11y</text>
+    <text x="486" y="216" class="body">web: URL / DOM / text</text>
+    <text x="486" y="238" class="body">selection map</text>
+    <text x="486" y="268" class="tiny">provider 不决定 ACL / index</text>
+  </g>
+  <path class="line" d="M676 205 H718"/>
+
+  <g filter="url(#shadow)">
+    <rect x="718" y="106" width="190" height="198" rx="18" fill="url(#card)" stroke="#dbeafe"/>
+    <text x="742" y="136" class="num">04</text>
+    <text x="742" y="164" class="label">事件入库</text>
+    <text x="742" y="194" class="body">EventCaptureEnvelope</text>
+    <text x="742" y="216" class="body">EvidenceRecord</text>
+    <text x="742" y="238" class="body">Artifact vault + sha256</text>
+    <text x="742" y="268" class="tiny">事实层不可被增强覆盖</text>
+  </g>
+  <path class="line" d="M908 205 H950"/>
+
+  <g filter="url(#shadow)">
+    <rect x="950" y="106" width="178" height="198" rx="18" fill="url(#card)" stroke="#dbeafe"/>
+    <text x="974" y="136" class="num">05</text>
+    <text x="974" y="164" class="label">增强 + 索引</text>
+    <text x="974" y="194" class="body">selection_text</text>
+    <text x="974" y="216" class="body">clean_page_text</text>
+    <text x="974" y="238" class="body">canonical_text</text>
+    <text x="974" y="268" class="tiny">只索引安全 projection</text>
+  </g>
+
+  <path class="line" d="M1038 304 V350 H930"/>
+  <g filter="url(#shadow)">
+    <rect x="690" y="350" width="238" height="148" rx="18" fill="url(#card)" stroke="#bfdbfe"/>
+    <text x="714" y="380" class="num">06</text>
+    <text x="714" y="408" class="label">Agent 读取与复盘</text>
+    <text x="714" y="438" class="body">summary card -> inspect</text>
+    <text x="714" y="460" class="body">citation -> usage record</text>
+    <text x="714" y="482" class="body">agent_run replay</text>
+  </g>
+
+  <path class="rail" d="M48 330 H1128"/>
+  <text x="54" y="365" class="tiny">关键原则：Swift shell 只提交 attempt；daemon 才是编排、策略、入库、索引和审计的唯一入口。</text>
+  <text x="54" y="390" class="tiny">关键原则：provider 只产证据，不决定“能不能给 Agent 看”；读取时由 Disclosure Policy 统一裁剪。</text>
+  <text x="54" y="415" class="tiny">关键原则：raw DOM / raw a11y tree / raw screenshot 默认隔离，Agent 默认看到的是安全摘要和可引用文本。</text>
+</svg>

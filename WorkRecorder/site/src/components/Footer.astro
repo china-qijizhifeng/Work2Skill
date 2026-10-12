@@ -1,0 +1,16 @@
+---
+import { navItems } from "../data/site";
+---
+
+<footer class="footer">
+  <div class="shell footer-grid">
+    <a class="brand" href="index.html">
+      <img class="brand-icon" src="assets/brand-mark.svg" alt="" loading="lazy" />
+      <span>WorkRecorder</span>
+    </a>
+    <div class="footer-links">
+      {navItems.slice(1).map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+    <p>本机优先的 Agent 上下文工作台。主动捕捉，安全披露，使用可复盘。</p>
+  </div>
+</footer>

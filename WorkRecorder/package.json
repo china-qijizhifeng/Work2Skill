@@ -1,0 +1,20 @@
+{
+  "name": "workrecorder",
+  "private": true,
+  "version": "0.1.0",
+  "description": "WorkRecorder active context event layer",
+  "scripts": {
+    "quality": "uv run --extra dev python -m scripts.quality_gate",
+    "quality:fix": "uv run --extra dev python -m scripts.quality_gate --fix",
+    "site:dev": "npm --prefix site run dev",
+    "site:build": "npm --prefix site run build",
+    "site:preview": "npm --prefix site run preview",
+    "site:audit": "npm --prefix site run audit",
+    "audit:site": "npm --prefix site run audit",
+    "audit:python": "uv run --extra dev python -m scripts.audit_repo_quality --strict --max-findings 80",
+    "extension:typecheck": "npm --prefix apps/browser_extension run typecheck",
+    "extension:build": "npm --prefix apps/browser_extension run build",
+    "daemon": "uv run workrecorder-daemon",
+    "workrecorder": "uv run workrecorder"
+  }
+}

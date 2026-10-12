@@ -1,0 +1,19 @@
+{
+  "include": ["apps", "packages", "services", "scripts", "tests"],
+  "exclude": [
+    ".git",
+    ".mypy_cache",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    "build",
+    "dist",
+    "reference_code",
+    "site"
+  ],
+  "pythonVersion": "3.12",
+  "pythonPlatform": "Darwin",
+  "venvPath": ".",
+  "venv": ".venv",
+  "typeCheckingMode": "standard"
+}

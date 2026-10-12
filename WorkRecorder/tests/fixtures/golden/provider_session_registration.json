@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "provider_key": "web.browser_extension",
+  "provider_session_id": "ctx_ext_test_win_test_tab_acme",
+  "provider_kind": "source",
+  "display_name": "WorkRecorder Web Provider",
+  "app_name": "Google Chrome",
+  "window_id": "win_test",
+  "window": {
+    "window_id": "win_test",
+    "screen_rect": {
+      "x": 120,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "coordinate_space": "macos_global"
+    }
+  },
+  "tab": {
+    "browser": "chrome",
+    "tab_id": "tab_acme",
+    "window_id": "win_test",
+    "url": "https://example.test/acme",
+    "origin": "https://example.test",
+    "title": "ACME Pricing Dashboard"
+  },
+  "capabilities": [
+    "resolve_source",
+    "collect_page_metadata",
+    "collect_visible_text",
+    "collect_selected_text",
+    "collect_page_text",
+    "collect_readability_text",
+    "collect_sanitized_dom",
+    "collect_full_dom",
+    "map_selection"
+  ],
+  "registered_at": "2026-05-15T12:00:00Z",
+  "ttl_ms": 15000,
+  "metadata": {
+    "transport": "local_websocket_v1"
+  }
+}

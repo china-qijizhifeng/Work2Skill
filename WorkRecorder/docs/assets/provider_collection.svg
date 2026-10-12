@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="500" viewBox="0 0 1180 500" role="img" aria-labelledby="title desc">
+  <title id="title">Provider collection model</title>
+  <desc id="desc">The daemon chooses system and app providers at screenshot time.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity=".12"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .h{font:800 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a}
+      .t{font:500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#475569}
+      .s{font:700 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1d4ed8}
+      .box{fill:#fff;stroke:#dbeafe;rx:18}
+      .line{stroke:#334155;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1180" height="500" rx="28" fill="#f8fafc"/>
+  <text x="54" y="58" class="h">Event-driven provider collection：截图发生时才现场取证</text>
+  <text x="54" y="84" class="t">extension 不预推 DOM；daemon 根据截图框命中的 surface 和 provider session 现场下发 collect command。</text>
+
+  <g filter="url(#shadow)">
+    <rect class="box" x="54" y="145" width="210" height="160"/>
+    <text x="80" y="184" class="s">Capture Attempt</text>
+    <text x="80" y="216" class="t">bbox / screenshot</text>
+    <text x="80" y="240" class="t">window hints</text>
+    <text x="80" y="264" class="t">user note</text>
+  </g>
+  <path class="line" d="M264 225 H330"/>
+
+  <g filter="url(#shadow)">
+    <rect class="box" x="330" y="112" width="250" height="226"/>
+    <text x="356" y="152" class="s">Daemon Orchestrator</text>
+    <text x="356" y="186" class="t">1. detect surfaces</text>
+    <text x="356" y="212" class="t">2. route providers</text>
+    <text x="356" y="238" class="t">3. send commands</text>
+    <text x="356" y="264" class="t">4. stamp policy</text>
+    <text x="356" y="290" class="t">5. persist ledger</text>
+  </g>
+
+  <path class="line" d="M580 185 H650"/>
+  <path class="line" d="M580 265 H650"/>
+
+  <g filter="url(#shadow)">
+    <rect class="box" x="650" y="88" width="220" height="150"/>
+    <text x="676" y="128" class="s">System Providers</text>
+    <text x="676" y="160" class="t">system.screenshot</text>
+    <text x="676" y="184" class="t">system.macos_a11y</text>
+    <text x="676" y="208" class="t">future OCR / PDF text</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="box" x="650" y="264" width="220" height="150"/>
+    <text x="676" y="304" class="s">App Providers</text>
+    <text x="676" y="336" class="t">web.browser_extension</text>
+    <text x="676" y="360" class="t">future Slack / IDE / CRM</text>
+    <text x="676" y="384" class="t">provider SDK manifest</text>
+  </g>
+
+  <path class="line" d="M870 164 H930"/>
+  <path class="line" d="M870 340 H930"/>
+  <g filter="url(#shadow)">
+    <rect class="box" x="930" y="158" width="200" height="180"/>
+    <text x="956" y="198" class="s">Evidence Bundle</text>
+    <text x="956" y="230" class="t">typed evidence</text>
+    <text x="956" y="254" class="t">source / time / command</text>
+    <text x="956" y="278" class="t">artifact payload refs</text>
+    <text x="956" y="302" class="t">diagnostics</text>
+  </g>
+</svg>

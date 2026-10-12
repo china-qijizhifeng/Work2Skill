@@ -1,0 +1,48 @@
+---
+import { navItems } from "../data/site";
+
+type Props = {
+  activePath: string;
+};
+
+const { activePath } = Astro.props;
+---
+
+<header class="site-header">
+  <nav class="nav shell" aria-label="主导航">
+    <a class="brand" href="index.html" aria-label="WorkRecorder 首页">
+      <img class="brand-icon" src="assets/brand-mark.svg" alt="" loading="eager" />
+      <span>WorkRecorder</span>
+    </a>
+    <button
+      class="menu-toggle"
+      type="button"
+      data-menu-toggle
+      aria-controls="site-navigation"
+      aria-label="打开导航"
+      aria-expanded="false"
+    >
+      <span></span>
+    </button>
+    <div class="nav-links" id="site-navigation" data-nav-links>
+      {navItems.map((item) => (
+        <a
+          class:list={[item.href === activePath && "active"]}
+          href={item.href}
+          aria-current={item.href === activePath ? "page" : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a class="mobile-cta" href="https://github.com/china-qijizhifeng/Work2Skill/blob/main/WorkRecorder/docs/manual/WORKRECORDER_DISTRIBUTION_INSTALL_CN.md">
+        安装试用
+      </a>
+    </div>
+    <a
+      class="nav-action"
+      href="https://github.com/china-qijizhifeng/Work2Skill/blob/main/WorkRecorder/docs/manual/WORKRECORDER_DISTRIBUTION_INSTALL_CN.md"
+    >
+      安装试用
+    </a>
+  </nav>
+</header>

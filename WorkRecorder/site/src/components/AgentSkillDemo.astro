@@ -1,0 +1,41 @@
+---
+---
+
+<div class="agent-skill-demo reveal" data-agent-demo aria-label="workrecorder-context skill 工作流演示">
+  <div class="agent-conversation">
+    <span>用户问题</span>
+    <strong>“帮我整理 ACME 续约会前 brief，列风险、建议话术和证据。”</strong>
+    <p>Agent 不需要你重新复制报价页、协作讨论和截图。它先看搜索短卡，再点开真正需要的记录。</p>
+  </div>
+
+  <div class="agent-context-stack" aria-label="Agent 可见上下文卡">
+    <article class="context-card safe active" data-agent-stage-card="0">
+      <span>摘要卡</span>
+      <strong>记录 01 · 报价风险截图</strong>
+      <p>App：浏览器 · 时间：12 分钟前 · 备注：ACME 续约 briefing</p>
+      <em>可展开：识别文字、截图引用、网页正文</em>
+    </article>
+    <article class="context-card recording" data-agent-stage-card="1">
+      <span>网页正文</span>
+      <strong>记录 02 · 协作讨论</strong>
+      <p>App：聊天工具 · 时间：8 分钟前 · 备注：审批延后</p>
+      <em>可展开：清洗正文、截图引用、来源记录</em>
+    </article>
+  </div>
+
+  <div class="agent-pipeline" aria-label="用户问题到可引用回答的路径">
+    <span class="active" data-agent-stage="0" data-agent-pipe="0">用户问题</span>
+    <i></i>
+    <span data-agent-stage="1" data-agent-pipe="1">找到记录</span>
+    <i></i>
+    <span data-agent-stage="2" data-agent-pipe="2">打开证据</span>
+    <i></i>
+    <span data-agent-stage="3" data-agent-pipe="3">带引用回答</span>
+  </div>
+
+  <div class="answer-card" aria-label="带引用回答">
+    <span>Agent 回答</span>
+    <p>核心风险是报价超预算 18%，采购审批延后；建议先解释涨幅原因，再给分阶段方案和替代套餐。</p>
+    <b>引用：预算截图 · 协作讨论 · 网页正文</b>
+  </div>
+</div>

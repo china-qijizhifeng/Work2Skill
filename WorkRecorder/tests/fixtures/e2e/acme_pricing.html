@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="csrf-token" content="SHOULD_NOT_LEAK_META_TOKEN" />
+    <title>ACME Pricing Dashboard</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f6f7f9;
+        color: #18202a;
+      }
+      main {
+        padding: 48px;
+      }
+      section {
+        max-width: 760px;
+        border: 1px solid #ccd3dd;
+        background: white;
+        padding: 28px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border-bottom: 1px solid #e1e5ea;
+        padding: 12px;
+        text-align: left;
+      }
+      .hidden-secret {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div hidden>SHOULD_NOT_LEAK_HIDDEN_ATTRIBUTE</div>
+    <div class="hidden-secret">SHOULD_NOT_LEAK_CSS_HIDDEN</div>
+    <main>
+      <section id="pricing-panel" aria-label="ACME Pricing Dashboard">
+        <input type="hidden" name="csrf" value="SHOULD_NOT_LEAK_HIDDEN_INPUT" />
+        <input type="password" value="SHOULD_NOT_LEAK_PASSWORD" />
+        <h1>ACME Pricing Dashboard</h1>
+        <p id="variance">Budget variance +18%</p>
+        <p class="token">API token: SHOULD_NOT_LEAK_VISIBLE_TOKEN</p>
+        <p>Authorization: Bearer SHOULD_NOT_LEAK_VISIBLE_BEARER</p>
+        <table aria-label="Renewal pricing">
+          <tr>
+            <th>Account</th>
+            <th>Status</th>
+            <th>Risk</th>
+          </tr>
+          <tr>
+            <td>ACME</td>
+            <td>Procurement delayed</td>
+            <td>Renewal risk medium</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

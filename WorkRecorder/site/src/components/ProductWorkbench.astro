@@ -1,0 +1,87 @@
+---
+type Props = {
+  compact?: boolean;
+};
+
+const { compact = false } = Astro.props;
+---
+
+<div class:list={["workbench-demo reveal", compact && "compact"]} data-hero-demo>
+  <div class="mac-window">
+    <div class="mac-window-bar">
+      <span class="traffic red"></span>
+      <span class="traffic amber"></span>
+      <span class="traffic green"></span>
+      <b>WorkRecorder 工作台</b>
+      <em>本机优先 · Agent 可控</em>
+      <button type="button" class="demo-mini-pause" data-hero-demo-pause aria-pressed="false">暂停</button>
+    </div>
+    <div class="workbench-shell">
+      <aside class="workbench-sidebar">
+        <img src="assets/brand-mark.svg" alt="" />
+        <strong>WorkRecorder</strong>
+        <span>记录列表</span>
+        <span>开始使用</span>
+        <span>数据来源</span>
+        <span>隐私与可见性</span>
+      </aside>
+      <section class="context-feed">
+        <div class="feed-head">
+          <span>最近上下文</span>
+          <b>22 个上下文 · 最新优先</b>
+        </div>
+        <article class="context-card active" data-demo-card="capture">
+          <div>
+            <strong>ACME 续约报价风险</strong>
+            <span>浏览器 · 12 分钟前 · 文字识别已完成</span>
+          </div>
+          <p>预算超出 18%，采购审批延后，需要给下周会议准备 briefing。</p>
+          <footer>
+            <span>识别文字</span>
+            <span>截图引用</span>
+            <span>默认可见</span>
+          </footer>
+        </article>
+        <article class="context-card" data-demo-card="share">
+          <div>
+            <strong>竞品套餐对比</strong>
+            <span>浏览器 · 1 小时前 · 网页正文已补齐</span>
+          </div>
+          <p>三档报价、功能差异和备注一起保存，方便 Agent 写对比表。</p>
+          <footer>
+            <span>网页正文</span>
+            <span>截图锁定</span>
+          </footer>
+        </article>
+        <article class="context-card" data-demo-card="recording">
+          <div>
+            <strong>多窗口问题定位</strong>
+            <span>Finder · TextEdit · 桌面截图 · 文字识别完成</span>
+          </div>
+          <p>非浏览器也能先保存本机记录和识别文字，再交给 Agent 按需查看。</p>
+          <footer>
+            <span>本机记录</span>
+            <span>识别文字</span>
+          </footer>
+        </article>
+      </section>
+      <aside class="agent-panel">
+        <div class="panel-head">
+        <span>Agent 预览</span>
+          <b>默认可见</b>
+        </div>
+        <div class="payload-card">
+          <span>Agent 将读取</span>
+          <strong>备注 + 时间 + 应用 + 识别文字</strong>
+          <p>搜索只返回短卡；点开记录后可读正文和截图引用。完整原图和原始网页材料需要单独确认。</p>
+        </div>
+        <div class="evidence-stack">
+          <span><b>备注</b> 用户说明 <em>默认可见</em></span>
+          <span><b>文字</b> 识别正文 <em>默认可见</em></span>
+          <span><b>截图</b> 引用锚点 <em>点开记录</em></span>
+          <span><b>网页</b> 原始网页 <em>需确认</em></span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

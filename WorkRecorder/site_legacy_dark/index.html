@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WorkRecorder | 主动式上下文事件层</title>
+    <meta
+      name="description"
+      content="WorkRecorder 把用户主动记录的工作现场整理成可检索、可引用、可审计的 Agent 上下文包。"
+    />
+    <link rel="icon" href="assets/app-icon.png" type="image/png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="主导航">
+        <a class="brand" href="index.html" aria-label="WorkRecorder 首页">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>WorkRecorder</span>
+        </a>
+        <button class="menu-toggle" data-menu-toggle type="button" aria-label="打开导航" aria-expanded="false">
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a class="active" href="index.html">概览</a>
+          <a href="product.html">产品体验</a>
+          <a href="architecture.html">技术架构</a>
+          <a href="agents.html">Agent 接口</a>
+          <a href="governance.html">安全治理</a>
+        </div>
+        <a class="nav-action" href="product.html">进入产品体验</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero home-hero">
+        <div class="shell">
+          <div class="hero-copy home-hero-copy">
+            <div class="hero-logo-lockup" aria-label="WorkRecorder">
+              <span class="hero-logo-mark" aria-hidden="true"></span>
+              <span>WorkRecorder</span>
+            </div>
+            <div class="eyebrow">主动上下文事件层</div>
+            <h1>用一次截图触发，把工作现场变成 Agent 可引用的上下文。</h1>
+            <p class="lead">
+              WorkRecorder 是面向工作 Agent 的主动式上下文事件层。用户只记录关键屏幕证据，
+              系统补齐来源上下文，生成可引用、可审计、可控权限的 Context Bundle。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#acme-demo">看 ACME 场景</a>
+              <a class="button" href="architecture.html">理解处理链路</a>
+              <a class="button" href="architecture.html">阅读技术架构</a>
+            </div>
+              <div class="capture-thesis" aria-label="为什么选择截图触发">
+                <div><span>上下文散落</span><b>网页、聊天、CRM、邮件各说一半</b></div>
+                <div><span>复制成本高</span><b>用户不想把四处信息搬进 prompt</b></div>
+                <div><span>系统截图工具不够</span><b>普通截图没有来源、索引和权限边界</b></div>
+                <div><span>用户主动记录</span><b>信噪比高，Agent 只拿关键证据</b></div>
+              <div class="capture-thesis-action">
+                <span>WorkRecorder</span>
+                <b>把“截图动作”升级成一条 Context Event</b>
+                <em>选区 + note + 来源补齐 + evidence refs，一次触发后可搜索、可引用、可审计。</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="acme-demo" class="section acme-story-section">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">核心场景</div>
+              <h2>会前 12 分钟，ACME 续约信息散在四个系统里。</h2>
+            </div>
+            <p>销售只提一个问题；WorkRecorder 用刚刚记录的证据和授权来源补齐上下文，让 Agent 直接给出带引用的会前 briefing。</p>
+          </div>
+
+          <div class="acme-demo reveal" data-evidence-demo aria-label="ACME 续约 briefing 产品演示">
+            <div class="acme-left">
+              <div class="demo-topbar">
+                <span>ACME Renewal Desk · 会前 12 分钟</span>
+                <button class="replay-button" data-evidence-replay type="button">重放截图流程</button>
+              </div>
+
+              <div class="source-board">
+                <article class="source-window pricing-source is-evidence-active" data-evidence="pricing">
+                  <span class="source-number active">1</span>
+                  <div class="mini-app-head"><span>Chrome · Pricing Dashboard</span><b>报价页</b></div>
+                  <div class="pricing-kpis">
+                    <div><span>Renewal</span><strong>$428k</strong></div>
+                    <div><span>Budget variance</span><strong class="amber-text">+18%</strong></div>
+                  </div>
+                  <div class="mini-table risk-data">
+                    <span>预算线</span><b>$362k</b><i>超出</i>
+                    <span>采购负责人</span><b>未确认</b><i>跟进</i>
+                    <span>竞品报价</span><b>出现</b><i>比较</i>
+                  </div>
+                  <div class="capture-box in-pricing" aria-hidden="true"></div>
+                  <div class="capture-chip pricing-chip">主动记录：预算偏差 +18%</div>
+                </article>
+
+                <article class="source-window chat-source" data-evidence="chat">
+                  <span class="source-number active">2</span>
+                  <div class="mini-app-head"><span>飞书 · Renewal Thread</span><b>讨论</b></div>
+                  <div class="chat-bubble">采购审批要下周才确认，客户希望先看到风险方案。</div>
+                  <div class="chat-bubble muted">会前需要涨幅解释和替代方案。</div>
+                  <div class="capture-box in-chat" aria-hidden="true"></div>
+                  <div class="capture-chip chat-chip">主动记录 · 采购延期</div>
+                </article>
+
+                <article class="source-window crm-source" data-evidence="crm">
+                  <span class="source-number">3</span>
+                  <div class="mini-app-head"><span>CRM · Account</span><b>承诺</b></div>
+                  <div class="crm-row"><span>Last QBR</span><b>价格不超过预算线</b></div>
+                  <div class="crm-row"><span>Owner</span><b>Procurement pending</b></div>
+                  <div class="crm-row"><span>Renewal date</span><b>下周三</b></div>
+                  <div class="capture-box in-crm enriched" aria-hidden="true"></div>
+                  <div class="capture-chip crm-chip secondary">来源补齐 · CRM 承诺</div>
+                </article>
+
+                <article class="source-window mail-source" data-evidence="mail">
+                  <span class="source-number">4</span>
+                  <div class="mini-app-head"><span>Mail · Contract Note</span><b>诉求</b></div>
+                  <p>“请在会议前解释涨价原因，并给出可选方案。”</p>
+                  <div class="mail-tags"><span>budget</span><span>risk</span><span>options</span></div>
+                  <div class="capture-box in-mail enriched" aria-hidden="true"></div>
+                  <div class="capture-chip mail-chip secondary">来源补齐 · 邮件诉求</div>
+                </article>
+                <div class="acme-demo-cursor" aria-hidden="true"></div>
+                <div class="acme-floating-note" aria-hidden="true">
+                  <span data-note="pricing">拖选报价风险区 · 记录 +18% 偏差</span>
+                  <span data-note="chat">拖选飞书讨论 · 记录采购延期</span>
+                  <span data-note="crm">授权补齐 CRM · 读取 QBR 承诺</span>
+                  <span data-note="mail">授权补齐邮件 · 提取客户诉求</span>
+                </div>
+              </div>
+
+              <div class="sales-query-bar">
+                <div>
+                  <span>销售提问</span>
+                  <strong>帮我生成 ACME 续约会前 brief，列风险、建议话术和证据。</strong>
+                </div>
+                <span class="tag mint">2 次主动记录 · 4 处证据</span>
+              </div>
+            </div>
+
+            <div class="acme-middle">
+              <div class="bundle-assembler">
+                <p class="diagram-label">WorkRecorder 上下文层</p>
+                <h3>Context Bundle: bundle_acme_renewal</h3>
+                <div class="bundle-query">
+                  <span>来自用户提问</span>
+                  <b>风险、建议话术、证据引用</b>
+                </div>
+                <div class="evidence-map">
+                  <button class="evidence-ref is-evidence-active" data-evidence="pricing" type="button"><span><i>1</i> 报价页</span><b>预算偏差 +18%</b><em>evt_9cq · dom_table#row_3</em></button>
+                  <button class="evidence-ref" data-evidence="chat" type="button"><span><i>2</i> 飞书</span><b>采购审批延期</b><em>evt_3ka · thread#msg_8</em></button>
+                  <button class="evidence-ref" data-evidence="crm" type="button"><span><i>3</i> CRM</span><b>上季度承诺预算线</b><em>evt_crm · field#last_qbr</em></button>
+                  <button class="evidence-ref" data-evidence="mail" type="button"><span><i>4</i> 邮件</span><b>要求解释涨价和方案</b><em>evt_mail · snippet#ask</em></button>
+                </div>
+                <div class="bundle-policy-note">原图默认不进 Agent；每条结论都能回到 event id 和 evidence ref。</div>
+              </div>
+            </div>
+
+            <aside class="agent-answer">
+              <div class="terminal-head"><span>消费上下文的 Agent</span><span>使用 bundle_acme_renewal</span></div>
+              <div class="agent-query">
+                <span>用户问题</span>
+                <strong>生成 ACME 续约会前 brief，列风险、建议话术和证据。</strong>
+              </div>
+              <div class="brief-card">
+                <strong>Agent 回答片段</strong>
+                <ol>
+                  <li class="is-evidence-active" data-evidence="pricing">核心风险：报价超预算 18%，需要在会前解释涨幅原因。<em>evt_9cq · dom_table#row_3</em></li>
+                  <li data-evidence="chat">会议策略：采购审批延后，先给风险方案和替代选项。<em>evt_3ka · thread#msg_8</em></li>
+                  <li data-evidence="crm">建议话术：承认 QBR 承诺，提供分阶段方案。<em>evt_crm · field#last_qbr</em></li>
+                </ol>
+              </div>
+              <div class="agent-metrics">
+                <span><b>4</b> 来源</span>
+                <span><b>6</b> 事件</span>
+                <span><b>16</b> 证据引用</span>
+                <span><b>0</b> 原图默认暴露</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">为什么有价值</div>
+              <h2>WorkRecorder 解决的是 Agent 的证据缺口。</h2>
+            </div>
+          </div>
+
+          <div class="dense-grid three">
+            <article class="panel compact-card reveal">
+              <span class="diagram-label">少解释</span>
+              <h3>用户不用重讲现场</h3>
+              <p>一句 intent 加两次主动记录，就能让 Agent 找到报价、聊天和 CRM 证据。</p>
+            </article>
+            <article class="panel compact-card reveal">
+              <span class="diagram-label">补来源</span>
+              <h3>截图截不全也能补齐</h3>
+              <p>浏览器补全文，聊天补 thread，CRM/邮件补字段和来源链接。</p>
+            </article>
+            <article class="panel compact-card reveal">
+              <span class="diagram-label">可引用</span>
+              <h3>输出能回到证据</h3>
+              <p>每条结论都带 event id 和 evidence ref，方便复核、审计和团队协作。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">继续深入</div>
+              <h2>继续深入具体模块。</h2>
+            </div>
+            <p>想拆开看产品怎么记录、系统怎么处理、Agent 怎么调用，以及企业边界怎么守住，可以从这里进入。</p>
+          </div>
+
+          <div class="module-nav-grid">
+            <a class="module-card reveal" href="product.html">
+              <span>产品</span>
+              <h3>产品体验</h3>
+              <p>截图入口、轻量确认、目标识别、Event Card 和搜索体验。</p>
+            </a>
+            <a class="module-card reveal" href="architecture.html">
+              <span>架构</span>
+              <h3>技术架构</h3>
+              <p>触发、采集、补全、去噪、入库、索引和 bundle 生成。</p>
+            </a>
+            <a class="module-card reveal" href="agents.html">
+              <span>Agent</span>
+              <h3>Agent 接口</h3>
+              <p>面向 Codex、OpenClaw 和内部 Agent 的 Skill + CLI。</p>
+            </a>
+            <a class="module-card reveal" href="governance.html">
+              <span>治理</span>
+              <h3>安全治理</h3>
+              <p>主动记录、默认私有、证据分级、最小权限和使用审计。</p>
+            </a>
+            <a class="module-card reveal" href="architecture.html">
+              <span>架构</span>
+              <h3>完整链路</h3>
+              <p>从截图触发、证据采集、索引披露到 Agent 使用留痕。</p>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-grid">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>WorkRecorder</span></a>
+        <span>面向工作 Agent 的上下文事件层。</span>
+      </div>
+    </footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+type: tool
+name: watch_video
+description: Sample timestamped frames from a video interval. Use coarse intervals first and smaller intervals around important actions.
+input_schema:
+  type: object
+  properties:
+    file_path:
+      type: string
+      description: Relative path to a video in the scoped roots.
+    start_ms:
+      type: integer
+      minimum: 0
+      default: 0
+      description: Segment start in milliseconds.
+    end_ms:
+      type: integer
+      minimum: 1
+      description: Optional inclusive segment end in milliseconds.
+    interval_ms:
+      type: integer
+      minimum: 100
+      default: 5000
+      description: Sampling interval in milliseconds.
+    max_frames:
+      type: integer
+      minimum: 1
+      maximum: 20
+      default: 12
+      description: Maximum sampled frames returned in one call.
+    frame_width:
+      type: integer
+      minimum: 64
+      maximum: 4096
+      default: 1280
+      description: Output frame width preserving aspect ratio.
+  required: [file_path]
+  additionalProperties: false

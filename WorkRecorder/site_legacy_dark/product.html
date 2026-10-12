@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>产品体验 | WorkRecorder</title>
+    <meta name="description" content="WorkRecorder 的主动记录入口、目标识别、Event Card 和搜索体验。" />
+    <link rel="icon" href="assets/app-icon.png" type="image/png" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>WorkRecorder</span></a>
+        <button class="menu-toggle" data-menu-toggle type="button" aria-label="打开导航" aria-expanded="false"><span></span></button>
+        <div class="nav-links">
+          <a href="index.html">概览</a>
+          <a class="active" href="product.html">产品体验</a>
+          <a href="architecture.html">技术架构</a>
+          <a href="agents.html">Agent 接口</a>
+          <a href="governance.html">安全治理</a>
+        </div>
+        <a class="nav-action" href="architecture.html">理解技术架构</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero compact-hero">
+        <div class="shell hero-stack">
+          <div class="hero-copy">
+            <div class="eyebrow">产品体验</div>
+            <h1>截图像一次轻操作，背后生成一条可复用事件。</h1>
+            <p class="lead">
+              用户拖出一个选区，只补一句用途。WorkRecorder 在后台把来源、证据、实体和权限整理好；
+              截图现场不弹复杂分析，也不打断工作流。
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#capture-ui">截图入口</a>
+              <a class="button" href="#focus-resolver">目标识别</a>
+              <a class="button" href="#event-card">Event Card</a>
+            </div>
+          </div>
+
+          <div class="product-flow-strip reveal">
+            <div><strong>1. 主动记录</strong><span>全屏 / 选区快捷键</span></div>
+            <div><strong>2. 轻量确认</strong><span>来源、权限、一句话用途</span></div>
+            <div><strong>3. 生成事件</strong><span>进入 Inbox 和 Search</span></div>
+            <div><strong>4. 交给 Agent</strong><span>通过 bundle 使用证据</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="capture-ui" class="section">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">截图入口</div>
+              <h2>像真实截图一样拖选区，note 自动贴到目标下方。</h2>
+            </div>
+            <p>
+              这里是交互模拟：拖动桌面里的报价风险区域，松开后只出现轻量确认和一句用途输入。
+              生成事件、补全和索引都在工作台里发生，不挤进截图现场。
+            </p>
+          </div>
+
+          <div class="capture-simulator reveal" data-capture-simulator aria-label="用户截图时的 WorkRecorder UI 模拟器">
+            <div class="demo-topbar">
+              <span>用户桌面 · Chrome Pricing Dashboard</span>
+              <button class="replay-button" data-capture-replay type="button">重放拖拽</button>
+            </div>
+
+            <div class="capture-sim-body">
+              <div class="capture-sim-screen" data-capture-canvas>
+                <div class="sim-cursor" data-capture-cursor aria-hidden="true"></div>
+                <div class="sim-browser">
+                  <div class="source-app-header">
+                    <span class="dot coral"></span><span class="dot amber"></span><span class="dot mint"></span>
+                    Chrome · acme.internal/renewal/pricing
+                  </div>
+                  <div class="sim-dashboard">
+                    <div class="sim-side">
+                      <b>ACME</b>
+                      <span>Renewal desk</span>
+                      <span>Pricing</span>
+                      <span>Risk</span>
+                    </div>
+                    <div class="sim-main">
+                      <div class="sim-kpis">
+                        <div><span>Renewal</span><strong>$428k</strong></div>
+                        <div><span>Budget variance</span><strong class="amber-text">+18%</strong></div>
+                        <div><span>Meeting</span><strong>下周三</strong></div>
+                      </div>
+                      <div class="sim-risk-panel">
+                        <div class="sim-panel-head"><span>Renewal risk table</span><b>Live</b></div>
+                        <div class="sim-risk-row head"><span>字段</span><span>当前值</span><span>状态</span></div>
+                        <div class="sim-risk-row"><span>预算偏差</span><b>+18%</b><i>需解释</i></div>
+                        <div class="sim-risk-row"><span>采购负责人</span><b>未确认</b><i>需跟进</i></div>
+                        <div class="sim-risk-row"><span>竞品报价</span><b>出现</b><i>需比较</i></div>
+                      </div>
+                      <div class="sim-chart">
+                        <span></span><span></span><span></span><span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="sim-selection" data-capture-selection aria-hidden="true"></div>
+                <div class="sim-note-popover" data-capture-note>
+                  <div class="drawer-title">
+                    <span>已记录：网页选区</span>
+                    <span class="tag mint">仅自己</span>
+                  </div>
+                  <div class="tag-row">
+                    <span class="tag">Chrome</span>
+                    <span class="tag amber">报价风险表</span>
+                    <span class="tag">ACME</span>
+                  </div>
+                  <div class="note-field" data-capture-note-text>告诉 AI：用于 ACME 下周续约会议 briefing</div>
+                </div>
+              </div>
+
+              <aside class="capture-sim-panel">
+                <p class="diagram-label">截图模拟器</p>
+                <h3>截图现场只做三件事</h3>
+                <div class="sim-step active" data-capture-step="drag"><b>1. 拖出选区</b><span>用户只框住要保存的工作证据。</span></div>
+                <div class="sim-step" data-capture-step="note"><b>2. 补一句用途</b><span>这句话会成为 event intent，而不是表单负担。</span></div>
+                <div class="sim-step" data-capture-step="save"><b>3. 后台整理</b><span>来源、证据和索引进入 WorkRecorder 工作台。</span></div>
+                <div class="sim-hint">可以在左侧桌面重新拖拽；系统会把确认面板吸附到选区附近。</div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="focus-resolver" class="section alt">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">目标识别</div>
+              <h2>全屏里有噪声，产品帮用户圈出真正目标。</h2>
+            </div>
+            <p>
+              全屏捕获常常包含通知、背景窗口和无关侧栏。WorkRecorder 不让用户手工标注每个区域，
+              而是把画面拆成候选目标，标出主目标、支撑上下文和降权噪声。
+            </p>
+          </div>
+
+          <div class="noise-demo reveal" data-focus-demo data-focus-target="primary">
+            <div class="demo-topbar focus-demo-bar">
+              <span>全屏捕获分析 · Snapshot Resolver</span>
+              <button class="replay-button" data-focus-replay type="button">重放识别</button>
+            </div>
+            <div class="noise-screen">
+              <div class="snapshot-flash" aria-hidden="true"></div>
+              <div class="candidate-grid" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="noise-window main-dashboard">
+                <div class="mini-app-head"><span>Chrome · ACME Renewal</span><b>Dashboard</b></div>
+                <div class="pricing-kpis">
+                  <div><span>Renewal</span><strong>$428k</strong></div>
+                  <div><span>Variance</span><strong class="amber-text">+18%</strong></div>
+                </div>
+                <div class="mini-table">
+                  <span>预算线</span><b>$362k</b><i>超出</i>
+                  <span>采购</span><b>未确认</b><i>跟进</i>
+                  <span>竞品报价</span><b>出现</b><i>比较</i>
+                </div>
+                <div class="focus-ring primary">主目标</div>
+              </div>
+              <div class="noise-window support-chat">
+                <div class="mini-app-head"><span>飞书</span><b>Thread</b></div>
+                <p>采购审批要下周才确认，客户希望先看到风险方案。</p>
+                <div class="focus-ring support">支撑上下文</div>
+              </div>
+              <div class="noise-window side-doc">
+                <div class="mini-app-head"><span>Notes</span><b>Draft</b></div>
+                <p>会议议程、历史 QBR 片段。</p>
+              </div>
+              <div class="noise-window notification">
+                <b>Calendar</b>
+                <span>15:00 内部同步会</span>
+                <div class="focus-ring noise">噪声降权</div>
+              </div>
+              <div class="noise-window sidebar-noise">
+                <span>无关导航</span>
+                <span>系统提醒</span>
+                <span>推广入口</span>
+              </div>
+            </div>
+
+            <div class="focus-explain product-focus-explain">
+              <button class="ladder-row active" data-focus-target="primary" type="button">
+                <strong>主目标</strong><span>报价表与用户选区重叠，且 intent 提到“续约 briefing”。</span><span class="confidence-meter"><i style="width: 91%"></i><b>0.91</b></span>
+              </button>
+              <button class="ladder-row" data-focus-target="support" type="button">
+                <strong>支撑上下文</strong><span>飞书 thread 解释采购延期，是 briefing 的第二条证据。</span><span class="confidence-meter blue"><i style="width: 72%"></i><b>0.72</b></span>
+              </button>
+              <button class="ladder-row" data-focus-target="noise" type="button">
+                <strong>降权噪声</strong><span>通知、无关导航和背景草稿保留在原图，但不进入主要排序。</span><span class="confidence-meter amber"><i style="width: 34%"></i><b>降权</b></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="event-card" class="section">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">保存后</div>
+              <h2>生成后的信息卡片，在 WorkRecorder 工作台里查看。</h2>
+            </div>
+            <p>
+              Event Card 不打断用户截图现场。它在保存后进入 Inbox，提供截图缩略图、证据来源、实体和可用动作。
+            </p>
+          </div>
+
+          <div class="post-capture-layout reveal" data-event-card-demo>
+            <div class="event-card-large">
+              <div class="event-card-toolbar">
+                <div class="diagram-label">WorkRecorder 工作台 · 事件卡片</div>
+                <button class="replay-button" data-event-card-replay type="button">重放装配</button>
+              </div>
+              <h3>网页选区 · ACME 报价风险</h3>
+              <p>用于 ACME 下周续约会议准备。系统保留截图证据，并将网页表格、URL、OCR 和用户意图绑定到同一个事件。</p>
+              <div class="event-screenshot-mini" aria-label="事件卡中的截图预览">
+                <div class="mini-app-head"><span>Screenshot preview</span><b>选区</b></div>
+                <div class="preview-kpi"><span>ACME Renewal</span><strong class="amber-text">Budget variance +18%</strong></div>
+                <div class="preview-table">
+                  <span>Procurement</span><strong>pending</strong>
+                  <span>Competitor quote</span><strong>seen</strong>
+                </div>
+                <div class="preview-selection"></div>
+              </div>
+              <div class="event-card-meta" data-card-step="entities">
+                <div><span>来源</span><b>Chrome</b></div>
+                <div><span>对象</span><b>报价风险表</b></div>
+                <div><span>权限</span><b>仅自己</b></div>
+              </div>
+              <div class="event-card-flow" data-card-step="evidence">
+                <div><strong>证据</strong><span>截图、DOM 表格、OCR 兜底、URL</span></div>
+                <div><strong>实体</strong><span>ACME、续约、预算偏差、采购</span></div>
+                <div><strong>可用动作</strong><span>加入 briefing、创建任务、发送给 Agent</span></div>
+              </div>
+            </div>
+
+            <div class="inbox-mock">
+              <div class="terminal-head"><span>Context Inbox</span><span>Today</span></div>
+              <div class="inbox-row active"><b>ACME 报价风险</b><span>Chrome · 刚刚 · 已索引</span></div>
+              <div class="inbox-row"><b>采购延期讨论</b><span>Feishu · 12 分钟前 · 待补全</span></div>
+              <div class="inbox-row"><b>Q3 承诺记录</b><span>CRM · 20 分钟前 · 可引用</span></div>
+            </div>
+
+            <div class="search-mock">
+              <div class="terminal-head"><span>Search</span><span>ACME 续约风险</span></div>
+              <div class="search-hit"><b>网页选区 · ACME 报价风险</b><span>匹配：用户意图 + DOM 表格 + 实体 ACME</span></div>
+              <div class="search-hit"><b>飞书 thread · 采购延期</b><span>匹配：thread 中出现“下周确认预算”</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="shell">
+          <div class="section-head compact reveal">
+            <div>
+              <div class="kicker">来源补齐</div>
+              <h2>用户截不全时，产品只展示补齐结果。</h2>
+            </div>
+            <p>技术细节留给架构页。产品层面只让用户看到：哪些来源已经补齐，哪些证据可以被搜索和引用。</p>
+          </div>
+
+          <div class="dense-grid four">
+            <article class="panel compact-card reveal">
+              <h3>网页</h3>
+              <p>补 URL、标题、正文、表格和选区对应节点。</p>
+              <div class="tag-row"><span class="tag mint">DOM</span><span class="tag">正文</span><span class="tag amber">表格</span></div>
+            </article>
+            <article class="panel compact-card reveal">
+              <h3>聊天</h3>
+              <p>补可见消息前后文，授权后补 thread 片段。</p>
+              <div class="tag-row"><span class="tag">可见消息</span><span class="tag mint">前后文</span></div>
+            </article>
+            <article class="panel compact-card reveal">
+              <h3>文档</h3>
+              <p>补文档 ID、页码、章节、段落和 deep link。</p>
+              <div class="tag-row"><span class="tag">页码</span><span class="tag amber">章节</span></div>
+            </article>
+            <article class="panel compact-card reveal">
+              <h3>IDE / Terminal</h3>
+              <p>补 repo、branch、命令、错误文本和 trace id。</p>
+              <div class="tag-row"><span class="tag mint">Repo</span><span class="tag coral">Trace</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-grid">
+        <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>WorkRecorder</span></a>
+        <a class="button" href="architecture.html">继续理解技术架构</a>
+      </div>
+    </footer>
+    <script src="assets/app.js"></script>
+  </body>
+</html>

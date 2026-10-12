@@ -1,0 +1,73 @@
+{
+  "permission_state": "granted",
+  "app_name": "Google Chrome",
+  "process_id": 123,
+  "window_id": "win_test",
+  "selection": {
+    "x": 120,
+    "y": 140,
+    "width": 520,
+    "height": 280,
+    "coordinate_space": "macos_global"
+  },
+  "root_nodes": [
+    {
+      "role": "AXGroup",
+      "name": "ACME Pricing Dashboard",
+      "value": null,
+      "description": null,
+      "frame": {
+        "x": 120,
+        "y": 140,
+        "width": 520,
+        "height": 280,
+        "coordinate_space": "macos_global"
+      },
+      "overlap_ratio": 1.0,
+      "confidence": 0.84,
+      "children": []
+    }
+  ],
+  "text_blocks": [
+    {
+      "text": "ACME Pricing Dashboard Budget variance +18%",
+      "block_id": "a11y_block_0",
+      "role": "AXStaticText",
+      "node_path": "0/0",
+      "role_path": [
+        "AXGroup",
+        "AXStaticText"
+      ],
+      "text_source": "value",
+      "frame": {
+        "x": 120,
+        "y": 140,
+        "width": 520,
+        "height": 280,
+        "coordinate_space": "macos_global"
+      },
+      "selection_overlap_ratio": 1.0,
+      "element_overlap_ratio": 1.0,
+      "order_index": 0,
+      "is_leaf_text": true,
+      "edge_recovered": false,
+      "confidence": 0.84
+    }
+  ],
+  "full_text": "ACME Pricing Dashboard Budget variance +18%",
+  "coverage": {
+    "selection": {
+      "x": 120,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "coordinate_space": "macos_global"
+    },
+    "permission_state": "granted",
+    "node_count": 1,
+    "text_block_count": 1,
+    "covered_area_ratio": 1.0,
+    "confidence": 0.84,
+    "error_message": null
+  }
+}

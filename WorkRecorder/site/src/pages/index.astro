@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HomeProofDemo from "../components/HomeProofDemo.astro";
+import PainEvidenceStory from "../components/PainEvidenceStory.astro";
+import AcmeEvidenceDemo from "../components/AcmeEvidenceDemo.astro";
+---
+
+<BaseLayout
+  title="WorkRecorder"
+  description="WorkRecorder 把屏幕上的工作现场整理成可引用、可复盘、可交给 Agent 使用的本地上下文。"
+  activePath="index.html"
+>
+  <section class="hero home-hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy reveal">
+        <div class="logo-lockup">
+          <img src="assets/brand-mark.svg" alt="" />
+          <span>WorkRecorder</span>
+        </div>
+        <p class="eyebrow">macOS 本地上下文记录器</p>
+        <h1>截图和录屏都不够，工作现场需要可引用的证据。</h1>
+        <p class="lead">
+          会前刚看过的网页、PDF、聊天和后台页面，很快就散了。WorkRecorder 让你按快捷键框一块现场，
+          补一句用途，然后把画面、来源、时间和识别文字保存成本机证据卡。
+        </p>
+        <div class="home-story-points" aria-label="从旧方式到 WorkRecorder 的变化">
+          <div>
+            <b>截图短板</b>
+            <span>只有画面，没有来源、时间、框内文字，也没有当时为什么截。</span>
+          </div>
+          <div>
+            <b>录屏短板</b>
+            <span>能回看，却很难搜索、引用或告诉 Agent 哪一秒才重要。</span>
+          </div>
+          <div>
+            <b>WorkRecorder</b>
+            <span>先保存证据卡；需要 Agent 帮忙时，只给安全摘要和可引用文本。</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="product.html">看截图如何变成上下文</a>
+          <a class="button secondary" href="active-capture.html">再看一段操作怎么记录</a>
+        </div>
+      </div>
+      <HomeProofDemo />
+    </div>
+  </section>
+
+  <section class="section pain-section soft">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">为什么需要 WorkRecorder</p>
+        <h2>你不是缺截图工具，而是缺一条从现场到证据的路。</h2>
+        <p>会前找报价、翻讨论、补链接、写背景说明；Agent 回答以后还要追问“这句话从哪来”。WorkRecorder 把这些零散材料变成一条能回看的上下文记录。</p>
+      </div>
+      <PainEvidenceStory />
+    </div>
+  </section>
+
+  <section class="section" id="real-flow">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">核心场景</p>
+        <h2>会前 12 分钟，报价页和协作讨论分散在两个窗口里。</h2>
+        <p>用户只保存关键现场；WorkRecorder 整理来源、文字和证据；Agent 回答时能指回具体出处。截图只是入口，不是终点。</p>
+      </div>
+      <AcmeEvidenceDemo />
+    </div>
+  </section>
+
+  <section class="section split-section active-capture-preview">
+    <div class="shell split-grid">
+      <div class="section-head reveal">
+        <p class="eyebrow">下一阶段预览 · 记录片段</p>
+        <h2>截图保存一刻，记录片段保存一段做法。</h2>
+        <p>
+          当你演示“打开页面、切换选项、提取差异”，WorkRecorder 会保留视频给人回看，
+          同时整理关键时刻和操作线索。用户确认后，它才会变成 Agent 可安全试跑的步骤草稿。
+        </p>
+        <a class="text-link" href="active-capture.html">看完整演示动画</a>
+      </div>
+      <div class="home-recording-teaser reveal" aria-label="记录片段到 Skill 草稿的首页精简演示">
+        <div class="teaser-video">
+          <span>00:42</span>
+          <b>用户演示：比较企业套餐</b>
+          <i></i><i></i><i></i>
+        </div>
+        <div class="teaser-keyframes">
+          <span>start</span>
+          <span>click</span>
+          <span>settle</span>
+          <span>mark</span>
+        </div>
+        <div class="teaser-skill">
+          <strong>待确认步骤草稿</strong>
+          <p>打开定价页 → 切换企业版 → 提取权限、SLA、价格差异</p>
+          <em>用户确认后，Agent 才会安全试跑</em>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+type Props = {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  primaryHref?: string;
+  primaryLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+};
+
+const { eyebrow, title, lead, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="shell page-hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title}</h1>
+      <p class="lead">{lead}</p>
+      {(primaryHref || secondaryHref) && (
+        <div class="hero-actions">
+          {primaryHref && <a class="button primary" href={primaryHref}>{primaryLabel}</a>}
+          {secondaryHref && <a class="button secondary" href={secondaryHref}>{secondaryLabel}</a>}
+        </div>
+      )}
+    </div>
+    <slot />
+  </div>
+</section>

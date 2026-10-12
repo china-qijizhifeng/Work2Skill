@@ -1,0 +1,86 @@
+---
+---
+
+<div class="capture-simulator reveal" data-capture-simulator aria-label="截图拖选和保存模拟">
+  <div class="demo-console-head">
+    <span>用户桌面 · 浏览器 Pricing Dashboard</span>
+    <button class="demo-mini-pause" data-capture-replay type="button">重放拖选</button>
+  </div>
+
+  <div class="capture-sim-body">
+    <div class="capture-screen" data-capture-canvas>
+      <div class="sim-browser">
+        <div class="browser-toolbar">
+          <span></span><span></span><span></span>
+          <em>acme.internal/renewal/pricing</em>
+        </div>
+        <div class="sim-dashboard">
+          <aside>
+            <b>ACME</b>
+            <span>Renewal desk</span>
+            <span>Pricing</span>
+            <span>Risk</span>
+          </aside>
+          <main>
+            <div class="sim-kpis">
+              <div><span>Renewal</span><strong>$428k</strong></div>
+              <div><span>Budget variance</span><strong class="amber-text">+18%</strong></div>
+              <div><span>Meeting</span><strong>下周三</strong></div>
+            </div>
+            <div class="sim-risk-panel">
+              <div class="sim-risk-row head"><span>字段</span><span>当前值</span><span>状态</span></div>
+              <div class="sim-risk-row"><span>预算偏差</span><b>+18%</b><i>需解释</i></div>
+              <div class="sim-risk-row"><span>采购负责人</span><b>未确认</b><i>需跟进</i></div>
+              <div class="sim-risk-row"><span>竞品报价</span><b>出现</b><i>需比较</i></div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div class="sim-selection" data-capture-selection aria-hidden="true"></div>
+      <div class="sim-selection-tags" aria-hidden="true">
+        <span>选区进入证据</span>
+        <span>完整原图需确认</span>
+      </div>
+      <div class="sim-result-card" data-capture-result-card aria-live="polite">
+        <span>证据卡已生成</span>
+        <strong data-capture-result-title>ACME 续约报价风险</strong>
+        <p data-capture-result-body>备注、App、时间、识别文字和截图引用已经进入本机记录；完整原图仍需确认打开。</p>
+      </div>
+      <div class="sim-cursor" data-capture-cursor aria-hidden="true"></div>
+      <div class="sim-note-popover" data-capture-note>
+        <div class="drawer-title">
+          <span>保存这个现场</span>
+          <span class="tag mint">仅自己</span>
+        </div>
+        <div class="tag-row">
+          <span class="tag">工作 App</span>
+          <span class="tag amber">报价风险表</span>
+          <span class="tag">ACME</span>
+        </div>
+        <label class="note-field">
+          <span>备注</span>
+          <textarea data-capture-note-input rows="2">用于 ACME 下周续约会议 briefing</textarea>
+        </label>
+        <button class="sim-save-button" data-capture-save type="button">保存并生成证据卡</button>
+      </div>
+    </div>
+
+    <aside class="capture-sim-panel">
+      <p class="card-label">截图模拟器</p>
+      <h3>截图现场只做三件事</h3>
+      <div class="sim-step active" data-capture-step="drag"><b>1. 拖出选区</b><span>用户只框住要保存的工作证据。</span></div>
+      <div class="sim-step" data-capture-step="note"><b>2. 补一句用途</b><span>这句话会成为记录备注，而不是表单负担。</span></div>
+      <div class="sim-step" data-capture-step="save"><b>3. 后台整理</b><span>来源、证据和可读文字进入 WorkRecorder 工作台。</span></div>
+      <div class="sim-event-card" data-capture-event-card aria-live="polite">
+        <span data-capture-event-kicker>ACME 续约记录</span>
+        <strong data-capture-event-title>证据包已生成</strong>
+        <p data-capture-event-body>不是把截图直接交出去；本机记录、识别文字、来源和备注进入同一条可追溯记录。</p>
+        <div>
+          <em>本机记录</em>
+          <em>识别文字</em>
+          <em>来源补齐</em>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

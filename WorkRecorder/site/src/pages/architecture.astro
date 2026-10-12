@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import TimelineRail from "../components/TimelineRail.astro";
+import ArchitectureFlowDemo from "../components/ArchitectureFlowDemo.astro";
+import { architectureStages } from "../data/site";
+---
+
+<BaseLayout
+  title="工作原理"
+  description="WorkRecorder 如何保存现场、整理证据、控制可见范围，并让 Agent 回答可复盘。"
+  activePath="architecture.html"
+>
+  <PageHero
+    eyebrow="工作原理"
+    title="WorkRecorder 怎么保护你的材料。"
+    lead="一条记录会经历六步：保存现场、补上能确认的来源、分开完整截图和可读文本、生成安全文本、按需交给 Agent、回答后留下清单。这里重点说明 Agent 默认能看什么、哪些材料必须确认。"
+    primaryHref="#pipeline"
+    primaryLabel="看六步路径"
+    secondaryHref="https://github.com/china-qijizhifeng/Work2Skill/tree/main/WorkRecorder/docs"
+    secondaryLabel="读中文文档"
+  >
+    <div class="architecture-orb architecture-mini-map reveal" aria-label="WorkRecorder 本机系统边界图">
+      <span>材料如何被分开</span>
+      <div class="mini-store-row">
+        <em>完整截图：本机锁住</em>
+        <em>识别文字：可搜索</em>
+        <em>打开原图：需确认</em>
+        <em>Agent 回答：留账单</em>
+      </div>
+      <p>WorkRecorder 不把完整材料直接塞给 Agent。它先分出可搜索文本，再把原图、视频和原始网页留在确认门后。</p>
+    </div>
+  </PageHero>
+
+  <section class="section" id="pipeline">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">六步流转</p>
+        <h2>保存下来的材料不会直接变成 Agent 可见内容。</h2>
+        <p>WorkRecorder 会先把完整截图、原始网页和可读文本分开，再决定什么能直接用于查找、什么需要点开记录、什么必须确认。</p>
+      </div>
+      <ArchitectureFlowDemo />
+      <TimelineRail items={architectureStages} label="WorkRecorder architecture stages" />
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="shell two-column-cards">
+      <article class="glass-card reveal">
+        <span class="card-label">不同 App 怎么补材料</span>
+        <h2>同一条截图，可以由多个来源一起补齐。</h2>
+        <p>系统先保存截图和窗口事实；浏览器示例可以补标题、去敏 URL 和网页正文。PDF、聊天或业务系统后续可以接入自己的安全文本；没有增强也不会丢截图。</p>
+      </article>
+      <article class="glass-card reveal">
+        <span class="card-label">Agent 为什么只看到一部分</span>
+        <h2>先让 Agent 找到记录，再按需展开。</h2>
+        <p>查找时只用备注、识别文字、标题和时间；选中某条记录后才给更多正文。完整截图、原始视频和原始网页材料默认不进入 Agent 检索。</p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

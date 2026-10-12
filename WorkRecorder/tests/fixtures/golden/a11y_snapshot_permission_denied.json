@@ -1,0 +1,31 @@
+{
+  "permission_state": "denied",
+  "app_name": "Google Chrome",
+  "process_id": 123,
+  "window_id": "win_test",
+  "selection": {
+    "x": 120,
+    "y": 140,
+    "width": 520,
+    "height": 280,
+    "coordinate_space": "macos_global"
+  },
+  "root_nodes": [],
+  "text_blocks": [],
+  "full_text": "",
+  "coverage": {
+    "selection": {
+      "x": 120,
+      "y": 140,
+      "width": 520,
+      "height": 280,
+      "coordinate_space": "macos_global"
+    },
+    "permission_state": "denied",
+    "node_count": 0,
+    "text_block_count": 0,
+    "covered_area_ratio": 0.0,
+    "confidence": 0.0,
+    "error_message": "macOS Accessibility permission is not granted"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "WorkRecorder Web Provider",
+  "version": "0.1.0",
+  "description": "Registers a command-driven Web evidence provider with the local WorkRecorder daemon.",
+  "permissions": ["activeTab", "scripting", "storage", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["dist/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Connect WorkRecorder Web Provider"
+  }
+}

@@ -1,0 +1,23 @@
+---
+import type { TimelineStep } from "../data/site";
+
+type Props = {
+  items: TimelineStep[];
+  label?: string;
+};
+
+const { items, label = "timeline" } = Astro.props;
+---
+
+<div class="timeline-rail reveal" aria-label={label}>
+  {items.map((item) => (
+    <article class:list={["timeline-node", `tone-${item.tone}`]}>
+      <span>{item.label}</span>
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.body}</p>
+        <em>{item.meta}</em>
+      </div>
+    </article>
+  ))}
+</div>

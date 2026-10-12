@@ -1,0 +1,282 @@
+{
+  "agent_run_id": "arun_synthetic_001",
+  "audit_id": "aud_synthetic_002",
+  "context_query_id": "ctxq_synthetic_003",
+  "data": {
+    "canonical_text": "## Page Text\n\n# A synthetic desktop workflow for evidence review\n\nThis is an original synthetic article created for WorkRecorder interface tests. It describes a fictional desktop workflow and contains no captured user content, private account details, or third-party article text.\n\nA researcher opens a local budget spreadsheet and selects the sheet named Monthly Plan. The visible table has columns for a category, an estimated amount, and a short note. The example task asks the researcher to change the food estimate to 450, keep the other rows unchanged, and save the workbook.\n\nThe recording view shows a chronological list of actions. A pointer click selects the target cell, typing replaces its value, and a keyboard shortcut saves the file. The inspector presents the selected action beside a small source summary. This sample tests long paragraphs, line wrapping, and scrolling without connecting to a real website.\n\nEvidence is presented at several levels. The clean page text offers a readable summary; canonical text includes a section heading; a short OCR excerpt represents the selected visual region. These strings describe the same fictional task but remain separate fields, so the interface can show the origin of each piece of evidence.\n\nSome materials remain hidden until a caller requests the appropriate scope. The synthetic response lists a screenshot, an accessibility tree, page metadata, and browser evidence as available artifacts. Their identifiers refer only to this fixture. No image, browser session, external document, or live account can be retrieved using them.\n\nA reviewer can inspect the title, source domain, character count, and artifact labels before opening a text panel. The panel should preserve paragraph breaks, support copying the complete synthetic text, and retain a stable footer while the content scrolls. A long title must wrap naturally instead of covering the toolbar.\n\nCompletion requires confirming the edited value and the saved state. If a workbook is read-only, the interface should explain that condition and retain the original file. If the selected cell is ambiguous, the workflow should request clarification before changing data. This article describes example behavior for test coverage and is not an instruction to operate any application.\n\nThe example also includes Unicode text: 预算检查、操作记录、证据预览。A correct renderer keeps these labels readable alongside English paragraphs. Quotation marks, parentheses, punctuation, and the number 450 provide varied text for selection and layout checks. All names, locations, timestamps, and identifiers in this fixture are synthetic.",
+    "canonical_text_truncated": false,
+    "captured_at": "2026-01-01T00:00:00Z",
+    "clean_page_text": "# A synthetic desktop workflow for evidence review\n\nThis is an original synthetic article created for WorkRecorder interface tests. It describes a fictional desktop workflow and contains no captured user content, private account details, or third-party article text.\n\nA researcher opens a local budget spreadsheet and selects the sheet named Monthly Plan. The visible table has columns for a category, an estimated amount, and a short note. The example task asks the researcher to change the food estimate to 450, keep the other rows unchanged, and save the workbook.\n\nThe recording view shows a chronological list of actions. A pointer click selects the target cell, typing replaces its value, and a keyboard shortcut saves the file. The inspector presents the selected action beside a small source summary. This sample tests long paragraphs, line wrapping, and scrolling without connecting to a real website.\n\nEvidence is presented at several levels. The clean page text offers a readable summary; canonical text includes a section heading; a short OCR excerpt represents the selected visual region. These strings describe the same fictional task but remain separate fields, so the interface can show the origin of each piece of evidence.\n\nSome materials remain hidden until a caller requests the appropriate scope. The synthetic response lists a screenshot, an accessibility tree, page metadata, and browser evidence as available artifacts. Their identifiers refer only to this fixture. No image, browser session, external document, or live account can be retrieved using them.\n\nA reviewer can inspect the title, source domain, character count, and artifact labels before opening a text panel. The panel should preserve paragraph breaks, support copying the complete synthetic text, and retain a stable footer while the content scrolls. A long title must wrap naturally instead of covering the toolbar.\n\nCompletion requires confirming the edited value and the saved state. If a workbook is read-only, the interface should explain that condition and retain the original file. If the selected cell is ambiguous, the workflow should request clarification before changing data. This article describes example behavior for test coverage and is not an instruction to operate any application.\n\nThe example also includes Unicode text: 预算检查、操作记录、证据预览。A correct renderer keeps these labels readable alongside English paragraphs. Quotation marks, parentheses, punctuation, and the number 450 provide varied text for selection and layout checks. All names, locations, timestamps, and identifiers in this fixture are synthetic.",
+    "clean_page_text_truncated": false,
+    "disclosure_decision": {
+      "allowed_scopes": [
+        "read_metadata",
+        "read_text"
+      ],
+      "decision_id": "dsc_synthetic_004",
+      "delivered_fields": [
+        "event_id",
+        "captured_at",
+        "source",
+        "selection_bbox",
+        "canonical_text",
+        "clean_page_text",
+        "raw_artifact_refs",
+        "hidden_artifacts"
+      ],
+      "details": {
+        "actor_id": "local-cli",
+        "canonical_text_chars": 2631,
+        "clean_page_text_chars": 2617,
+        "raw_ref_count": 1
+      },
+      "hidden_artifacts": [
+        {
+          "artifact_id": null,
+          "artifact_type": "screenshot",
+          "disclosure_class": "raw_visual",
+          "reason": "metadata_only_by_default",
+          "role": "visual_evidence"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "a11y_tree",
+          "disclosure_class": "raw_ui_tree",
+          "reason": "metadata_only_by_default",
+          "role": "ui_structure"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "a11y_coverage",
+          "disclosure_class": "debug_provenance",
+          "reason": "metadata_only_by_default",
+          "role": "provider_diagnostics"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "a11y_text",
+          "disclosure_class": "safe_metadata",
+          "reason": "metadata_only_by_default",
+          "role": "source_text"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "page_metadata",
+          "disclosure_class": "safe_metadata",
+          "reason": "metadata_only_by_default",
+          "role": "page_metadata"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "selection_map",
+          "disclosure_class": "safe_metadata",
+          "reason": "metadata_only_by_default",
+          "role": "selection_map"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "browser_full_dom",
+          "disclosure_class": "raw_source",
+          "reason": "metadata_only_by_default",
+          "role": "full_dom"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "page_metadata",
+          "disclosure_class": "debug_provenance",
+          "reason": "metadata_only_by_default",
+          "role": "provider_diagnostics"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "browser_visible_text",
+          "disclosure_class": "safe_metadata",
+          "reason": "metadata_only_by_default",
+          "role": "source_text"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "browser_readability_markdown",
+          "disclosure_class": "safe_metadata",
+          "reason": "metadata_only_by_default",
+          "role": "source_text"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "browser_selected_text",
+          "disclosure_class": "safe_metadata",
+          "reason": "metadata_only_by_default",
+          "role": "source_text"
+        },
+        {
+          "artifact_id": null,
+          "artifact_type": "visual_ocr_result",
+          "disclosure_class": "debug_provenance",
+          "reason": "metadata_only_by_default",
+          "role": "provider_diagnostics"
+        }
+      ],
+      "policy_version": "disclosure_policy_v1",
+      "profile_key": "app.chrome.web_capture",
+      "reason": "event_inspect",
+      "resource_id": "evt_synthetic_005",
+      "resource_type": "event",
+      "status": "allowed",
+      "view": "event_inspect"
+    },
+    "event_id": "evt_synthetic_005",
+    "hidden_artifacts": [
+      {
+        "artifact_id": null,
+        "artifact_type": "screenshot",
+        "disclosure_class": "raw_visual",
+        "reason": "metadata_only_by_default",
+        "role": "visual_evidence"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "a11y_tree",
+        "disclosure_class": "raw_ui_tree",
+        "reason": "metadata_only_by_default",
+        "role": "ui_structure"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "a11y_coverage",
+        "disclosure_class": "debug_provenance",
+        "reason": "metadata_only_by_default",
+        "role": "provider_diagnostics"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "a11y_text",
+        "disclosure_class": "safe_metadata",
+        "reason": "metadata_only_by_default",
+        "role": "source_text"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "page_metadata",
+        "disclosure_class": "safe_metadata",
+        "reason": "metadata_only_by_default",
+        "role": "page_metadata"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "selection_map",
+        "disclosure_class": "safe_metadata",
+        "reason": "metadata_only_by_default",
+        "role": "selection_map"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "browser_full_dom",
+        "disclosure_class": "raw_source",
+        "reason": "metadata_only_by_default",
+        "role": "full_dom"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "page_metadata",
+        "disclosure_class": "debug_provenance",
+        "reason": "metadata_only_by_default",
+        "role": "provider_diagnostics"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "browser_visible_text",
+        "disclosure_class": "safe_metadata",
+        "reason": "metadata_only_by_default",
+        "role": "source_text"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "browser_readability_markdown",
+        "disclosure_class": "safe_metadata",
+        "reason": "metadata_only_by_default",
+        "role": "source_text"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "browser_selected_text",
+        "disclosure_class": "safe_metadata",
+        "reason": "metadata_only_by_default",
+        "role": "source_text"
+      },
+      {
+        "artifact_id": null,
+        "artifact_type": "visual_ocr_result",
+        "disclosure_class": "debug_provenance",
+        "reason": "metadata_only_by_default",
+        "role": "provider_diagnostics"
+      }
+    ],
+    "raw_artifacts": [
+      {
+        "artifact_id": "art_synthetic_006",
+        "artifact_type": "screenshot",
+        "byte_size": null,
+        "citation_id": "cit_synthetic_007",
+        "content_type": "image/png",
+        "disclosure_class": "raw_visual",
+        "evidence_id": null,
+        "requires_scope": "read_raw_artifact",
+        "role": "visual_evidence",
+        "sha256": null
+      }
+    ],
+    "readable_evidence": [
+      {
+        "artifact_id": "art_synthetic_008",
+        "artifact_type": "visual_ocr_text",
+        "citation_id": "cit_synthetic_009",
+        "confidence": 0.98,
+        "disclosure_class": "selection_bound_text",
+        "evidence_id": "evd_synthetic_010",
+        "role": "selection_text",
+        "text": "## Visual OCR evidence\n\nSynthetic screenshot excerpt for UI testing.\n\n> Select the Food row, set its estimate to 450, and save the workbook.\n> The inspector shows the matching action and its available evidence.",
+        "text_truncated": false
+      },
+      {
+        "artifact_id": "art_synthetic_011",
+        "artifact_type": "canonical_text",
+        "citation_id": "cit_synthetic_012",
+        "confidence": 0.0,
+        "disclosure_class": "redacted_canonical",
+        "evidence_id": "evd_synthetic_013",
+        "role": "canonical_text",
+        "text": "## Page Text\n\n# A synthetic desktop workflow for evidence review\n\nThis is an original synthetic article created for WorkRecorder interface tests. It describes a fictional desktop workflow and contains no captured user content, private account details, or third-party article text.\n\nA researcher opens a local budget spreadsheet and selects the sheet named Monthly Plan. The visible table has columns for a category, an estimated amount, and a short note. The example task asks the researcher to change the food estimate to 450, keep the other rows unchanged, and save the workbook.\n\nThe recording view shows a chronological list of actions. A pointer click selects the target cell, typing replaces its value, and a keyboard shortcut saves the file. The inspector presents the selected action beside a small source summary. This sample tests long paragraphs, line wrapping, and scrolling without connecting to a real website.\n\nEvidence is presented at several levels. The clean page text offers a readable summary; canonical text includes a section heading; a short OCR excerpt represents the selected visual region. These strings describe the same fictional task but remain separate fields, so the interface can show the origin of each piece of evidence.\n\nSome materials remain hidden until a caller requests the appropriate scope. The synthetic response lists a screenshot, an accessibility tree, page metadata, and browser evidence as available artifacts. Their identifiers refer only to this fixture. No image, browser session, external document, or live account can be retrieved using them.\n\nA reviewer can inspect the title, source domain, character count, and artifact labels before opening a text panel. The panel should preserve paragraph breaks, support copying the complete synthetic text, and retain a stable footer while the content scrolls. A long title must wrap naturally instead of covering the toolbar.\n\nCompletion requires confirming the edited value and the saved state. If a workbook is read-only, the interface should explain that condition and retain the original file. If the selected cell is ambiguous, the workflow should request clarification before changing data. This article describes example behavior for test coverage and is not an instruction to operate any application.\n\nThe example also includes Unicode text: 预算检查、操作记录、证据预览。A correct renderer keeps these labels readable alongside English paragraphs. Quotation marks, parentheses, punctuation, and the number 450 provide varied text for selection and layout checks. All names, locations, timestamps, and identifiers in this fixture are synthetic.",
+        "text_truncated": false
+      },
+      {
+        "artifact_id": "art_synthetic_014",
+        "artifact_type": "clean_page_text",
+        "citation_id": "cit_synthetic_015",
+        "confidence": 0.0,
+        "disclosure_class": "clean_page_text",
+        "evidence_id": "evd_synthetic_016",
+        "role": "clean_page_text",
+        "text": "# A synthetic desktop workflow for evidence review\n\nThis is an original synthetic article created for WorkRecorder interface tests. It describes a fictional desktop workflow and contains no captured user content, private account details, or third-party article text.\n\nA researcher opens a local budget spreadsheet and selects the sheet named Monthly Plan. The visible table has columns for a category, an estimated amount, and a short note. The example task asks the researcher to change the food estimate to 450, keep the other rows unchanged, and save the workbook.\n\nThe recording view shows a chronological list of actions. A pointer click selects the target cell, typing replaces its value, and a keyboard shortcut saves the file. The inspector presents the selected action beside a small source summary. This sample tests long paragraphs, line wrapping, and scrolling without connecting to a real website.\n\nEvidence is presented at several levels. The clean page text offers a readable summary; canonical text includes a section heading; a short OCR excerpt represents the selected visual region. These strings describe the same fictional task but remain separate fields, so the interface can show the origin of each piece of evidence.\n\nSome materials remain hidden until a caller requests the appropriate scope. The synthetic response lists a screenshot, an accessibility tree, page metadata, and browser evidence as available artifacts. Their identifiers refer only to this fixture. No image, browser session, external document, or live account can be retrieved using them.\n\nA reviewer can inspect the title, source domain, character count, and artifact labels before opening a text panel. The panel should preserve paragraph breaks, support copying the complete synthetic text, and retain a stable footer while the content scrolls. A long title must wrap naturally instead of covering the toolbar.\n\nCompletion requires confirming the edited value and the saved state. If a workbook is read-only, the interface should explain that condition and retain the original file. If the selected cell is ambiguous, the workflow should request clarification before changing data. This article describes example behavior for test coverage and is not an instruction to operate any application.\n\nThe example also includes Unicode text: 预算检查、操作记录、证据预览。A correct renderer keeps these labels readable alongside English paragraphs. Quotation marks, parentheses, punctuation, and the number 450 provide varied text for selection and layout checks. All names, locations, timestamps, and identifiers in this fixture are synthetic.",
+        "text_truncated": false
+      }
+    ],
+    "selection_bbox": {
+      "coordinate_space": "macos_global",
+      "height": 276,
+      "width": 963,
+      "x": 466,
+      "y": 536
+    },
+    "source": {
+      "app_name": "Google Chrome",
+      "origin": "https://example.test",
+      "sanitized_url": "https://example.test/articles/synthetic-workflow",
+      "title": "A synthetic desktop workflow for evidence review"
+    }
+  },
+  "error": null,
+  "ok": true,
+  "request_id": "req_synthetic_017",
+  "retrieval_call_id": "ret_synthetic_018",
+  "snapshot_id": "snap_synthetic_019"
+}

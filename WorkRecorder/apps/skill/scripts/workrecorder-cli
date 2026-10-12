@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -n "${WORKRECORDER_CLI:-}" && -x "${WORKRECORDER_CLI}" ]]; then
+  exec "${WORKRECORDER_CLI}" "$@"
+fi
+
+if [[ -n "${WORKRECORDER_REPO:-}" && -x "${WORKRECORDER_REPO}/.venv/bin/workrecorder" ]]; then
+  exec "${WORKRECORDER_REPO}/.venv/bin/workrecorder" "$@"
+fi
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+candidate_roots=(
+  "${script_dir}/../../.."
+)
+
+for root in "${candidate_roots[@]}"; do
+  if [[ -x "${root}/.venv/bin/workrecorder" ]]; then
+    exec "${root}/.venv/bin/workrecorder" "$@"
+  fi
+done
+
+echo "WorkRecorder CLI not found. Set WORKRECORDER_CLI=/path/to/.venv/bin/workrecorder or WORKRECORDER_REPO=/path/to/WorkRecorder." >&2
+exit 127

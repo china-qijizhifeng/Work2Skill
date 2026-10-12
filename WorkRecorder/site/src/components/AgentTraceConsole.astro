@@ -1,0 +1,76 @@
+---
+---
+
+<div class="agent-trace-console reveal" data-agent-trace aria-label="Agent 读取 WorkRecorder 上下文的真实步骤">
+  <div class="trace-console-copy">
+    <span class="card-label">真实读取边界</span>
+    <h3>Agent 不直接翻你的完整材料，而是一步步请求本机记录。</h3>
+    <p>搜索只拿短卡；选中记录后再拿正文或截图引用。每一步都会留下可查清单。</p>
+  </div>
+
+  <div class="trace-console-window">
+    <div class="terminal-head">
+      <span></span><span></span><span></span>
+      <b>workrecorder-context skill</b>
+    </div>
+    <div class="trace-steps" role="tablist" aria-label="Agent 读取步骤">
+      <button class="active" type="button" data-trace-step="0">开始</button>
+      <button type="button" data-trace-step="1">找记录</button>
+      <button type="button" data-trace-step="2">打开记录</button>
+      <button type="button" data-trace-step="3">记录</button>
+    </div>
+    <div class="trace-output active" data-trace-panel="0">
+      <code>workrecorder agent begin --purpose customer_brief --question "整理 ACME 续约风险" --json</code>
+      <article>
+        <b>先开一条本机复盘线</b>
+        <p>后面的搜索、查看、引用和最终答案都会挂到同一个 agent_run_id。</p>
+      </article>
+      <pre aria-label="agent begin output">{`{
+  "agent_run_id": "run_acme_042",
+  "status": "active",
+  "question_hash": "sha256:8f4a..."
+}`}</pre>
+    </div>
+    <div class="trace-output" data-trace-panel="1">
+      <code>workrecorder events search "ACME 续约" --json</code>
+      <article>
+        <b>返回给 Agent</b>
+        <p>event_id、时间、App、标题、备注、截图识别文字、隐藏材料清单。</p>
+      </article>
+      <pre aria-label="events search output">{`{
+  "results": [{
+    "event_id": "evt_pricing",
+    "app": "Browser",
+    "title": "ACME 续约报价页",
+    "note": "预算偏差需要解释",
+    "hidden_artifacts": ["screenshot", "raw_page"]
+  }]
+}`}</pre>
+    </div>
+    <div class="trace-output" data-trace-panel="2">
+      <code>workrecorder events inspect evt_acme --view clean_page_text --purpose answer</code>
+      <article>
+        <b>按记录深入查看</b>
+        <p>清洗后的网页正文和截图引用；完整原图、原始网页和原始视频仍需要单独确认。</p>
+      </article>
+      <pre aria-label="events inspect output">{`{
+  "event_id": "evt_pricing",
+  "delivered_fields": ["clean_text", "screenshot_ref"],
+  "citation_ids": ["cit_budget_01"],
+  "raw_material_access": false
+}`}</pre>
+    </div>
+    <div class="trace-output" data-trace-panel="3">
+      <code>workrecorder usage record --bundle cb_acme --agent codex --purpose customer_brief --output-ref run_042 --used-citation cit_budget_01 --json</code>
+      <article>
+        <b>回答后留下使用记录</b>
+        <p>回答引用了哪些证据、用过哪个 bundle、归属哪次 Agent run，之后都能 replay。</p>
+      </article>
+      <pre aria-label="usage record output">{`{
+  "usage_event_id": "use_742",
+  "used_citations": ["cit_budget_01", "cit_chat_02"],
+  "replay_ready": true
+}`}</pre>
+    </div>
+  </div>
+</div>

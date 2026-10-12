@@ -1,0 +1,11 @@
+type: tool
+name: get_video_metadata
+description: Inspect video duration, dimensions, frame rate, codec, and size before sampling frames.
+input_schema:
+  type: object
+  properties:
+    file_path:
+      type: string
+      description: Relative path to a video in the scoped roots.
+  required: [file_path]
+  additionalProperties: false

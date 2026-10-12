@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="720" viewBox="0 0 1180 720" role="img" aria-labelledby="title desc">
+  <title id="title">ACME capture screenshot artifact</title>
+  <desc id="desc">A screenshot-style rendering of the ACME pricing fixture used by the Chrome E2E case.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0f172a" flood-opacity=".18"/>
+    </filter>
+    <style>
+      .ui{font:500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#334155}
+      .h{font:800 28px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#111827}
+      .p{font:500 18px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#334155}
+      .th{font:800 16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a}
+      .td{font:500 16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1f2937}
+      .note{font:700 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1d4ed8}
+      .muted{font:500 12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#64748b}
+    </style>
+  </defs>
+  <rect width="1180" height="720" fill="#e9eef7"/>
+  <g filter="url(#shadow)">
+    <rect x="90" y="70" width="1000" height="575" rx="18" fill="#ffffff"/>
+    <rect x="90" y="70" width="1000" height="54" rx="18" fill="#f8fafc"/>
+    <circle cx="124" cy="97" r="7" fill="#ef4444"/>
+    <circle cx="148" cy="97" r="7" fill="#f59e0b"/>
+    <circle cx="172" cy="97" r="7" fill="#22c55e"/>
+    <rect x="220" y="84" width="650" height="28" rx="14" fill="#eef2ff"/>
+    <text x="238" y="103" class="ui">http://127.0.0.1:8877/acme_pricing.html</text>
+    <rect x="116" y="124" width="948" height="495" fill="#f6f7f9"/>
+    <rect x="190" y="178" width="760" height="360" fill="#ffffff" stroke="#ccd3dd"/>
+    <text x="222" y="235" class="h">ACME Pricing Dashboard</text>
+    <text x="222" y="278" class="p">Budget variance +18%</text>
+    <text x="222" y="314" class="p" fill="#b91c1c">API token: [redacted by daemon]</text>
+    <text x="222" y="350" class="p" fill="#b91c1c">Authorization: Bearer [redacted by daemon]</text>
+    <line x1="222" y1="392" x2="918" y2="392" stroke="#e1e5ea"/>
+    <text x="238" y="424" class="th">Account</text>
+    <text x="470" y="424" class="th">Status</text>
+    <text x="720" y="424" class="th">Risk</text>
+    <line x1="222" y1="448" x2="918" y2="448" stroke="#e1e5ea"/>
+    <text x="238" y="486" class="td">ACME</text>
+    <text x="470" y="486" class="td">Procurement delayed</text>
+    <text x="720" y="486" class="td">Renewal risk medium</text>
+    <line x1="222" y1="510" x2="918" y2="510" stroke="#e1e5ea"/>
+  </g>
+  <rect x="210" y="382" width="735" height="142" rx="10" fill="none" stroke="#2563eb" stroke-width="4"/>
+  <rect x="222" y="530" width="315" height="42" rx="21" fill="#dbeafe" stroke="#93c5fd"/>
+  <text x="240" y="556" class="note">用户框选区域：报价表 / selection bbox</text>
+  <text x="92" y="676" class="muted">文档截图说明：该图按 tests/fixtures/e2e/acme_pricing.html 的真实 E2E fixture 渲染，用来展示截图 artifact 的视觉内容；实际测试会在 hidden Chrome 中加载同一页面并保存 screenshot artifact。</text>
+</svg>

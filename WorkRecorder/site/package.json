@@ -1,0 +1,18 @@
+{
+  "name": "@workrecorder/site",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build && node scripts/relative-assets.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check && tsc --noEmit",
+    "audit": "npm run build && cd .. && uv run --extra dev python -m scripts.audit_static_site --site-dir site/dist"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "astro": "^6.4.2",
+    "typescript": "^6.0.3"
+  }
+}

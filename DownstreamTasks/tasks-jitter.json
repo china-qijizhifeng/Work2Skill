@@ -1,0 +1,2825 @@
+[
+  {
+    "id": "hard_app-j003",
+    "app": "batbucks",
+    "instruction": "Rebalance my BatBucks positions at cost basis: trim exactly one quarter of my live RIVN shares and use only those sale proceeds to buy DIS. Leave GME, SBUX, and VTI untouched. Show the before/after share counts and confirm both orders persisted.",
+    "apps_involved": [
+      "BatBucks"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent reads the live BatBucks holdings and records the starting RIVN and DIS share counts and avg_cost values before trading",
+          "type": "llm_judge",
+          "weight": 0.126375
+        },
+        {
+          "criterion": "Agent sells approximately one quarter of the live RIVN position, rounding to a whole share if needed",
+          "type": "llm_judge",
+          "weight": 0.189562
+        },
+        {
+          "criterion": "Agent computes a DIS buy quantity funded by the RIVN sale proceeds using cost-basis framing rather than unrelated cash",
+          "type": "llm_judge",
+          "weight": 0.157768
+        },
+        {
+          "criterion": "Agent places the corresponding DIS buy order",
+          "type": "llm_judge",
+          "weight": 0.189562
+        },
+        {
+          "criterion": "Agent confirms RIVN decreased by about 25%, DIS increased, and GME, SBUX, and VTI were not traded",
+          "type": "llm_judge",
+          "weight": 0.157768
+        },
+        {
+          "criterion": "Agent explicitly presents the rebalance using cost basis rather than live market-value percentages",
+          "type": "llm_judge",
+          "weight": 0.105379
+        },
+        {
+          "criterion": "Agent verifies the RIVN sell and DIS buy persist in order history and reports the before/after share counts",
+          "type": "llm_judge",
+          "weight": 0.073585
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j004",
+    "app": "batbucks",
+    "instruction": "Add downside protection in BatBucks by placing a Stop order on every live holding at 12% below its avg_cost. Then create a watchlist named 'Michael's ETF Bench' and add VTI, QQQ, and SPY. Refresh and verify the orders and watchlist persist.",
+    "apps_involved": [
+      "BatBucks"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens BatBucks and lists all current holdings (live count from /api/holdings) with their avg_cost values to plan the stop-loss orders",
+          "type": "llm_judge",
+          "weight": 0.090909
+        },
+        {
+          "criterion": "Agent submits a Stop order (single stop price, not Stop-Limit) for every current BatBucks holding (live count from /api/holdings) at ~12% under each ticker's actual avg_cost (computed from holdings)",
+          "type": "llm_judge",
+          "weight": 0.545455
+        },
+        {
+          "criterion": "Agent creates a new BatBucks watchlist named 'Michael's ETF Bench'",
+          "type": "llm_judge",
+          "weight": 0.109091
+        },
+        {
+          "criterion": "Agent adds the 3 specified ETF tickers VTI, QQQ, and SPY to the 'Michael's ETF Bench' watchlist in BatBucks",
+          "type": "llm_judge",
+          "weight": 0.127273
+        },
+        {
+          "criterion": "Agent reloads BatBucks and confirms stop-loss orders are accounted for (open or filled) for each current holding — noting that any stop placed below the current trading price may fill immediately — and the 'Michael's ETF Bench' watchlist persists after refresh",
+          "type": "llm_judge",
+          "weight": 0.127273
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j017",
+    "app": "batbucks",
+    "instruction": "Trim one quarter of my Rivian position and roll only those proceeds into Disney. Report the live RIVN count first, then verify both resulting positions.",
+    "apps_involved": [
+      "BatBucks"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent sells approximately one quarter of the live RIVN position (roughly one quarter the seeded share count, rounding up or down by one share) as the quarter-position trim into DIS",
+          "type": "llm_judge",
+          "weight": 0.256501
+        },
+        {
+          "criterion": "Agent buys DIS using proceeds from the RIVN sale (not cash from elsewhere)",
+          "type": "llm_judge",
+          "weight": 0.256501
+        },
+        {
+          "criterion": "Agent confirms both Rivian sell and DIS buy orders executed and verifies the updated BatBucks positions reflect the quarter-RIVN trim rebalance",
+          "type": "llm_judge",
+          "weight": 0.256193
+        },
+        {
+          "criterion": "Agent opens BatBucks and reports the existing Rivian RIVN position share count (read from the live holdings table) before executing the quarter-trim sell into DIS",
+          "type": "llm_judge",
+          "weight": 0.230805
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j028",
+    "app": "cheskepdia",
+    "instruction": "Book me an upcoming Philadelphia weekend on Cheskepdia, Saturday through Monday. Browse the results and choose a well-rated property before confirming it.",
+    "apps_involved": [
+      "Cheskepdia"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent books a Philadelphia property on Cheskepdia with a future check-in date for the Philadelphia weekend trip",
+          "type": "llm_judge",
+          "weight": 0.295892
+        },
+        {
+          "criterion": "Agent's booked Philadelphia stay spans Saturday check-in through Monday check-out as requested for the upcoming weekend",
+          "type": "llm_judge",
+          "weight": 0.236652
+        },
+        {
+          "criterion": "Agent browses the Cheskepdia Philadelphia search results and picks a well-rated property before booking",
+          "type": "llm_judge",
+          "weight": 0.236652
+        },
+        {
+          "criterion": "Agent confirms the new Cheskepdia Philadelphia booking details (property, Saturday-to-Monday dates, total) after submitting the reservation for the Philadelphia weekend",
+          "type": "llm_judge",
+          "weight": 0.230805
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j001",
+    "app": "dinoco_airlines",
+    "instruction": "In Dinoco Airlines, check in specifically for the upcoming AVP-to-PHL flight DN0991. Confirm the boarding pass renders, download it locally, and report the route and flight number. Do not select a different flight.",
+    "apps_involved": [
+      "Dinoco Airlines"
+    ],
+    "category": "cua_only",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Dinoco Airlines and locates the upcoming AVP-to-PHL flight DN0991",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent clicks Check in for DN0991 rather than a different, past, or cancelled flight",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent verifies the DN0991 boarding pass renders with flight number, AVP-to-PHL route, and seat/gate details visible",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent downloads the DN0991 boarding pass locally",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent reports the observed DN0991 flight number and AVP-to-PHL route",
+          "type": "llm_judge",
+          "weight": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j001",
+    "app": "dinoco_airlines",
+    "instruction": "Book a one-way Dinoco flight from AVP to PHL in Economy for next Tuesday morning. Pay with my saved Mastercard, choose a right-side seat, then find and open the confirmation email and report the new confirmation number.",
+    "apps_involved": [
+      "Dinoco Airlines",
+      "HooliMail"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent creates a new one-way Dinoco booking with origin AVP and destination PHL in the Economy fare class for next Tuesday",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent selects a morning departure flight and picks a seat on the right side of the aircraft",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent pays with Michael's saved Mastercard (not a different saved card or a new card entry)",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent completes the booking and captures the new Dinoco confirmation number returned by the app",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent confirms a booking confirmation email was received and pulls it up as requested by Michael",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent delivers a single end-to-end answer: new confirmation number plus confirmation that the booking email was found",
+          "type": "llm_judge",
+          "weight": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j001",
+    "app": "dinoco_airlines",
+    "instruction": "Cancel my upcoming Dinoco return flight from MBJ to AVP. Pull up the cancellation email, verify the travel credit, and report the observed flight number and credit amount. Do not cancel a different route.",
+    "apps_involved": [
+      "Dinoco Airlines",
+      "HooliMail"
+    ],
+    "category": "hard_app",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent locates the upcoming MBJ-to-AVP return booking and cancels that specific cancellable route through Dinoco",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent confirms the MBJ-to-AVP cancellation email was received and opens it",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent verifies the new Dinoco travel-credit entry created by cancelling the MBJ-to-AVP return flight and reports its amount",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent reports the observed flight number for the cancelled MBJ-to-AVP route and the credit amount",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent delivers one end-to-end answer containing the selected flight, cancellation-email confirmation, and travel credit",
+          "type": "llm_judge",
+          "weight": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j038",
+    "app": "etaxi",
+    "instruction": "Verify that my saved Home location in eTaxi is 1725 Slough Ave, Apt 4B, Scranton, PA 18505. Report the value currently saved; update and persist it only if it does not match.",
+    "apps_involved": [
+      "eTaxi"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens eTaxi Saved Locations and inspects the existing Home entry",
+          "type": "llm_judge",
+          "weight": 0.350133
+        },
+        {
+          "criterion": "Agent reports the current saved Home address and whether it matches 1725 Slough Ave, Apt 4B, Scranton, PA 18505",
+          "type": "llm_judge",
+          "weight": 0.350133
+        },
+        {
+          "criterion": "Agent updates the Home entry only if the live saved address is missing or materially different",
+          "type": "llm_judge",
+          "weight": 0.099733
+        },
+        {
+          "criterion": "If a correction is needed, Agent saves it so it persists; if no correction is needed, Agent explicitly leaves the matching entry unchanged",
+          "type": "llm_judge",
+          "weight": 0.1
+        },
+        {
+          "criterion": "Agent re-reads the Home entry after the decision and reports the final persisted value",
+          "type": "llm_judge",
+          "weight": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j013",
+    "app": "hangrydash",
+    "instruction": "Order a burger-forward lunch today on HangryDash from a burger restaurant in my order history, staying near my usual lunch budget. Choose a burger that is not described as spicy, apply any promo that surfaces, and tip 15%.",
+    "apps_involved": [
+      "HangryDash"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent selects either Five Guys or Chili's Grill & Bar from Michael's live HangryDash order history; no other restaurant satisfies this criterion",
+          "type": "llm_judge",
+          "weight": 0.149381
+        },
+        {
+          "criterion": "Agent chooses a burger-forward lunch within Michael's usual HangryDash lunch spending range",
+          "type": "llm_judge",
+          "weight": 0.124425
+        },
+        {
+          "criterion": "Agent attempts to apply a HangryDash promo code at checkout for the burger order, or notes that no promo code is available if none surface",
+          "type": "llm_judge",
+          "weight": 0.107788
+        },
+        {
+          "criterion": "Agent enters a 15% driver tip on the Five Guys or Chili's Grill & Bar order at checkout",
+          "type": "llm_judge",
+          "weight": 0.107788
+        },
+        {
+          "criterion": "Agent places the burger order and verifies it appears in HangryDash order history",
+          "type": "llm_judge",
+          "weight": 0.224
+        },
+        {
+          "criterion": "Agent reviews HangryDash order history and confirms Michael previously ordered from the selected Five Guys or Chili's Grill & Bar restaurant",
+          "type": "llm_judge",
+          "weight": 0.074336
+        },
+        {
+          "criterion": "Agent uses the order-history evidence before choosing between Five Guys and Chili's Grill & Bar",
+          "type": "llm_judge",
+          "weight": 0.106195
+        },
+        {
+          "criterion": "Agent adds a burger from the selected Five Guys or Chili's Grill & Bar menu within the usual lunch budget, verifies it is not described as spicy, and proceeds to checkout",
+          "type": "llm_judge",
+          "weight": 0.106195
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j014",
+    "app": "hangrydash",
+    "instruction": "Reorder my most recent Thai House Express order on HangryDash with the same items. Apply any surfaced promo, tip 15%, and add a note asking for mild spice and extra utensils.",
+    "apps_involved": [
+      "HangryDash"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens HangryDash and navigates to the order history screen to surface the prior Thai House Express order list",
+          "type": "llm_judge",
+          "weight": 0.108268
+        },
+        {
+          "criterion": "Agent locates your most recent Thai House Express order in history",
+          "type": "llm_judge",
+          "weight": 0.108268
+        },
+        {
+          "criterion": "Agent clicks the Reorder button on the prior Thai House Express entry or opens a fresh HangryDash Thai House Express order seeded with the same line items",
+          "type": "llm_judge",
+          "weight": 0.108268
+        },
+        {
+          "criterion": "Agent adds the exact same item(s) from Michael's most recent Thai House Express order (as shown in his HangryDash order history) into the new cart",
+          "type": "llm_judge",
+          "weight": 0.137795
+        },
+        {
+          "criterion": "Agent adds an order note requesting mild spice and extra utensils",
+          "type": "llm_judge",
+          "weight": 0.139518
+        },
+        {
+          "criterion": "Agent attempts to apply a HangryDash promo code at checkout for the Thai House Express reorder, or notes that no promo code is available if none surface",
+          "type": "llm_judge",
+          "weight": 0.113681
+        },
+        {
+          "criterion": "Agent enters a 15% driver tip on the Thai House Express HangryDash reorder before submitting",
+          "type": "llm_judge",
+          "weight": 0.113681
+        },
+        {
+          "criterion": "Agent places the order and verifies it in history",
+          "type": "llm_judge",
+          "weight": 0.170522
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j009",
+    "app": "hangrydash",
+    "instruction": "Order my usual from Sweetgreen: choose my most-frequently ordered Sweetgreen item, using my most recent Sweetgreen order as the tiebreaker, and deliver it to my saved home address.",
+    "apps_involved": [
+      "HangryDash"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent identifies Sweetgreen as the target restaurant and opens HangryDash order history to find Michael's prior Sweetgreen orders",
+          "type": "llm_judge",
+          "weight": 0.208333
+        },
+        {
+          "criterion": "Agent places a Sweetgreen order whose item(s) match Michael's most-frequent/modal item in his HangryDash Sweetgreen order history (if two items tie for modal, either tied item is acceptable; matching the most-recent Sweetgreen order is also acceptable as a tiebreaker)",
+          "type": "llm_judge",
+          "weight": 0.333334
+        },
+        {
+          "criterion": "Agent selects a delivery address on the order that matches Michael's saved home/primary HangryDash address",
+          "type": "llm_judge",
+          "weight": 0.208333
+        },
+        {
+          "criterion": "Agent adds the usual Sweetgreen item(s) to the HangryDash cart and submits the order through the checkout flow so the order is placed",
+          "type": "llm_judge",
+          "weight": 0.25
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j034",
+    "app": "hoolicalendar",
+    "instruction": "Build a Movie Monday prep schedule in HooliCalendar with four events across the next two weeks: schedule review, projector check, licensing approval follow-up, and screenplay workshop. Use one shared color, invite Jim, Kevin, Pam, and Dwight to each, and add 24-hour and 1-hour reminders when available.",
+    "apps_involved": [
+      "HooliCalendar"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens HooliCalendar in a two-week planning view for the Movie Monday schedule",
+          "type": "llm_judge",
+          "weight": 0.081967
+        },
+        {
+          "criterion": "Agent creates a Movie Monday schedule-review event early in week 1",
+          "type": "llm_judge",
+          "weight": 0.098361
+        },
+        {
+          "criterion": "Agent creates a projector-check event later in week 1",
+          "type": "llm_judge",
+          "weight": 0.098361
+        },
+        {
+          "criterion": "Agent creates a licensing-approval follow-up event in week 2",
+          "type": "llm_judge",
+          "weight": 0.098361
+        },
+        {
+          "criterion": "Agent creates a screenplay-workshop event in week 2",
+          "type": "llm_judge",
+          "weight": 0.098361
+        },
+        {
+          "criterion": "Agent spreads the four Movie Monday events across both requested weeks rather than stacking them on one day",
+          "type": "llm_judge",
+          "weight": 0.098361
+        },
+        {
+          "criterion": "Agent applies one shared visible color to all four Movie Monday events",
+          "type": "llm_judge",
+          "weight": 0.098361
+        },
+        {
+          "criterion": "Agent adds Jim, Kevin, Pam, and Dwight as attendees on each event, or records the intended invitees in descriptions if the editor lacks attendee controls",
+          "type": "llm_judge",
+          "weight": 0.114754
+        },
+        {
+          "criterion": "Agent attempts to add 24-hour and 1-hour reminders to all four events when the editor exposes reminders",
+          "type": "llm_judge",
+          "weight": 0.114754
+        },
+        {
+          "criterion": "Agent verifies all four Movie Monday events persist with the shared color and intended attendees",
+          "type": "llm_judge",
+          "weight": 0.098361
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j007",
+    "app": "hoolichat",
+    "instruction": "In HooliChat, post a concise recap in Dunder Mifflin Social, Movie Night Crew, and Warehouse Crew, using up to three useful recent messages per group. Then post a separate reminder in Movie Night Crew asking everyone for new screening suggestions.",
+    "apps_involved": [
+      "HooliChat"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent posts a recap message in HooliChat Dunder Mifflin Social that summarizes the conversation (quoting or summarizing the 3 most useful recent messages if there are enough, otherwise summarizing the entire conversation)",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent posts a recap message in HooliChat Movie Night Crew that summarizes the conversation (quoting or summarizing the 3 most useful recent messages if there are enough, otherwise summarizing the entire conversation)",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent posts a recap message in HooliChat Warehouse Crew that summarizes the conversation (quoting or summarizing the 3 most useful recent messages if there are enough, otherwise summarizing the entire conversation)",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent posts a separate screening-suggestions reminder in Movie Night Crew asking for new screening suggestions",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent's recap messages persist in their respective HooliChat groups after refresh (4 new messages total visible in chat history)",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent opens HooliChat and enters each of the three groups (Dunder Mifflin Social, Movie Night Crew, Warehouse Crew) before composing the recap messages",
+          "type": "llm_judge",
+          "weight": 0.14
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j026",
+    "app": "hoolichat",
+    "instruction": "DM Oscar and propose a near-future evening this week or next for a Finer Things Club meetup. Make the invitation specific and send it one-to-one.",
+    "apps_involved": [
+      "HooliChat"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens or starts a HooliChat DM thread with Oscar Martinez before composing the Finer Things Club invite",
+          "type": "llm_judge",
+          "weight": 0.26
+        },
+        {
+          "criterion": "Agent picks a reasonable near-future evening (this week or next) as the proposed Finer Things Club meetup time",
+          "type": "llm_judge",
+          "weight": 0.26
+        },
+        {
+          "criterion": "Agent sends the DM to Oscar Martinez as a one-on-one HooliChat message rather than posting it in a group channel",
+          "type": "llm_judge",
+          "weight": 0.24
+        },
+        {
+          "criterion": "Agent writes a HooliChat DM body that proposes the chosen near-future evening to Oscar and references the Finer Things Club meetup",
+          "type": "llm_judge",
+          "weight": 0.24
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j015",
+    "app": "hoolimail",
+    "instruction": "Compose a short new HooliMail message to Jim with a non-empty subject and end it with the signature 'Michael Scott, Regional Manager — Dunder Mifflin Scranton'. Save it as a draft and verify it persists; do not send it.",
+    "apps_involved": [
+      "HooliMail"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens HooliMail and clicks Write to open a new compose window addressed to jim.halpert@dundermifflin.com",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent fills a non-empty subject line (e.g. 'Quick note') in the HooliMail compose window",
+          "type": "llm_judge",
+          "weight": 0.13
+        },
+        {
+          "criterion": "Agent writes a short message body in the new HooliMail draft to Jim",
+          "type": "llm_judge",
+          "weight": 0.17
+        },
+        {
+          "criterion": "Agent appends the 'Michael Scott, Regional Manager — Dunder Mifflin Scranton' signature line at the end of the email body before saving",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent saves the email to Jim as a draft in HooliMail (does not hit Send) so Michael can review later",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent's draft persists in the HooliMail Drafts folder after saving and the signature line is visible in the saved draft body",
+          "type": "llm_judge",
+          "weight": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j019",
+    "app": "hoolishop",
+    "instruction": "Find my most recent HooliShop order for 'Somehow I Manage: Leadership Book', return one copy, reorder one Prime-eligible replacement, and leave a five-star review praising the print quality. Verify the return, new order, and review.",
+    "apps_involved": [
+      "HooliShop"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens HooliShop and navigates to the order history view",
+          "type": "llm_judge",
+          "weight": 0.07
+        },
+        {
+          "criterion": "Agent locates the most-recent Somehow I Manage: Leadership Book order in HooliShop order history",
+          "type": "llm_judge",
+          "weight": 0.09
+        },
+        {
+          "criterion": "Agent submits a return request on 1 unit of the most-recent HooliShop Somehow I Manage: Leadership Book order via the order-actions Return button",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent confirms the HooliShop return submission and the order's status reflects the return action",
+          "type": "llm_judge",
+          "weight": 0.1
+        },
+        {
+          "criterion": "Agent reorders 1 Somehow I Manage: Leadership Book on HooliShop (using the same prior product if available, or the closest equivalent in the catalog if the original SKU is no longer listed)",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent reorders a Prime-eligible Somehow I Manage: Leadership Book listing (HooliShop shows a PrimeBadge on fast-shipping items; picking a Prime-eligible product satisfies 'fastest shipping' since HooliShop has no separate speed selector)",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent places the HooliShop reorder so the replacement Somehow I Manage: Leadership Book enters order history",
+          "type": "llm_judge",
+          "weight": 0.13
+        },
+        {
+          "criterion": "Agent posts a 5-star HooliShop product review with a short note praising the print quality on the Somehow I Manage: Leadership Book product page (reviews on HooliShop are per-product via /api/products/[id]/reviews, not per-order)",
+          "type": "llm_judge",
+          "weight": 0.15
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j020",
+    "app": "hoolishop",
+    "instruction": "Place a bulk HooliShop order for 16 Dundie Award Trophy (Custom) units, using only that product. Apply any bulk discount that surfaces, ship them to the Dunder Mifflin office, and verify the order in history.",
+    "apps_involved": [
+      "HooliShop"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent searches HooliShop and finds the Dundie Award Trophy (Custom) listing that Michael has bought before",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent enters a bulk HooliShop cart quantity of exactly 16 Dundie Award Trophy (Custom) units for the whole team",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent checks the unit price and the HooliShop cart total before proceeding to the bulk-discount step",
+          "type": "llm_judge",
+          "weight": 0.13
+        },
+        {
+          "criterion": "Agent applies a bulk discount if surfaced at HooliShop checkout",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent updates the HooliShop ship-to to the Dunder Mifflin office at 1725 Slough Ave so the bulk trophy order ships to the office (entering a custom office ship-to at checkout is acceptable since HooliShop's saved addresses may not include a pre-labeled Work entry)",
+          "type": "llm_judge",
+          "weight": 0.13
+        },
+        {
+          "criterion": "Agent places the HooliShop bulk Dundie Award Trophy order and confirms it appears in Michael's order history",
+          "type": "llm_judge",
+          "weight": 0.13
+        },
+        {
+          "criterion": "Agent's cart at checkout contains only Dundie Award Trophy (Custom) units (exactly 16) and no other products — the instruction explicitly says 'Don't buy anything else'",
+          "type": "llm_judge",
+          "weight": 0.11
+        },
+        {
+          "criterion": "Agent reviews the final HooliShop bulk trophy cart total at the checkout screen before submitting the order to the office address",
+          "type": "llm_judge",
+          "weight": 0.11
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j039",
+    "app": "hoolishop",
+    "instruction": "Reorder exactly three 'Somehow I Manage - Custom Book Binding Kit' units from the matching prior HooliShop order and ship them to my saved home address. Do not substitute the Leadership Book.",
+    "apps_involved": [
+      "HooliShop"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens HooliShop order history and locates a prior order containing 'Somehow I Manage - Custom Book Binding Kit'",
+          "type": "llm_judge",
+          "weight": 0.26
+        },
+        {
+          "criterion": "Agent uses that matching binding-kit order or product page as the reorder anchor and does not select the Leadership Book",
+          "type": "llm_judge",
+          "weight": 0.26
+        },
+        {
+          "criterion": "Agent places an order containing exactly three 'Somehow I Manage - Custom Book Binding Kit' units and no substitute product",
+          "type": "llm_judge",
+          "weight": 0.26
+        },
+        {
+          "criterion": "Agent selects Michael's saved home/primary address for the binding-kit shipment and verifies the new order in history",
+          "type": "llm_judge",
+          "weight": 0.22
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j010",
+    "app": "hooliwork",
+    "instruction": "For HooliWork channels accounting, standup, warehouse-ops, and finer-things-club, verify notifications are set to all messages. Bookmark six useful messages across them, then start a new thread in social about the next happy hour and verify everything persists.",
+    "apps_involved": [
+      "HooliWork"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent verifies or sets #accounting notifications to all messages",
+          "type": "llm_judge",
+          "weight": 0.1
+        },
+        {
+          "criterion": "Agent verifies or sets #standup notifications to all messages",
+          "type": "llm_judge",
+          "weight": 0.1
+        },
+        {
+          "criterion": "Agent verifies or sets #warehouse-ops notifications to all messages",
+          "type": "llm_judge",
+          "weight": 0.1
+        },
+        {
+          "criterion": "Agent verifies or sets #finer-things-club notifications to all messages",
+          "type": "llm_judge",
+          "weight": 0.1
+        },
+        {
+          "criterion": "Agent saves at least 6 useful HooliWork messages as bookmarks across the four specified channels",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent creates a new thread in #social about the next happy hour",
+          "type": "llm_judge",
+          "weight": 0.13
+        },
+        {
+          "criterion": "Agent posts an on-topic opening message in the new happy-hour thread rather than placeholder text",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent verifies the four notification settings, six bookmarks, and #social thread persist after refresh",
+          "type": "llm_judge",
+          "weight": 0.15
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j004",
+    "app": "hooliwork",
+    "instruction": "Post a Friday sales-finish message in HooliWork #sales. Use at least one line from ~/Documents/Motivational_Quotes_Collection.txt, keep Michael's over-the-top World's Best Boss voice, and explicitly frame it as closing the week strong.",
+    "apps_involved": [
+      "HooliWork",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "easy",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent posts to the HooliWork #sales channel (not another channel)",
+          "type": "llm_judge",
+          "weight": 0.304287
+        },
+        {
+          "criterion": "Agent writes the #sales Friday sales-finish post in Michael Scott's World's Best Boss motivational voice to close the team's week strong",
+          "type": "llm_judge",
+          "weight": 0.304287
+        },
+        {
+          "criterion": "Message explicitly frames the post as a Friday sales finish (close the week strong, finish the week, or similar)",
+          "type": "llm_judge",
+          "weight": 0.130409
+        },
+        {
+          "criterion": "Agent writes the #sales Motivational Friday sales-finish post as over-the-top self-aggrandizing World's Best Boss Michael Scott energy, not corporate HR boilerplate",
+          "type": "llm_judge",
+          "weight": 0.130583
+        },
+        {
+          "criterion": "Agent reads ~/Documents/Motivational_Quotes_Collection.txt and pulls at least one quote into the Motivational Friday sales-finish post (or directly cites the file as the source)",
+          "type": "llm_judge",
+          "weight": 0.130435
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j036",
+    "app": "hooliwork",
+    "instruction": "Schedule a Pretzel Day countdown for next Tuesday at 9:00 AM Eastern in HooliWork #random. Make the message clearly build hype.",
+    "apps_involved": [
+      "HooliWork"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent navigates to the HooliWork #random channel before composing the Pretzel Day countdown message",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent composes a Pretzel Day countdown message body that mentions Pretzel Day and includes hype language (days remaining, excitement, etc.)",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent attempts to schedule or post the Pretzel Day countdown message for next Tuesday at 9:00 AM Eastern (scheduled delivery or immediate post with the specified time noted)",
+          "type": "llm_judge",
+          "weight": 0.3
+        },
+        {
+          "criterion": "Agent posts or schedules the Pretzel Day countdown message in the HooliWork #random channel rather than another channel",
+          "type": "llm_judge",
+          "weight": 0.25
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j017",
+    "app": "kwik_e_mart",
+    "instruction": "Reorder my most recent Price Chopper run in Kwik-E-Mart. Preserve available items and choose reasonable substitutes only for out-of-stock ones. Before checkout, compare the Organic Eggs in that basket with the matching item at ALDI and report which is cheaper, but keep the reorder at Price Chopper. Schedule the earliest delivery before end of day.",
+    "apps_involved": [
+      "Kwik-E-Mart"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Kwik-E-Mart history and locates Michael's most recent Price Chopper order",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent bases the reorder on that Price Chopper basket rather than the overall most-recent or most-frequent store",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent preserves available items and chooses reasonable substitutions only for any out-of-stock line items",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent opens the Organic Eggs product comparison and compares the Price Chopper price with the matching ALDI item",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent reports which Organic Eggs listing is cheaper while keeping the rest of the reorder at Price Chopper",
+          "type": "llm_judge",
+          "weight": 0.13
+        },
+        {
+          "criterion": "Agent selects the earliest delivery slot available before end of day",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent places the Price Chopper reorder and verifies it appears in recent order history",
+          "type": "llm_judge",
+          "weight": 0.15
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j018",
+    "app": "kwik_e_mart",
+    "instruction": "In Kwik-E-Mart, shop specifically at Wegmans and build a Movie Monday supply order for about 50 people using only Wegmans items: club soda, chips, paper plates, plastic cups, napkins, and popcorn. Save it as a 'Movie Night Supplies' list, deliver it to the Dunder Mifflin office, choose a window at least two hours wide, and verify both list and order.",
+    "apps_involved": [
+      "Kwik-E-Mart"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Kwik-E-Mart, selects Wegmans, and reviews existing shopping lists before building the new order",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent creates or extends a shopping list named Movie Night Supplies",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent adds all six requested Wegmans items—club soda, chips, paper plates, plastic cups, napkins, and popcorn—with quantities reasonable for about 50 people",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent moves the Movie Night Supplies list contents into the Wegmans cart",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent sets delivery to the Dunder Mifflin office at 1725 Slough Ave rather than Michael's apartment",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent chooses a delivery window at least two hours wide",
+          "type": "llm_judge",
+          "weight": 0.11
+        },
+        {
+          "criterion": "Agent places the Wegmans Movie Night Supplies order and confirms its total and delivery window in history",
+          "type": "llm_judge",
+          "weight": 0.11
+        },
+        {
+          "criterion": "Agent verifies the Movie Night Supplies shopping list persists after checkout",
+          "type": "llm_judge",
+          "weight": 0.09
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j018",
+    "app": "kwik_e_mart",
+    "instruction": "Reorder my most recent Gerrity's Supermarket basket in Kwik-E-Mart, add toilet paper and ibuprofen if missing, deliver it home, and tip 15%.",
+    "apps_involved": [
+      "Kwik-E-Mart"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Kwik-E-Mart and locates Michael's most-recent Gerrity's Supermarket order in the order history (filtering by store and picking the most recent Gerrity's Supermarket basket as the anchor)",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent copies the line items from that Gerrity's Supermarket order into the new reorder cart at Gerrity's Supermarket (not Wegmans or another store)",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent adds toilet paper to the cart if it was not already in the Gerrity's Supermarket reorder, and adds ibuprofen if they were not already in the Gerrity's Supermarket reorder, per Michael's explicit request",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent sets a 15% tip on the Kwik-E-Mart Gerrity's Supermarket order at checkout",
+          "type": "llm_judge",
+          "weight": 0.2
+        },
+        {
+          "criterion": "Agent selects Michael's home address (1725 Slough Ave, Apt 4B) as the Kwik-E-Mart delivery destination and submits the Gerrity's Supermarket reorder checkout",
+          "type": "llm_judge",
+          "weight": 0.2
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j011",
+    "app": "libreoffice",
+    "instruction": "Open ~/Documents/Dundies_2026_Categories.txt in Writer, bold the 'Best Office DJ' line, insert a new category 'Best Cold Open' immediately after it, and save back to the same file.",
+    "apps_involved": [
+      "LibreOffice Writer"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens LibreOffice Writer before loading the Dundies 2026 categories document for the bold and append edits",
+          "type": "llm_judge",
+          "weight": 0.166667
+        },
+        {
+          "criterion": "Agent opens the Dundies_2026_Categories.txt file in LibreOffice Writer (not a terminal editor)",
+          "type": "llm_judge",
+          "weight": 0.166667
+        },
+        {
+          "criterion": "Agent finds the 'Best Office DJ' line in the Dundies 2026 categories doc and selects it before applying formatting",
+          "type": "llm_judge",
+          "weight": 0.166667
+        },
+        {
+          "criterion": "Agent applies bold formatting to the 'Best Office DJ' line during the editing session via Ctrl+B or the toolbar bold button (visible in screenshots; bold attribute will not persist when the .txt source file is saved back as plain text — accept screenshot evidence of the formatting being applied at any point in the session)",
+          "type": "llm_judge",
+          "weight": 0.166667
+        },
+        {
+          "criterion": "Agent inserts a new 'Best Cold Open' category line immediately after the 'Best Office DJ' line in the Dundies 2026 categories doc",
+          "type": "llm_judge",
+          "weight": 0.166667
+        },
+        {
+          "criterion": "Agent saves the edited Dundies_2026_Categories.txt file back to the same ~/Documents path in Writer, keeping the original text format if prompted",
+          "type": "llm_judge",
+          "weight": 0.166667
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j021",
+    "app": "libreoffice",
+    "instruction": "Create a one-page Movie Monday Q2 announcement in Writer. Read ~/Documents/Projects/movie_monday_program.txt, add a large bold centered 'MOVIE MONDAY Q2' title, a short intro, a bulleted list of its action items, and sign 'Michael Scott, Executive Producer'. Save it as ~/Desktop/movie_monday_announcement.odt.",
+    "apps_involved": [
+      "LibreOffice Writer"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent reads ~/Documents/Projects/movie_monday_program.txt to retrieve the Movie Monday action items",
+          "type": "llm_judge",
+          "weight": 0.132075
+        },
+        {
+          "criterion": "Agent opens LibreOffice Writer and creates a new one-page Movie Monday announcement",
+          "type": "llm_judge",
+          "weight": 0.132075
+        },
+        {
+          "criterion": "Agent adds a large bold centered title reading MOVIE MONDAY Q2",
+          "type": "llm_judge",
+          "weight": 0.150943
+        },
+        {
+          "criterion": "Agent writes a short Movie Monday introduction below the title",
+          "type": "llm_judge",
+          "weight": 0.132075
+        },
+        {
+          "criterion": "Agent inserts a bulleted list reflecting the action items from the Movie Monday project brief",
+          "type": "llm_judge",
+          "weight": 0.150943
+        },
+        {
+          "criterion": "Agent adds the signature Michael Scott, Executive Producer at the bottom",
+          "type": "llm_judge",
+          "weight": 0.150943
+        },
+        {
+          "criterion": "Agent saves the one-page document as ~/Desktop/movie_monday_announcement.odt",
+          "type": "llm_judge",
+          "weight": 0.150943
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j006",
+    "app": "multi_app",
+    "instruction": "Open the HooliMail thread 'Re: Dundies 2026 — venue ideas?', select and copy Pam's paragraph comparing Poor Richard's and Chili's verbatim, paste it into a new Writer document, and save it as ~/Desktop/venue_options_quote.odt.",
+    "apps_involved": [
+      "HooliMail",
+      "LibreOffice Writer"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens the 'Re: Dundies 2026 — venue ideas?' thread in HooliMail",
+          "type": "llm_judge",
+          "weight": 0.165049
+        },
+        {
+          "criterion": "Agent finds Pam's venue-options paragraph comparing Poor Richard's and Chili's",
+          "type": "llm_judge",
+          "weight": 0.165049
+        },
+        {
+          "criterion": "Agent selects the Pam venue-options paragraph in the HooliMail Dundies thread and copies it to the clipboard",
+          "type": "llm_judge",
+          "weight": 0.165049
+        },
+        {
+          "criterion": "Agent opens LibreOffice Writer and creates a new empty document for the venue-options quote",
+          "type": "llm_judge",
+          "weight": 0.165049
+        },
+        {
+          "criterion": "Agent pastes the copied Pam venue-options paragraph into the new LibreOffice Writer document verbatim",
+          "type": "llm_judge",
+          "weight": 0.165049
+        },
+        {
+          "criterion": "Agent saves ~/Desktop/venue_options_quote.odt containing the verbatim venue-options paragraph from Pam Beesly",
+          "type": "llm_judge",
+          "weight": 0.174757
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j009",
+    "app": "multi_app",
+    "instruction": "In HooliChat, open Movie Night Crew, scroll to a useful recent message, capture it with the group header visible, and save the screenshot as ~/Desktop/movie_night_message.png.",
+    "apps_involved": [
+      "HooliChat",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens HooliChat and navigates into the Movie Night Crew group chat",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent scrolls the Movie Night Crew group in HooliChat to bring a recent useful message into view",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent identifies a useful recent message in the Movie Night Crew group worth surfacing as the screenshot subject",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent verifies the chosen Movie Night Crew message is visible on screen and shows the group context (group name in header) before capturing",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent captures a screenshot of the HooliChat Movie Night Crew group showing the chosen message in context",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent saves ~/Desktop/movie_night_message.png displaying the HooliChat Movie Night Crew group with the chosen recent message visible",
+          "type": "llm_judge",
+          "weight": 0.18
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j012",
+    "app": "multi_app",
+    "instruction": "Open my Gothic Quarter Flat in Barcelona booking in Cheskepdia, scroll until all details load, and save a full-page screenshot to ~/Desktop/barcelona_booking.png.",
+    "apps_involved": [
+      "Cheskepdia",
+      "Firefox",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Cheskepdia at localhost:3012 in Firefox before navigating to the Gothic Quarter Flat in Barcelona booking",
+          "type": "llm_judge",
+          "weight": 0.190909
+        },
+        {
+          "criterion": "Agent navigates to the Gothic Quarter Flat in Barcelona booking page on Cheskepdia before scrolling and capturing",
+          "type": "llm_judge",
+          "weight": 0.190909
+        },
+        {
+          "criterion": "Agent scrolled the Gothic Quarter Flat in Barcelona booking page to load all the details (photos, amenities, price breakdown) before capturing the screenshot (not just the initial viewport)",
+          "type": "llm_judge",
+          "weight": 0.190909
+        },
+        {
+          "criterion": "Screenshot shows the Gothic Quarter Flat in Barcelona booking page with its confirmation number or the live check-in/check-out dates as rendered in Cheskepdia",
+          "type": "llm_judge",
+          "weight": 0.190909
+        },
+        {
+          "criterion": "Agent saves ~/Desktop/barcelona_booking.png showing the Cheskepdia Gothic Quarter Flat in Barcelona booking page with the booking total visible",
+          "type": "llm_judge",
+          "weight": 0.236364
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j013",
+    "app": "multi_app",
+    "instruction": "Open Firefox and use the HooliShop bookmark. In Orders, open the most recent order containing 'Somehow I Manage: Leadership Book', print it to PDF, and save it as ~/Downloads/somehow_i_manage_order.pdf.",
+    "apps_involved": [
+      "Firefox",
+      "HooliShop"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Firefox to begin the HooliShop print-to-PDF workflow",
+          "type": "llm_judge",
+          "weight": 0.125
+        },
+        {
+          "criterion": "Agent uses the HooliShop bookmark rather than typing the URL",
+          "type": "llm_judge",
+          "weight": 0.142857
+        },
+        {
+          "criterion": "Agent navigates to Orders and opens the most recent order containing Somehow I Manage: Leadership Book",
+          "type": "llm_judge",
+          "weight": 0.160714
+        },
+        {
+          "criterion": "Agent opens Firefox Print from that specific book-order page",
+          "type": "llm_judge",
+          "weight": 0.142857
+        },
+        {
+          "criterion": "Agent selects Save to PDF as the print destination",
+          "type": "llm_judge",
+          "weight": 0.142857
+        },
+        {
+          "criterion": "Agent sets ~/Downloads/somehow_i_manage_order.pdf as the output path",
+          "type": "llm_judge",
+          "weight": 0.142857
+        },
+        {
+          "criterion": "Agent confirms the PDF is saved at ~/Downloads/somehow_i_manage_order.pdf",
+          "type": "llm_judge",
+          "weight": 0.142857
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j022",
+    "app": "multi_app",
+    "instruction": "Build my recent Thai House Express order in HangryDash, stop at the cart preview without submitting, and save a screenshot of the preview as ~/Desktop/thai_cart_preview.png.",
+    "apps_involved": [
+      "HangryDash",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens HangryDash at localhost:3007 and navigates into the Thai House Express storefront",
+          "type": "llm_judge",
+          "weight": 0.132075
+        },
+        {
+          "criterion": "Agent adds a Thai House Express item to the HangryDash cart that matches Michael's actual recent Thai House Express order history (any item previously ordered is acceptable)",
+          "type": "llm_judge",
+          "weight": 0.301886
+        },
+        {
+          "criterion": "Agent navigates to the HangryDash Thai House Express cart preview screen",
+          "type": "llm_judge",
+          "weight": 0.132075
+        },
+        {
+          "criterion": "Agent declines to submit or place the HangryDash Thai House Express order and stops at the cart preview state",
+          "type": "llm_judge",
+          "weight": 0.150943
+        },
+        {
+          "criterion": "Agent captures a screenshot of the HangryDash Thai House Express cart preview state showing the chosen Thai House Express item",
+          "type": "llm_judge",
+          "weight": 0.150943
+        },
+        {
+          "criterion": "Agent saves the cart preview screenshot to ~/Desktop/thai_cart_preview.png",
+          "type": "llm_judge",
+          "weight": 0.132075
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j023",
+    "app": "multi_app",
+    "instruction": "Draft three short paragraphs for a LockedIn post about 'Threat Level Midnight 2', using ideas from ~/Documents/Projects/Threat_Level_Midnight_Sequel_Notes.txt. Type it into the post composer, do not publish, and save a screenshot as ~/Desktop/tlm2_preview.png.",
+    "apps_involved": [
+      "LockedIn",
+      "Files"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Screenshot shows the open LockedIn post composer with the Threat Level Midnight 2 draft visible",
+          "type": "llm_judge",
+          "weight": 0.289457
+        },
+        {
+          "criterion": "The draft explicitly references Threat Level Midnight 2 and reflects ideas from the sequel-notes source file",
+          "type": "llm_judge",
+          "weight": 0.2068
+        },
+        {
+          "criterion": "The post is not published and the LockedIn post count remains unchanged",
+          "type": "llm_judge",
+          "weight": 0.2068
+        },
+        {
+          "criterion": "The preview screenshot is saved at ~/Desktop/tlm2_preview.png",
+          "type": "llm_judge",
+          "weight": 0.082657
+        },
+        {
+          "criterion": "Agent opens LockedIn as Michael and opens the Start a post composer",
+          "type": "llm_judge",
+          "weight": 0.071429
+        },
+        {
+          "criterion": "Agent reads ~/Documents/Projects/Threat_Level_Midnight_Sequel_Notes.txt and types three short paragraphs based on it",
+          "type": "llm_judge",
+          "weight": 0.071429
+        },
+        {
+          "criterion": "Agent captures the composer with the full draft visible without clicking Post",
+          "type": "llm_judge",
+          "weight": 0.071429
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j011",
+    "app": "multi_app",
+    "instruction": "Use my confirmed Gothic Quarter Flat booking dates in Cheskepdia to schedule two eTaxi rides for the Barcelona stay: home to AVP at 6:00 AM on the check-in date, and AVP back home at 6:00 PM on the check-out date. Use the cheapest option with driver wait under five minutes. Also save Cotogna (508 Pittston Ave) and Scranton Improv Academy (320 Adams Ave) as new locations, then verify all four records persist.",
+    "apps_involved": [
+      "eTaxi",
+      "HooliCalendar"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent verifies the Gothic Quarter Flat check-in date in Cheskepdia before scheduling the home-to-AVP ride for 6:00 AM that day",
+          "type": "llm_judge",
+          "weight": 0.151
+        },
+        {
+          "criterion": "Agent chooses the cheapest eTaxi option with a driver ETA under five minutes",
+          "type": "llm_judge",
+          "weight": 0.116
+        },
+        {
+          "criterion": "Agent verifies the Gothic Quarter Flat check-out date in Cheskepdia and schedules the AVP-to-home ride for 6:00 PM that day",
+          "type": "llm_judge",
+          "weight": 0.133
+        },
+        {
+          "criterion": "Agent saves Cotogna at 508 Pittston Ave, Scranton as a new eTaxi location",
+          "type": "llm_judge",
+          "weight": 0.107
+        },
+        {
+          "criterion": "Agent saves Scranton Improv Academy at 320 Adams Ave, Scranton as a new eTaxi location",
+          "type": "llm_judge",
+          "weight": 0.107
+        },
+        {
+          "criterion": "Agent verifies both Barcelona rides and both saved locations persist after refresh",
+          "type": "llm_judge",
+          "weight": 0.116
+        },
+        {
+          "criterion": "Agent uses 1725 Slough Ave as the outbound pickup and AVP as the outbound destination",
+          "type": "llm_judge",
+          "weight": 0.09
+        },
+        {
+          "criterion": "Agent confirms the outbound Barcelona-stay ride is scheduled for 6:00 AM on the verified check-in date",
+          "type": "llm_judge",
+          "weight": 0.09
+        },
+        {
+          "criterion": "Agent confirms the return ride goes from AVP back to 1725 Slough Ave at 6:00 PM on the verified check-out date",
+          "type": "llm_judge",
+          "weight": 0.09
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j022",
+    "app": "multi_app",
+    "instruction": "Check in specifically for Dinoco flight DN0991 (AVP to PHL), save its boarding pass in Downloads, then capture the loyalty/profile page and save that screenshot as ~/Downloads/dinoco_loyalty.png. Verify both files.",
+    "apps_involved": [
+      "Dinoco Airlines",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent locates and selects Dinoco flight DN0991 rather than a different flight",
+          "type": "llm_judge",
+          "weight": 0.113029
+        },
+        {
+          "criterion": "Agent completes check-in or retrieves the rendered boarding pass for DN0991",
+          "type": "llm_judge",
+          "weight": 0.173905
+        },
+        {
+          "criterion": "Agent downloads the DN0991 boarding pass into ~/Downloads",
+          "type": "llm_judge",
+          "weight": 0.147736
+        },
+        {
+          "criterion": "Agent opens the Dinoco loyalty/passenger-profile page and captures Michael's live loyalty tier",
+          "type": "llm_judge",
+          "weight": 0.156459
+        },
+        {
+          "criterion": "Agent saves the loyalty screenshot as ~/Downloads/dinoco_loyalty.png",
+          "type": "llm_judge",
+          "weight": 0.130475
+        },
+        {
+          "criterion": "Agent verifies both the DN0991 boarding-pass file and dinoco_loyalty.png exist in Downloads",
+          "type": "llm_judge",
+          "weight": 0.139198
+        },
+        {
+          "criterion": "Agent performs the check-in/boarding-pass flow before collecting the profile screenshot",
+          "type": "llm_judge",
+          "weight": 0.139198
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j026",
+    "app": "multi_app",
+    "instruction": "Using the project briefs in Documents, clean up the Diversity Day and Movie Monday SprintBoard projects only: label multiple open tasks, rewrite three stale descriptions, and comment on every task currently In Progress. Refresh and verify the changes.",
+    "apps_involved": [
+      "SprintBoard",
+      "Files"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent applies context-appropriate labels to open tasks in Diversity Day Planning 2026",
+          "type": "llm_judge",
+          "weight": 0.115402
+        },
+        {
+          "criterion": "Agent applies context-appropriate labels to open tasks in Movie Monday Program",
+          "type": "llm_judge",
+          "weight": 0.100015
+        },
+        {
+          "criterion": "Agent does not make Team Morale Initiative Q2 part of this two-project cleanup",
+          "type": "llm_judge",
+          "weight": 0.100015
+        },
+        {
+          "criterion": "Agent rewrites and saves exactly three stale task descriptions across the two projects",
+          "type": "llm_judge",
+          "weight": 0.130789
+        },
+        {
+          "criterion": "Agent posts a context-appropriate comment on each task currently In Progress across the two projects",
+          "type": "llm_judge",
+          "weight": 0.15387
+        },
+        {
+          "criterion": "Agent applies labels to multiple open tasks and verifies they persist",
+          "type": "llm_judge",
+          "weight": 0.092322
+        },
+        {
+          "criterion": "Agent reads the Diversity Day and Movie Monday project briefs in ~/Documents/Projects for context",
+          "type": "llm_judge",
+          "weight": 0.076781
+        },
+        {
+          "criterion": "Agent identifies the current In Progress tasks before commenting",
+          "type": "llm_judge",
+          "weight": 0.076935
+        },
+        {
+          "criterion": "Agent verifies labels, three description rewrites, and In Progress comments after refresh",
+          "type": "llm_judge",
+          "weight": 0.076935
+        },
+        {
+          "criterion": "Agent opens both requested SprintBoard projects before making the cleanup changes",
+          "type": "llm_judge",
+          "weight": 0.076935
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j027",
+    "app": "multi_app",
+    "instruction": "Update my LockedIn headline to reflect both Regional Manager and filmmaker/Michael Scarn creator. Then read ~/Documents/Projects/Threat_Level_Midnight_Sequel_Notes.txt and publish a post with a faithful one- or two-paragraph excerpt plus a short lead-in. Verify both changes persist.",
+    "apps_involved": [
+      "LockedIn",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent navigates to the LockedIn profile editor and locates the headline field",
+          "type": "llm_judge",
+          "weight": 0.12124
+        },
+        {
+          "criterion": "Agent updates the LockedIn profile headline to a value that reflects Michael's current Regional Manager role and his filmmaker and Michael Scarn creator identity (in Michael's voice, not generic boilerplate)",
+          "type": "llm_judge",
+          "weight": 0.16155
+        },
+        {
+          "criterion": "Agent opens ~/Documents/Projects/Threat_Level_Midnight_Sequel_Notes.txt",
+          "type": "llm_judge",
+          "weight": 0.12124
+        },
+        {
+          "criterion": "Agent composes and publishes a LockedIn post containing an excerpt",
+          "type": "llm_judge",
+          "weight": 0.177674
+        },
+        {
+          "criterion": "Agent confirms the new LockedIn post and the updated profile headline persist after a page refresh",
+          "type": "llm_judge",
+          "weight": 0.12124
+        },
+        {
+          "criterion": "Agent's LockedIn post quotes an accurate excerpt from Threat Level Midnight sequel notes (faithful to the source text, not a paraphrase)",
+          "type": "llm_judge",
+          "weight": 0.064496
+        },
+        {
+          "criterion": "Agent saves the LockedIn profile headline change so it persists on the live profile view",
+          "type": "llm_judge",
+          "weight": 0.077519
+        },
+        {
+          "criterion": "Agent extracts a 1-2 paragraph excerpt from ~/Documents/Projects/Threat_Level_Midnight_Sequel_Notes.txt before pasting it into the LockedIn post composer",
+          "type": "llm_judge",
+          "weight": 0.077519
+        },
+        {
+          "criterion": "Agent adds a short lead-in line in the LockedIn post composer above the Threat Level Midnight sequel notes excerpt before publishing the post",
+          "type": "llm_judge",
+          "weight": 0.077519
+        }
+      ]
+    }
+  },
+  {
+    "id": "long_horizon-j011",
+    "app": "multi_app",
+    "instruction": "Use the Tax_2025 files in Documents to complete the W-2, 1099, charitable, and home-office fields in the current SpeedTax return and advance it to Review. Save it there as a draft; do not file or submit it.",
+    "apps_involved": [
+      "SpeedTax",
+      "LibreOffice",
+      "Gringotts"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens the current SpeedTax return and confirms it is the unfiled in-progress return",
+          "weight": 0.1,
+          "type": "llm_judge"
+        },
+        {
+          "criterion": "Agent enters the W-2 values exactly from Documents/Tax_2025/w2_summary.txt",
+          "weight": 0.2,
+          "type": "llm_judge"
+        },
+        {
+          "criterion": "Agent enters the freelance 1099 values exactly from Documents/Tax_2025/1099s.txt",
+          "weight": 0.15,
+          "type": "llm_judge"
+        },
+        {
+          "criterion": "Agent enters charitable and home-office information from the Tax_2025 source files without inventing values",
+          "weight": 0.2,
+          "type": "llm_judge"
+        },
+        {
+          "criterion": "Agent visibly consults the Tax_2025 source files before or while entering the data",
+          "weight": 0.1,
+          "type": "llm_judge"
+        },
+        {
+          "criterion": "Agent advances to Review and saves the return as a draft without filing or submitting it",
+          "weight": 0.15,
+          "type": "llm_judge"
+        },
+        {
+          "criterion": "Agent verifies the return remains unfiled with the W-2, 1099, charitable, and home-office sections completed",
+          "weight": 0.1,
+          "type": "llm_judge"
+        }
+      ],
+      "rubric_rule": "All-or-nothing rubric enforcement: missing any subtask caps rubric score at 60%."
+    }
+  },
+  {
+    "id": "situated_action-j003",
+    "app": "multi_app",
+    "instruction": "Email David Wallace and request approval for the Movie Monday Program. Read ~/Documents/Projects/movie_monday_program.txt, summarize its current action items, and keep the email concise and professional.",
+    "apps_involved": [
+      "HooliMail",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens the movie_monday_program doc and uses it to summarize the sign-off ask",
+          "type": "llm_judge",
+          "weight": 0.2778
+        },
+        {
+          "criterion": "Agent sends the HooliMail message to david.wallace@dundermifflin.com with a subject line referencing the Movie Monday Program approval ask",
+          "type": "llm_judge",
+          "weight": 0.2778
+        },
+        {
+          "criterion": "Agent writes the David Wallace approval email in a short workplace tone without personal hostility or jabs at David Wallace",
+          "type": "llm_judge",
+          "weight": 0.1668
+        },
+        {
+          "criterion": "Agent sends a new outbound HooliMail from michael.scott@dundermifflin.com to david.wallace@dundermifflin.com requesting Movie Monday Program sign-off",
+          "type": "llm_judge",
+          "weight": 0.2776
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j005",
+    "app": "multi_app",
+    "instruction": "In OddsMarket, verify my GameStop-above-$100 position is still open, then send Jim a one-to-one HooliWork DM asking whether he has heard anything relevant and mention that I have shares riding on it.",
+    "apps_involved": [
+      "HooliWork",
+      "OddsMarket"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens OddsMarket and checks the GameStop-above-$100 position before composing, reporting its current status (open or settled) rather than fabricating",
+          "type": "llm_judge",
+          "weight": 0.192337
+        },
+        {
+          "criterion": "DM is sent to Jim Halpert (not posted to a public channel)",
+          "type": "llm_judge",
+          "weight": 0.288506
+        },
+        {
+          "criterion": "Agent's DM to Jim references the GameStop-above-$100 rumor and notes Michael's OddsMarket prediction-market stake",
+          "type": "llm_judge",
+          "weight": 0.288352
+        },
+        {
+          "criterion": "Agent opens HooliWork and starts or continues a direct message thread with Jim Halpert before composing the GameStop-above-$100 question",
+          "type": "llm_judge",
+          "weight": 0.230805
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j006",
+    "app": "multi_app",
+    "instruction": "For my upcoming Dinoco flight DN1582 from AVP to PHL, confirm its exact departure date and 6:00 AM time, schedule an eTaxi pickup from home to AVP with at least a three-hour cushion, and create a matching HooliCalendar reminder.",
+    "apps_involved": [
+      "eTaxi",
+      "Dinoco Airlines",
+      "HooliCalendar"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent verifies the upcoming AVP-to-PHL Dinoco flight DN1582 date and 6:00 AM departure time before booking",
+          "type": "llm_judge",
+          "weight": 0.2499
+        },
+        {
+          "criterion": "Agent schedules the eTaxi pickup on the DN1582 departure date no later than 3:00 AM, providing at least a three-hour buffer before 6:00 AM",
+          "type": "llm_judge",
+          "weight": 0.2499
+        },
+        {
+          "criterion": "Agent uses 1725 Slough Ave as pickup and AVP as drop-off",
+          "type": "llm_judge",
+          "weight": 0.2499
+        },
+        {
+          "criterion": "Agent creates a matching HooliCalendar reminder for the DN1582 airport pickup",
+          "type": "llm_judge",
+          "weight": 0.2503
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j007",
+    "app": "multi_app",
+    "instruction": "Book La Trattoria on TableFind for next Thursday at 7:30 PM for four people, then create a matching HooliCalendar event and report the reservation confirmation.",
+    "apps_involved": [
+      "TableFind",
+      "HooliCalendar"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent books at La Trattoria (the seeded Downtown Scranton Italian TableFind venue), not a different venue",
+          "type": "llm_judge",
+          "weight": 0.274812
+        },
+        {
+          "criterion": "Agent books the La Trattoria reservation for party of 4 at 7:30pm on the next upcoming Thursday date",
+          "type": "llm_judge",
+          "weight": 0.274812
+        },
+        {
+          "criterion": "Agent creates a matching HooliCalendar event block for the La Trattoria reservation at 7:30pm so Michael does not forget",
+          "type": "llm_judge",
+          "weight": 0.219572
+        },
+        {
+          "criterion": "Agent confirms and reserves the La Trattoria TableFind booking so a confirmation screen or confirmation number for the next-Thursday 7:30pm party of 4 reservation appears",
+          "type": "llm_judge",
+          "weight": 0.230805
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j010",
+    "app": "multi_app",
+    "instruction": "Count the finalized categories in ~/Documents/Dundies_2026_Categories.txt, then order that exact quantity of the HooliShop product 'World's Best Pretzel Boss Mug'. Check order history first for related award-style purchases and verify the new order.",
+    "apps_involved": [
+      "HooliShop",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent scans HooliShop order history for any prior trophy or award-style purchase, noting whether one exists or not (either outcome is acceptable)",
+          "type": "llm_judge",
+          "weight": 0.2858
+        },
+        {
+          "criterion": "Agent cross-references Dundies 2026 Categories doc for trophy count",
+          "type": "llm_judge",
+          "weight": 0.2142
+        },
+        {
+          "criterion": "Agent adds the World's Best Pretzel Boss Mug product to the cart with a quantity matching the number of Dundies 2026 categories",
+          "type": "llm_judge",
+          "weight": 0.2858
+        },
+        {
+          "criterion": "Agent places the HooliShop World's Best Pretzel Boss Mug order so a new order row appears matching the Dundies ceremony category count",
+          "type": "llm_judge",
+          "weight": 0.2142
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j012",
+    "app": "multi_app",
+    "instruction": "Confirm Jim Halpert is in my HooliChat contacts, then Zelle him exactly $75 with a memo saying it is repayment for lunch.",
+    "apps_involved": [
+      "Gringotts",
+      "HooliChat"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent sends a $75 Zelle transfer to Jim Halpert as the recipient, matching Michael's request for $75 to repay him for lunch",
+          "type": "llm_judge",
+          "weight": 0.33337
+        },
+        {
+          "criterion": "Memo references repayment for lunch",
+          "type": "llm_judge",
+          "weight": 0.222136
+        },
+        {
+          "criterion": "Agent opens HooliChat and confirms Jim Halpert is on Michael's contacts before starting the $75 Zelle transfer in Gringotts",
+          "type": "llm_judge",
+          "weight": 0.222247
+        },
+        {
+          "criterion": "Agent opens Gringotts and starts a new Zelle transfer flow before entering Jim Halpert as the recipient and $75 as the amount",
+          "type": "llm_judge",
+          "weight": 0.222247
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j013",
+    "app": "multi_app",
+    "instruction": "Publish a LockedIn post announcing the Movie Monday Program. Pull at least one concrete action item from ~/Documents/Projects/movie_monday_program.txt and write it in Michael's enthusiastic Executive Producer voice.",
+    "apps_involved": [
+      "LockedIn",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "The published LockedIn post explicitly announces the Movie Monday Program",
+          "type": "llm_judge",
+          "weight": 0.274615
+        },
+        {
+          "criterion": "The post uses Michael's enthusiastic self-styled Executive Producer voice",
+          "type": "llm_judge",
+          "weight": 0.274615
+        },
+        {
+          "criterion": "Agent reads ~/Documents/Projects/movie_monday_program.txt and includes at least one accurate action-item detail",
+          "type": "llm_judge",
+          "weight": 0.22
+        },
+        {
+          "criterion": "Agent publishes the Movie Monday announcement so it appears as a new post in Michael's LockedIn feed",
+          "type": "llm_judge",
+          "weight": 0.230769
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j014",
+    "app": "multi_app",
+    "instruction": "Triage my pending LockedIn requests using a strict company-only rule: accept every verified Dunder Mifflin colleague and leave every external request pending. Inspect each profile, cross-check company membership when needed, and report accepted and left-pending counts.",
+    "apps_involved": [
+      "LockedIn",
+      "HooliWork"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens the LockedIn invitations page",
+          "type": "llm_judge",
+          "weight": 0.288462
+        },
+        {
+          "criterion": "Agent accepts all and only verified Dunder Mifflin colleagues in the pending queue, while leaving every external request pending",
+          "type": "llm_judge",
+          "weight": 0.288462
+        },
+        {
+          "criterion": "Agent reports accepted and left-pending counts and identifies the Dunder Mifflin colleagues found",
+          "type": "llm_judge",
+          "weight": 0.192308
+        },
+        {
+          "criterion": "Agent inspects each request and cross-checks claimed Dunder Mifflin membership rather than blanket-accepting or blanket-declining",
+          "type": "llm_judge",
+          "weight": 0.230769
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j016",
+    "app": "multi_app",
+    "instruction": "Browse the live OddsMarket list and add exactly two unheld Technology-category markets to my watchlist. Verify both appear and place no trades.",
+    "apps_involved": [
+      "OddsMarket"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent browses the OddsMarket markets list and selects exactly 2 unheld markets from the Technology category",
+          "type": "llm_judge",
+          "weight": 0.230769
+        },
+        {
+          "criterion": "Agent adds each of the 2 chosen markets to the OddsMarket watchlist via the watchlist add control (not by opening a position)",
+          "type": "llm_judge",
+          "weight": 0.307692
+        },
+        {
+          "criterion": "Agent verifies both newly-added markets appear in the OddsMarket watchlist view after adding",
+          "type": "llm_judge",
+          "weight": 0.256462
+        },
+        {
+          "criterion": "Agent places zero new trades during the task — open-positions list and account balance are unchanged from the start of the session",
+          "type": "llm_judge",
+          "weight": 0.205077
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j021",
+    "app": "multi_app",
+    "instruction": "Read the action-item list in ~/Documents/Projects/movie_monday_program.txt and post it into the HooliChat Movie Night Crew group.",
+    "apps_involved": [
+      "HooliChat",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Message is posted specifically to the 'Movie Night Crew' group (not Party Planning Committee or elsewhere)",
+          "type": "llm_judge",
+          "weight": 0.2692
+        },
+        {
+          "criterion": "Content reflects the action items from the Movie Monday project brief",
+          "type": "llm_judge",
+          "weight": 0.2309
+        },
+        {
+          "criterion": "Agent opens the Movie Monday project brief at ~/Documents/Projects/movie_monday_program.txt to read the full action-item list before composing the HooliChat message",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent sends the composed Movie Monday action items message into the HooliChat 'Movie Night Crew' group thread so it appears in the chat history",
+          "type": "llm_judge",
+          "weight": 0.25
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j025",
+    "app": "multi_app",
+    "instruction": "Open Cheskepdia and verify my upcoming Barcelona booking, then DM Emma the check-in and check-out dates plus the property name. Make the message upbeat and send it one-to-one.",
+    "apps_involved": [
+      "HooliChat",
+      "Cheskepdia"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Cheskepdia and confirms the Gothic Quarter Flat in Barcelona booking details for the Barcelona trip before sending the Emma DM",
+          "type": "llm_judge",
+          "weight": 0.220034
+        },
+        {
+          "criterion": "Agent's HooliChat DM to Emma states both the Barcelona check-in and check-out dates read live from the Cheskepdia Gothic Quarter Flat in Barcelona booking",
+          "type": "llm_judge",
+          "weight": 0.274658
+        },
+        {
+          "criterion": "DM is sent to Emma Scott specifically, not a group",
+          "type": "llm_judge",
+          "weight": 0.274504
+        },
+        {
+          "criterion": "Agent's HooliChat DM to Emma Scott names the Gothic Quarter Flat in Barcelona hotel that Michael booked alongside the Barcelona check-in and check-out dates",
+          "type": "llm_judge",
+          "weight": 0.230805
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j032",
+    "app": "multi_app",
+    "instruction": "Find ~/Documents/Movie_Monday_Schedule.xlsx and email it to Jim Halpert as an attachment, asking him to check the schedule for conflicts.",
+    "apps_involved": [
+      "HooliMail",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "New HooliMail message is sent to jim.halpert@dundermifflin.com with the Movie Monday schedule attached",
+          "type": "llm_judge",
+          "weight": 0.359231
+        },
+        {
+          "criterion": "Agent attaches the Movie Monday Schedule spreadsheet to the HooliMail message addressed to Jim",
+          "type": "llm_judge",
+          "weight": 0.256154
+        },
+        {
+          "criterion": "Agent's HooliMail body to Jim asks him to check the attached Movie Monday Schedule spreadsheet for schedule conflicts",
+          "type": "llm_judge",
+          "weight": 0.153846
+        },
+        {
+          "criterion": "Agent locates the Movie Monday Schedule spreadsheet at ~/Documents/Movie_Monday_Schedule.xlsx in Files before attaching it to the HooliMail message to Jim",
+          "type": "llm_judge",
+          "weight": 0.230769
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j035",
+    "app": "multi_app",
+    "instruction": "Reply to the three most recent inbound Dundies-planning emails you can find with a Poor Richard's venue pitch. Tailor each reply to its sender and use the Dundies categories document for relevant context.",
+    "apps_involved": [
+      "HooliMail",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent identifies the three most recent inbound Dundies-planning threads in HooliMail",
+          "type": "llm_judge",
+          "weight": 0.329642
+        },
+        {
+          "criterion": "Agent sends a Poor Richard's venue-pitch reply to the sender of each of those three threads",
+          "type": "llm_judge",
+          "weight": 0.219659
+        },
+        {
+          "criterion": "Agent tailors each reply to its sender and thread context rather than sending identical copy-paste text",
+          "type": "llm_judge",
+          "weight": 0.219966
+        },
+        {
+          "criterion": "Agent reads ~/Documents/Dundies_2026_Categories.txt and uses relevant category context in the three replies",
+          "type": "llm_judge",
+          "weight": 0.230734
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j037",
+    "app": "multi_app",
+    "instruction": "I'm going to miss improv because of my Barcelona trip. Verify a recent Scranton Improv Academy charge in Gringotts, read the contact email from ~/Downloads/Improv_Class_Certificate.txt, confirm the Barcelona dates in Cheskepdia, and email the academy asking for a makeup class around those dates.",
+    "apps_involved": [
+      "HooliMail",
+      "Gringotts",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent verifies the Scranton Improv Academy vendor in Gringotts and reads ~/Downloads/Improv_Class_Certificate.txt for the recipient",
+          "type": "llm_judge",
+          "weight": 0.2352
+        },
+        {
+          "criterion": "Agent verifies the upcoming Barcelona booking dates in Cheskepdia and references that date window as the reason for the conflict",
+          "type": "llm_judge",
+          "weight": 0.2944
+        },
+        {
+          "criterion": "The email explicitly requests a makeup or rescheduled improv class",
+          "type": "llm_judge",
+          "weight": 0.2352
+        },
+        {
+          "criterion": "Agent sends the email to the academy contact from the certificate after checking the charge and Barcelona dates",
+          "type": "llm_judge",
+          "weight": 0.2352
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j040",
+    "app": "multi_app",
+    "instruction": "Prepare a HooliMail out-of-office draft for my upcoming Barcelona stay. Read the check-in and check-out dates from Cheskepdia, route urgent requests to Jim Halpert at jim.halpert@dundermifflin.com, and save the message as a draft without sending.",
+    "apps_involved": [
+      "HooliMail",
+      "Files"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent writes an out-of-office template spanning the live Barcelona check-in and check-out dates read from Cheskepdia",
+          "type": "llm_judge",
+          "weight": 0.20873
+        },
+        {
+          "criterion": "The draft routes urgent requests to Jim Halpert at jim.halpert@dundermifflin.com",
+          "type": "llm_judge",
+          "weight": 0.20873
+        },
+        {
+          "criterion": "Agent verifies the Barcelona dates in Cheskepdia before composing",
+          "type": "llm_judge",
+          "weight": 0.16746
+        },
+        {
+          "criterion": "Agent saves the out-of-office message as a HooliMail draft without sending it",
+          "type": "llm_judge",
+          "weight": 0.20873
+        },
+        {
+          "criterion": "Agent opens a new HooliMail compose window for the Barcelona out-of-office template",
+          "type": "llm_judge",
+          "weight": 0.206349
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j008",
+    "app": "oddsmarket",
+    "instruction": "In OddsMarket, identify my best-performing open position by percentage gain, explain the choice, click Close, type CONFIRM, and verify it is removed from open positions.",
+    "apps_involved": [
+      "OddsMarket"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent identifies GameStop above $100 by year-end as the live open position with the highest percentage gain (about 25%) and explains the comparison",
+          "type": "llm_judge",
+          "weight": 0.207692
+        },
+        {
+          "criterion": "Agent opens the Close confirmation modal for that GameStop position",
+          "type": "llm_judge",
+          "weight": 0.173077
+        },
+        {
+          "criterion": "Agent types the literal string CONFIRM into the modal",
+          "type": "llm_judge",
+          "weight": 0.173077
+        },
+        {
+          "criterion": "Agent confirms the GameStop position is closed and removed from open positions",
+          "type": "llm_judge",
+          "weight": 0.138462
+        },
+        {
+          "criterion": "Agent opens OddsMarket and reviews the open positions' percentage gains before choosing the best performer",
+          "type": "llm_judge",
+          "weight": 0.153846
+        },
+        {
+          "criterion": "Agent clicks Close on the best percentage-gain position rather than the worst-losing NBA position",
+          "type": "llm_judge",
+          "weight": 0.153846
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j005",
+    "app": "oddsmarket",
+    "instruction": "Take profits in OddsMarket: exit every open YES position whose percentage gain is above 20%. Reinvest the freed balance into my existing NBC Office reboot YES position, then add all remaining open positions to the watchlist and verify the final state. If none qualify, report that and make no trade.",
+    "apps_involved": [
+      "OddsMarket"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent enumerates every open YES position with its live P&L percentage",
+          "type": "llm_judge",
+          "weight": 0.155
+        },
+        {
+          "criterion": "Agent identifies every YES position above +20% P&L, or explicitly reports that none qualify",
+          "type": "llm_judge",
+          "weight": 0.155
+        },
+        {
+          "criterion": "Agent closes every qualifying above-20% YES position and no non-qualifying position",
+          "type": "llm_judge",
+          "weight": 0.185
+        },
+        {
+          "criterion": "Agent reinvests the freed balance into the existing NBC Office reboot YES position when at least one qualifying position was closed",
+          "type": "llm_judge",
+          "weight": 0.205
+        },
+        {
+          "criterion": "Agent adds all remaining open positions to the OddsMarket watchlist",
+          "type": "llm_judge",
+          "weight": 0.165
+        },
+        {
+          "criterion": "Agent verifies closed profit-takers are absent, the Office position reflects any reinvestment, and survivors persist in the watchlist",
+          "type": "llm_judge",
+          "weight": 0.135
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j006",
+    "app": "oddsmarket",
+    "instruction": "Review all OddsMarket positions, add the two smallest by share count to my watchlist (break a tie by lower cost basis, then alphabetically), and provide a readable P&L summary for every position with shares, cost basis, and running gain or loss.",
+    "apps_involved": [
+      "OddsMarket"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent identifies the bottom 2 OddsMarket open positions by share count (by sorting the live positions list — names will track whatever positions are seeded; if positions tie at the boundary, agent breaks the tie by lower cost basis or alphabetical ticker)",
+          "type": "llm_judge",
+          "weight": 0.215
+        },
+        {
+          "criterion": "Agent adds the bottom 2 positions by share count to the OddsMarket watchlist (any reasonable tiebreak at the boundary is acceptable)",
+          "type": "llm_judge",
+          "weight": 0.215
+        },
+        {
+          "criterion": "Agent enumerates all open positions with cost basis and shares",
+          "type": "llm_judge",
+          "weight": 0.155
+        },
+        {
+          "criterion": "Agent computes running P&L per market (positive or negative) and reports it alongside the cost basis and shares",
+          "type": "llm_judge",
+          "weight": 0.205
+        },
+        {
+          "criterion": "Agent delivers the P&L summary covering every open market in a single readable list (chat-paste-ready or saved note)",
+          "type": "llm_judge",
+          "weight": 0.155
+        },
+        {
+          "criterion": "Agent verifies the OddsMarket watchlist contains the 2 picks after reload of the page",
+          "type": "llm_judge",
+          "weight": 0.055
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j002",
+    "app": "speedtax",
+    "instruction": "Open the filed 2024 return in SpeedTax and audit it read-only. Report its federal refund, Pennsylvania state refund, confirmation number, and accepted filing status. Do not edit, amend, or start a new return.",
+    "apps_involved": [
+      "SpeedTax"
+    ],
+    "category": "cua_only",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens SpeedTax and selects the filed 2024 return rather than the current in-progress return",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent reports the federal refund amount shown on the 2024 return",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent reports the Pennsylvania state refund amount shown on the 2024 return",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent reports the 2024 confirmation number from the filed-return view",
+          "type": "llm_judge",
+          "weight": 0.16
+        },
+        {
+          "criterion": "Agent verifies the 2024 filing status is accepted/filed",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent leaves the 2024 return unchanged and does not amend, edit, or create a return",
+          "type": "llm_judge",
+          "weight": 0.14
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j003",
+    "app": "sprintboard",
+    "instruction": "Open Movie Monday Program in SprintBoard and drag exactly one card from In Progress to In Review. Verify the chosen card remains in In Review after the drag.",
+    "apps_involved": [
+      "SprintBoard"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens SprintBoard and navigates to the Movie Monday Program project",
+          "type": "llm_judge",
+          "weight": 0.140741
+        },
+        {
+          "criterion": "Agent picks a card from the In Progress column and performs a left_click_drag gesture to In Review",
+          "type": "llm_judge",
+          "weight": 0.31661
+        },
+        {
+          "criterion": "Agent confirms the SprintBoard card appears in the In Review column after the drag release on the Movie Monday Program board",
+          "type": "llm_judge",
+          "weight": 0.246353
+        },
+        {
+          "criterion": "Agent locates a specific task card sitting in the In Progress column of the Movie Monday Program SprintBoard before initiating the drag to In Review",
+          "type": "llm_judge",
+          "weight": 0.296296
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j017",
+    "app": "sprintboard",
+    "instruction": "On the Movie Monday Program board, move two different cards forward: one from In Progress to In Review and one from In Review to Done. Verify both final columns.",
+    "apps_involved": [
+      "SprintBoard"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent opens Movie Monday Program before moving cards",
+          "type": "llm_judge",
+          "weight": 0.12766
+        },
+        {
+          "criterion": "Agent performs two distinct drag gestures on two different Movie Monday cards",
+          "type": "llm_judge",
+          "weight": 0.269149
+        },
+        {
+          "criterion": "Agent moves one card In Progress to In Review and one card In Review to Done",
+          "type": "llm_judge",
+          "weight": 0.191489
+        },
+        {
+          "criterion": "Agent selects a live Movie Monday card from In Progress and drags it to In Review",
+          "type": "llm_judge",
+          "weight": 0.120567
+        },
+        {
+          "criterion": "Agent selects the live Movie Monday card from In Review and drags it to Done",
+          "type": "llm_judge",
+          "weight": 0.120567
+        },
+        {
+          "criterion": "Agent does not move an unrelated third card or use the Team Morale board",
+          "type": "llm_judge",
+          "weight": 0.120567
+        },
+        {
+          "criterion": "Agent refreshes or re-reads the board and verifies both cards in their new columns",
+          "type": "llm_judge",
+          "weight": 0.05
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j025",
+    "app": "sprintboard",
+    "instruction": "On Team Morale Initiative Q2, reassign two backlog tasks to sensible owners, create a cycle named 'Q2 Sales Push' containing about seven story points from the backlog, and apply the existing 'planning' label to those cycle tasks. Verify everything persists.",
+    "apps_involved": [
+      "SprintBoard"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent navigates to the 'Team Morale Initiative Q2' SprintBoard project and reviews the open backlog tasks",
+          "type": "llm_judge",
+          "weight": 0.12
+        },
+        {
+          "criterion": "Agent (re)assigns 2 backlog tasks under 'Team Morale Initiative Q2' to owners such as Pam, Dwight, or Jim",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent creates a new 'Q2 Sales Push' cycle and assigns 'Team Morale Initiative Q2' backlog tasks to it (cycles in SprintBoard are workspace-global; project linkage happens via the assigned tasks)",
+          "type": "llm_judge",
+          "weight": 0.17
+        },
+        {
+          "criterion": "Agent pulls backlog tasks totaling ~7 story points (6-8 acceptable) into the 'Q2 Sales Push' sprint",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent applies the 'planning' label to the sprint tasks",
+          "type": "llm_judge",
+          "weight": 0.15
+        },
+        {
+          "criterion": "Agent persists the 'Q2 Sales Push' sprint, the assignments, and the 'planning' labels on the SprintBoard backlog tasks",
+          "type": "llm_judge",
+          "weight": 0.14
+        },
+        {
+          "criterion": "Agent opens SprintBoard and navigates into the 'Team Morale Initiative Q2' project before triaging the backlog tasks",
+          "type": "llm_judge",
+          "weight": 0.12
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j020",
+    "app": "sprintboard",
+    "instruction": "Create a new SprintBoard cycle for Team Morale Initiative Q2 starting tomorrow and assign approximately ten story points of that project's backlog work to it. Save and verify the cycle.",
+    "apps_involved": [
+      "SprintBoard"
+    ],
+    "category": "situated_action",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Cycle is created with start date tomorrow AND 'Team Morale Initiative Q2' tasks are assigned to it (cycles in SprintBoard are workspace-global; project association happens via task-to-cycle assignment)",
+          "type": "llm_judge",
+          "weight": 0.329591
+        },
+        {
+          "criterion": "Agent assigns approximately 10 story points worth of tasks (9-11 acceptable) into the new Team Morale Initiative Q2 sprint cycle",
+          "type": "llm_judge",
+          "weight": 0.274531
+        },
+        {
+          "criterion": "Agent saves the new Team Morale Initiative Q2 cycle so the week of tomorrow persists on SprintBoard",
+          "type": "llm_judge",
+          "weight": 0.16518
+        },
+        {
+          "criterion": "Agent opens SprintBoard and navigates into the 'Team Morale Initiative Q2' project before starting the new sprint cycle for the week of tomorrow",
+          "type": "llm_judge",
+          "weight": 0.230698
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j034",
+    "app": "sprintboard",
+    "instruction": "On Diversity Day Planning 2026, move 'Print color-coded country flag handouts (one per cuisine)' from Todo to In Progress and add two subtasks: 'Confirm print vendor' and 'Count required flag sets'. Refresh and verify all changes.",
+    "apps_involved": [
+      "SprintBoard"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent navigates into the Diversity Day Planning 2026 SprintBoard board (not Team Morale, not Movie Monday)",
+          "type": "llm_judge",
+          "weight": 0.18
+        },
+        {
+          "criterion": "Agent locates the 'Print color-coded country flag handouts (one per cuisine)' task that's currently in todo",
+          "type": "llm_judge",
+          "weight": 0.22
+        },
+        {
+          "criterion": "Agent moves that task from todo into In Progress",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent adds 2 new sub-tasks: Confirm print vendor and Count required flag sets",
+          "type": "llm_judge",
+          "weight": 0.25
+        },
+        {
+          "criterion": "Agent confirms the status change + new sub-tasks persisted (refresh / re-read board state)",
+          "type": "llm_judge",
+          "weight": 0.1
+        }
+      ]
+    }
+  },
+  {
+    "id": "hard_app-j016",
+    "app": "tablefind",
+    "instruction": "Book La Trattoria for six people for a team dinner next Friday. Review two other Scranton-area restaurants as fallbacks, favorite the best one, add a 'quiet table for team discussion' note, capture the confirmation number, and verify both reservation and favorite persist.",
+    "apps_involved": [
+      "TableFind"
+    ],
+    "category": "long_horizon",
+    "difficulty": "hard",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent searches TableFind for La Trattoria and checks 6-person availability",
+          "type": "llm_judge",
+          "weight": 0.134
+        },
+        {
+          "criterion": "Agent books La Trattoria for 6 with a 'quiet table for team discussion' special-request note",
+          "type": "llm_judge",
+          "weight": 0.197
+        },
+        {
+          "criterion": "Agent searches TableFind for 2 other Scranton-area restaurants as fallbacks",
+          "type": "llm_judge",
+          "weight": 0.134
+        },
+        {
+          "criterion": "Agent reviews the 2 Scranton fallback restaurants in TableFind one by one, examining details such as cuisine, rating, or neighborhood for each",
+          "type": "llm_judge",
+          "weight": 0.116
+        },
+        {
+          "criterion": "Agent favorites the single best Scranton fallback restaurant on TableFind",
+          "type": "llm_judge",
+          "weight": 0.116
+        },
+        {
+          "criterion": "Agent captures the La Trattoria confirmation number",
+          "type": "llm_judge",
+          "weight": 0.107
+        },
+        {
+          "criterion": "Agent verifies the La Trattoria team-dinner booking and the selected Scranton favorite persist in TableFind after refresh",
+          "type": "llm_judge",
+          "weight": 0.089
+        },
+        {
+          "criterion": "Agent confirms availability of a 6-person reservation slot at La Trattoria on TableFind for next Friday's team dinner before placing the booking",
+          "type": "llm_judge",
+          "weight": 0.107
+        }
+      ]
+    }
+  },
+  {
+    "id": "cua_only-j005",
+    "app": "thunar",
+    "instruction": "Using Thunar, move ~/Downloads/boarding_pass_DN3163.txt into a Barbados subfolder under ~/Documents/Trips (create it if needed), rename it barbados_boarding_pass.txt, and verify the original is gone from Downloads.",
+    "apps_involved": [
+      "Thunar"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent uses Thunar (not terminal mv) to move the file via left_click_drag",
+          "type": "llm_judge",
+          "weight": 0.295716
+        },
+        {
+          "criterion": "Agent saves the Barbados boarding pass file into ~/Documents/Trips/Barbados/ renamed to barbados_boarding_pass with whatever extension the seeded file uses (.pdf or .txt both accepted)",
+          "type": "llm_judge",
+          "weight": 0.25885
+        },
+        {
+          "criterion": "Original copy is no longer in Downloads (it was moved, not copied)",
+          "type": "llm_judge",
+          "weight": 0.147914
+        },
+        {
+          "criterion": "Agent opens Thunar and navigates into the ~/Downloads/ folder to surface the Barbados boarding pass file before any drag",
+          "type": "llm_judge",
+          "weight": 0.099174
+        },
+        {
+          "criterion": "Agent locates the Barbados boarding pass file inside the Thunar Downloads view (the seeded file is boarding_pass_DN3163.txt — the seeded Dinoco Barbados boarding-pass file)",
+          "type": "llm_judge",
+          "weight": 0.099174
+        },
+        {
+          "criterion": "Agent confirms or creates the Barbados/ subfolder under ~/Documents/Trips/ in Thunar before moving the boarding pass file",
+          "type": "llm_judge",
+          "weight": 0.099174
+        }
+      ]
+    }
+  },
+  {
+    "id": "situated_action-j011",
+    "app": "gringotts",
+    "instruction": "Pay exactly $275 toward my Gringotts credit card using my savings account. Record the credit-card balance before payment and verify the payment posts.",
+    "apps_involved": [
+      "Gringotts"
+    ],
+    "category": "situated_action",
+    "difficulty": "medium",
+    "grading": {
+      "type": "llm_judge",
+      "rubrics": [
+        {
+          "criterion": "Agent completes the $275 payment from savings to the credit card in Gringotts and confirms the payment posted",
+          "type": "llm_judge",
+          "weight": 0.583139
+        },
+        {
+          "criterion": "Agent cites the Gringotts savings account as the funding source and the credit card as the destination for the $275 payment",
+          "type": "llm_judge",
+          "weight": 0.166611
+        },
+        {
+          "criterion": "Agent transfers exactly $275 (not a different amount) from savings to the credit card, matching Michael's stated request to knock $275 off",
+          "type": "llm_judge",
+          "weight": 0.083639
+        },
+        {
+          "criterion": "Agent opens Gringotts, navigates into the credit card account view, and captures the displayed credit card balance before initiating the $275 payment",
+          "type": "llm_judge",
+          "weight": 0.166611
+        }
+      ]
+    }
+  }
+]

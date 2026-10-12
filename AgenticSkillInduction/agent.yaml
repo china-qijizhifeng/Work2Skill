@@ -1,0 +1,58 @@
+type: agent
+name: agentic_skill_induction
+description: Extract self-contained GUI-operational skills with a thin bootstrap prompt and runtime-owned validation.
+system_prompt: ./system_prompt.md
+system_prompt_type: file
+tool_call_mode: structured
+max_context_tokens: 200000
+max_iterations: 100
+# Retry a failed provider request in-place so the current extraction turn keeps
+# its inspected evidence and conversation history.  The outer pipeline remains
+# responsible only after these per-call retries are exhausted.
+retry_attempts: 30
+retry_backoff_max_seconds: 30
+timeout: 900
+
+llm_config:
+  model: ${env.LLM_MODEL}
+  base_url: ${env.LLM_BASE_URL}
+  api_key: ${env.LLM_API_KEY}
+  max_tokens: 16000
+  stream: true
+  temperature: 0
+  api_type: openai_chat_completion
+  reasoning_effort: high
+
+tools:
+  - name: list_directory
+    yaml_path: ./tools/list_directory.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:list_directory
+  - name: glob
+    yaml_path: ./tools/glob.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:glob
+  - name: read_file
+    yaml_path: ./tools/read_file.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:read_file
+  - name: read_visual_evidence
+    yaml_path: ./tools/read_visual_evidence.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:read_visual_evidence
+  - name: get_video_metadata
+    yaml_path: ./tools/get_video_metadata.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:get_video_metadata
+  - name: watch_video
+    yaml_path: ./tools/watch_video.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:watch_video
+  - name: extract_video_frames
+    yaml_path: ./tools/extract_video_frames.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:extract_video_frames
+  - name: write_file
+    yaml_path: ./tools/write_file.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:write_file
+  - name: finalize_extraction
+    yaml_path: ./tools/finalize_extraction.tool.yaml
+    binding: examples.agentic_skill_induction.bindings:finalize_extraction
+
+stop_tools: [finalize_extraction]
+
+skills:
+  - ./skills/skill-creator

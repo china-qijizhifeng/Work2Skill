@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="500" viewBox="0 0 1180 500" role="img" aria-labelledby="title desc">
+  <title id="title">Disclosure ladder</title>
+  <desc id="desc">WorkRecorder progressively discloses context to agents.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0f172a" flood-opacity=".12"/>
+    </filter>
+    <style>
+      .h{font:800 22px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a}
+      .t{font:500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#475569}
+      .s{font:700 15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#0f172a}
+      .safe{fill:#ecfdf5;stroke:#86efac}
+      .inspect{fill:#eff6ff;stroke:#93c5fd}
+      .raw{fill:#fff7ed;stroke:#fdba74}
+      .deny{fill:#fef2f2;stroke:#fca5a5}
+    </style>
+  </defs>
+  <rect width="1180" height="500" rx="28" fill="#f8fafc"/>
+  <text x="54" y="58" class="h">渐进式披露：搜得到，不代表全都给</text>
+  <text x="54" y="84" class="t">Agent 默认先拿安全摘要。要深入某个事件，必须带 event_id 和 purpose。危险原料默认隔离。</text>
+
+  <g filter="url(#shadow)">
+    <rect class="safe" x="70" y="145" width="240" height="210" rx="20"/>
+    <text x="96" y="186" class="s">1. Summary Card</text>
+    <text x="96" y="220" class="t">app / title / origin</text>
+    <text x="96" y="244" class="t">sanitized URL / time</text>
+    <text x="96" y="268" class="t">user note</text>
+    <text x="96" y="292" class="t">selection_text</text>
+    <text x="96" y="316" class="t">hidden artifact types</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="inspect" x="340" y="118" width="260" height="264" rx="20"/>
+    <text x="366" y="160" class="s">2. Event Inspect</text>
+    <text x="366" y="194" class="t">requires event_id</text>
+    <text x="366" y="218" class="t">requires purpose</text>
+    <text x="366" y="252" class="t">canonical_text</text>
+    <text x="366" y="276" class="t">clean_page_text</text>
+    <text x="366" y="300" class="t">screenshot_ref</text>
+    <text x="366" y="324" class="t">citation ids</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="raw" x="630" y="145" width="230" height="210" rx="20"/>
+    <text x="656" y="186" class="s">3. Raw Gate</text>
+    <text x="656" y="220" class="t">explicit raw endpoint</text>
+    <text x="656" y="244" class="t">route scope required</text>
+    <text x="656" y="268" class="t">artifact scope required</text>
+    <text x="656" y="292" class="t">audit every read</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect class="deny" x="890" y="118" width="230" height="264" rx="20"/>
+    <text x="916" y="160" class="s">Default Deny</text>
+    <text x="916" y="194" class="t">raw full DOM</text>
+    <text x="916" y="218" class="t">raw a11y tree</text>
+    <text x="916" y="242" class="t">vault path</text>
+    <text x="916" y="266" class="t">URL query/hash</text>
+    <text x="916" y="290" class="t">cookies/storage/network</text>
+    <text x="916" y="314" class="t">hidden/password values</text>
+  </g>
+</svg>

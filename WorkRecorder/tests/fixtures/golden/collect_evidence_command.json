@@ -1,0 +1,86 @@
+{
+  "command_id": "cmd_test_web",
+  "provider_key": "web.browser_extension",
+  "attempt": {
+    "schema_version": 1,
+    "trigger": {
+      "trigger_id": "trg_test",
+      "trigger_type": "manual_os_region_hotkey",
+      "capture_strategy": "os_region",
+      "actor": {
+        "actor_id": "user_test",
+        "display_name": "Test User"
+      },
+      "occurred_at": "2026-05-15T12:00:00Z",
+      "selection": {
+        "x": 120,
+        "y": 140,
+        "width": 520,
+        "height": 280,
+        "coordinate_space": "macos_global"
+      }
+    },
+    "selection_geometry": {
+      "selected_region": {
+        "x": 120,
+        "y": 140,
+        "width": 520,
+        "height": 280,
+        "coordinate_space": "macos_global"
+      },
+      "display": {
+        "display_id": "display_main",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 900,
+          "coordinate_space": "macos_global"
+        },
+        "scale_factor": 2.0
+      }
+    },
+    "window_hints": [],
+    "workspace": {
+      "workspace_id": "auto",
+      "label": "Auto",
+      "auto": true
+    },
+    "actor": {
+      "actor_id": "user_test",
+      "display_name": "Test User"
+    },
+    "staged_artifact": {
+      "local_path": "/tmp/workrecorder/capture.png",
+      "artifact_type": "screenshot",
+      "content_type": "image/png",
+      "metadata": {}
+    },
+    "metadata": {}
+  },
+  "surface": {
+    "surface_id": "surface_0",
+    "kind": "desktop_window",
+    "app_name": "Google Chrome",
+    "title": "ACME Pricing Dashboard",
+    "process_id": 123,
+    "window_id": "win_test",
+    "frame": {
+      "x": 100,
+      "y": 120,
+      "width": 900,
+      "height": 600,
+      "coordinate_space": "macos_global"
+    },
+    "overlap_ratio": 1.0,
+    "confidence": 0.92,
+    "capabilities": []
+  },
+  "evidence_kinds": ["web"],
+  "required_capabilities": ["resolve_source", "collect_full_dom", "map_selection"],
+  "dom_capture_mode": "full",
+  "deadline_ms": 5000,
+  "metadata": {
+    "provider_version": "web_command_v1"
+  }
+}

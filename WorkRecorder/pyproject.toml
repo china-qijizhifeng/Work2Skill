@@ -1,0 +1,96 @@
+[project]
+name = "workrecorder"
+version = "0.1.0"
+description = "WorkRecorder: active context event layer for work agents"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115",
+  "httpx>=0.28",
+  "jinja2>=3.1",
+  "pillow>=10.4",
+  "pydantic>=2.11",
+  "pydantic-settings>=2.9",
+  "typer>=0.15",
+  "uvicorn>=0.34",
+  "websockets>=15.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "black>=25.1",
+  "isort>=6.0",
+  "mypy>=1.15",
+  "pre-commit>=4.2",
+  "pyright>=1.1.409",
+  "pytest>=8.3",
+  "ruff>=0.11",
+  "types-Pillow>=10.2",
+]
+
+[project.scripts]
+workrecorder = "apps.cli.main:main"
+workrecorder-daemon = "services.context_daemon.main:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["apps", "apps.*", "packages", "packages.*", "scripts", "scripts.*", "services", "services.*"]
+where = ["."]
+
+[tool.setuptools.package-data]
+"packages.enrichment.visual_ocr" = ["templates/*.jinja", "*.swift"]
+
+[tool.black]
+line-length = 120
+target-version = ["py312"]
+include = "\\.pyi?$"
+exclude = '''
+/(
+    \\.git
+  | \\.pytest_cache
+  | \\.ruff_cache
+  | \\.venv
+  | build
+  | dist
+  | reference_code
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 120
+known_first_party = ["apps", "packages", "scripts", "services", "tests"]
+skip_gitignore = false
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["apps", "packages", "scripts", "services", "tests"]
+exclude = [
+  ".git",
+  ".pytest_cache",
+  ".ruff_cache",
+  ".venv",
+  "build",
+  "dist",
+  "reference_code",
+  "site",
+]
+
+[tool.ruff.lint]
+select = ["E9", "F63", "F7", "F82"]
+ignore = []
+
+[tool.mypy]
+python_version = "3.12"
+packages = ["apps", "packages", "services"]
+strict = true
+warn_unused_configs = true
+exclude = ["reference_code", "site", ".venv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

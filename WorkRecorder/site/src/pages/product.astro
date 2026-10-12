@@ -1,0 +1,85 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import ProductWorkbench from "../components/ProductWorkbench.astro";
+import CaptureSimulator from "../components/CaptureSimulator.astro";
+import ScreenshotEvidenceDemo from "../components/ScreenshotEvidenceDemo.astro";
+---
+
+<BaseLayout
+  title="产品体验"
+  description="WorkRecorder.app 的截图保存、本机记录、来源补齐和 Agent 可见性体验。"
+  activePath="product.html"
+>
+  <PageHero
+    eyebrow="截图体验"
+    title="按快捷键框住一块工作现场，保存成证据卡。"
+    lead="用户只做三件事：拖出选区、补一句用途、保存。WorkRecorder 在后台整理截图、窗口、文字和来源，让这条记录以后能被 Agent 引用。"
+    primaryHref="#workbench"
+    primaryLabel="看保存后的记录"
+    secondaryHref="#sources"
+    secondaryLabel="看来源补齐"
+  >
+    <CaptureSimulator />
+  </PageHero>
+
+  <section class="section" id="workbench">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">保存之后</p>
+        <h2>截图不会躺在文件夹里，而是变成一条可查记录。</h2>
+        <p>每条记录都能看到来源、识别文字、截图和 Agent 先能读取什么。用户不用管背后的接入细节，只需要知道这条证据能不能被用来回答问题。</p>
+      </div>
+      <ProductWorkbench compact />
+    </div>
+  </section>
+
+  <section class="section soft" id="sources">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">自动补齐</p>
+        <h2>保存时，WorkRecorder 会把三类信息一起整理好。</h2>
+        <p>WorkRecorder 会先保住截图，再补上窗口、文字和能读到的页面内容；某个来源暂时拿不到，也不会影响这条记录保存。</p>
+      </div>
+      <div class="source-ledger reveal" aria-label="不同应用来源如何补齐上下文">
+        <div class="source-ledger-row head">
+          <span>来源</span>
+          <span>保存什么</span>
+          <span>Agent 什么时候看</span>
+        </div>
+        <div class="source-ledger-row">
+          <b>所有截图</b>
+          <span>完整截图、主 App、窗口、时间、备注、截图识别文字</span>
+          <em>搜索短卡先用备注、标题、时间和识别文字</em>
+        </div>
+        <div class="source-ledger-row">
+          <b>浏览器示例</b>
+          <span>页面标题、去敏 URL、网页正文、选区映射</span>
+          <em>点开记录后读取网页正文；原始网页仍锁住</em>
+        </div>
+        <div class="source-ledger-row">
+          <b>PDF / 文档</b>
+          <span>先保存画面和识别文字，后续可接专属来源</span>
+          <em>没有增强也不丢记录</em>
+        </div>
+        <div class="source-ledger-row">
+          <b>聊天 / 业务系统</b>
+          <span>未来接入自己的安全文本和对象信息</span>
+          <em>同一套证据模型扩展</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">给 Agent 读取</p>
+        <h2>保存后不会一股脑交出去，而是先说明 Agent 先看到什么。</h2>
+        <p>搜索时只返回备注、时间、App、标题和识别文字；需要网页正文或截图引用时，必须先选中某条记录。完整原图和原始网页材料继续锁住。</p>
+      </div>
+      <ScreenshotEvidenceDemo />
+    </div>
+  </section>
+
+</BaseLayout>

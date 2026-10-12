@@ -1,0 +1,25 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+node_modules/
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.qa/
+.worktrees/
+*.egg-info/
+dist/
+build/
+.build/
+
+# Local credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+*.local.yaml
+*.local.yml
+*.pem
+*.p12
+*id_ed25519
+*id_rsa

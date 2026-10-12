@@ -1,0 +1,24 @@
+type: tool
+name: extract_video_frames
+description: Extract full-detail video frames at exact millisecond timestamps after coarse inspection or action-log analysis.
+input_schema:
+  type: object
+  properties:
+    file_path:
+      type: string
+      description: Relative path to a video in the scoped roots.
+    timestamps_ms:
+      type: array
+      minItems: 1
+      maxItems: 20
+      items:
+        type: integer
+        minimum: 0
+      description: Exact timestamps in milliseconds.
+    frame_width:
+      type: integer
+      minimum: 64
+      maximum: 4096
+      description: Optional output width preserving aspect ratio; omit for source resolution.
+  required: [file_path, timestamps_ms]
+  additionalProperties: false

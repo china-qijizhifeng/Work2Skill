@@ -1,0 +1,29 @@
+type: tool
+name: glob
+description: >-
+  Finds files matching a glob pattern, sorted by modification time newest
+  first. Search paths remain restricted to the benchmark input and generated
+  output roots.
+input_schema:
+  type: object
+  properties:
+    pattern:
+      type: string
+      description: >-
+        Glob pattern to match files (e.g., "**/*.py", "src/**/*.ts",
+        "docs/*.md")
+    dir_path:
+      type: string
+      description: >-
+        (OPTIONAL) Directory to search in. Defaults to the working directory.
+    case_sensitive:
+      type: boolean
+      description: >-
+        (OPTIONAL) Whether matching should be case-sensitive. Default: false.
+    respect_git_ignore:
+      type: boolean
+      description: >-
+        (OPTIONAL) Whether to respect .gitignore patterns. Default: true.
+  required: [pattern]
+  additionalProperties: false
+  $schema: http://json-schema.org/draft-07/schema#

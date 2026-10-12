@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import AgentSkillDemo from "../components/AgentSkillDemo.astro";
+import AgentTraceConsole from "../components/AgentTraceConsole.astro";
+---
+
+<BaseLayout
+  title="Agent 使用"
+  description="WorkRecorder workrecorder-context skill 的搜索、深入查看、引用和使用留痕。"
+  activePath="agents.html"
+>
+  <PageHero
+    eyebrow="Agent 使用"
+    title="Agent 先看默认可见内容，需要细节时再打开指定记录。"
+    lead="你不需要把网页、聊天和截图重新复制一遍。WorkRecorder 先给 Agent 一页短卡；它要看原文或截图时必须点开具体记录，最后回答会带出处。"
+    primaryHref="#workflow"
+    primaryLabel="看调用流程"
+    secondaryHref="governance.html"
+    secondaryLabel="看披露边界"
+  >
+    <AgentSkillDemo />
+  </PageHero>
+
+  <section class="section" id="workflow">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">一次回答的路径</p>
+        <h2>用户问一句，Agent 只打开真正需要的两条证据。</h2>
+        <p>它先看到几张摘要；再选择报价截图和协作讨论；最后回答里带上能点回去的引用。原图、原始页面和视频不会默认塞给 Agent。</p>
+      </div>
+      <div class="agent-readable-path reveal" aria-label="Agent 从问题到答案的读取路径">
+        <article>
+          <span>用户问题</span>
+          <strong>帮我整理 ACME 续约风险。</strong>
+          <p>不再复制网页、截图和聊天内容。</p>
+        </article>
+        <i></i>
+        <article>
+          <span>默认可见</span>
+          <strong>3 条相关记录</strong>
+          <p>只包含备注、时间、应用、标题和识别文字。</p>
+        </article>
+        <i></i>
+        <article>
+          <span>深入查看</span>
+          <strong>报价截图 + 协作讨论</strong>
+          <p>按记录打开安全文本和截图引用。</p>
+        </article>
+        <i></i>
+        <article>
+          <span>带引用回答</span>
+          <strong>风险、话术、证据</strong>
+          <p>回答后留下这次读取账单。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="shell">
+      <AgentTraceConsole />
+    </div>
+  </section>
+
+  <section class="section soft">
+    <div class="shell agent-usage-panel reveal">
+      <div class="agent-usage-copy">
+        <span class="card-label">给 Agent 的规则</span>
+        <h2>默认只拿摘要；需要更多时，必须先选中具体记录。</h2>
+        <p>Skill 文档只告诉 Agent 该怎么请求 WorkRecorder；真正的权限、返回内容和使用记录都在本机侧执行。</p>
+      </div>
+      <div class="agent-command-details agent-command-summary">
+        <span><b>先找相关记录</b><em>只拿短卡</em></span>
+        <span><b>再打开必要证据</b><em>必须指定用途</em></span>
+        <span><b>回答带出处</b><em>引用能点回记录</em></span>
+        <span><b>用完可复盘</b><em>查得到看过什么</em></span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

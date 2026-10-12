@@ -1,0 +1,81 @@
+---
+---
+
+<div class="audit-replay-demo reveal" data-tabs aria-label="Agent 使用复盘示例">
+  <div class="audit-run-card">
+    <span>本次回答的证据账单</span>
+    <strong>用户问：“帮我整理 ACME 续约风险”</strong>
+    <p>WorkRecorder 会留下人能看懂的复盘：Agent 搜了什么、打开了哪些记录、实际拿到哪些字段、最后引用了哪些证据。</p>
+    <div class="audit-receipt-card" aria-label="本次回答的可复盘账单">
+      <div><span>这次回答编号</span><b>run_acme_042</b></div>
+      <div><span>Agent 搜了什么</span><b>ACME 续约 · 3 条短卡</b><em>备注 / 时间 / App / 标题 / 识别文字</em></div>
+      <div><span>Agent 打开了哪几条</span><b>2 条记录</b><em>报价截图引用 + 协作讨论正文</em></div>
+      <div><span>回答引用了什么</span><b>4 个证据</b><em>报价、讨论、网页正文和截图引用</em></div>
+      <div><span>哪些完整材料被挡住</span><b>0 次默认读取</b><em>完整截图、原始网页、原始视频都未交付</em></div>
+      <div><span>是否有人批准读取原始材料</span><b>没有</b><em>没有批准人、没有过期时间、没有撤销记录</em></div>
+    </div>
+  </div>
+
+  <div class="trust-rail-lite" role="tablist" aria-label="复盘步骤">
+    <button class="tab-button active" data-tab="search" type="button" role="tab" aria-selected="true">
+      <span>01</span><strong>找记录</strong><em>默认可见</em>
+    </button>
+    <button class="tab-button" data-tab="inspect" type="button" role="tab" aria-selected="false">
+      <span>02</span><strong>打开证据</strong><em>指定记录</em>
+    </button>
+    <button class="tab-button" data-tab="answer" type="button" role="tab" aria-selected="false">
+      <span>03</span><strong>引用</strong><em>带证据</em>
+    </button>
+    <button class="tab-button" data-tab="locked" type="button" role="tab" aria-selected="false">
+      <span>04</span><strong>锁定</strong><em>完整材料不外流</em>
+    </button>
+  </div>
+
+  <section class="audit-panel tab-panel active" data-panel="search" role="tabpanel">
+    <b>Agent 先找相关记录</b>
+    <p>返回的是默认可见卡：备注、时间、App、标题和识别文字。看不到未确认的完整截图、原始网页材料或视频。</p>
+    <div class="audit-receipt-line">
+      <span><b>用户问题</b><em>ACME 续约</em></span>
+      <span><b>交付字段</b><em>记录编号、时间、App、标题、备注、识别文字</em></span>
+      <span><b>实际返回</b><em>已保存 Agent 看到的短卡</em></span>
+      <span><b>边界</b><em>只返回短卡 · 不包含完整材料</em></span>
+    </div>
+    <div class="audit-fields"><span>报价截图记录</span><span>协作讨论记录</span><span>业务系统记录</span></div>
+  </section>
+
+  <section class="audit-panel tab-panel" data-panel="inspect" role="tabpanel">
+    <b>再打开选中的证据</b>
+    <p>Agent 按你选中的记录查看允许展示的正文和截图引用；它实际拿到什么，之后都能查清楚。</p>
+    <div class="audit-receipt-line">
+      <span><b>打开记录</b><em>报价截图、协作讨论</em></span>
+      <span><b>交付字段</b><em>安全正文、截图引用、证据引用</em></span>
+      <span><b>实际返回</b><em>已保存本次深入查看内容</em></span>
+      <span><b>边界</b><em>只给安全正文和截图引用 · 不含原图</em></span>
+    </div>
+    <div class="audit-fields"><span>网页正文摘要</span><span>截图引用</span><span>证据来源</span></div>
+  </section>
+
+  <section class="audit-panel tab-panel" data-panel="answer" role="tabpanel">
+    <b>回答必须带引用</b>
+    <p>最终回答引用 4 个证据；用户能看到每句话背后是哪条记录、哪个证据片段。</p>
+    <div class="audit-receipt-line">
+      <span><b>主要出处</b><em>报价截图里的预算条款</em></span>
+      <span><b>used_citations</b><em>4 条证据引用</em></span>
+      <span><b>answer_record</b><em>10:42:31 写入本机账本</em></span>
+      <span><b>复盘</b><em>可回放查找、打开、引用和最终答案</em></span>
+    </div>
+    <div class="audit-fields"><span>报价截图引用</span><span>讨论片段引用</span><span>网页正文引用</span></div>
+  </section>
+
+  <section class="audit-panel tab-panel" data-panel="locked" role="tabpanel">
+    <b>完整材料默认锁住</b>
+    <p>原始网页材料、原始视频和未确认的完整材料不在默认返回里。要读完整截图或视频必须走单独授权，并写入审计。</p>
+    <div class="audit-receipt-line">
+      <span><b>默认决定</b><em>不交付完整材料</em></span>
+      <span><b>reason</b><em>需要用户明确确认</em></span>
+      <span><b>result</b><em>没有打开原图或原始视频</em></span>
+      <span><b>批准记录</b><em>无批准人 · 无授权记录 · 原始材料未读取</em></span>
+    </div>
+    <div class="audit-fields locked"><span>原始网页材料：锁定</span><span>完整截图：锁定</span><span>原始视频：锁定</span></div>
+  </section>
+</div>

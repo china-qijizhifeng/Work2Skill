@@ -1,0 +1,147 @@
+---
+---
+
+<div id="recording-demo" class="recording-cinema reveal" data-recording-cinema data-cinema-state="0" aria-label="从用户演示到安全试跑的录制片段演示">
+  <div class="cinema-copy">
+    <span>主动记录片段</span>
+    <strong>人演示，WorkRecorder 先整理成步骤草稿。</strong>
+    <p>视频留给人回看；关键帧、文字和操作线索被整理成可检查的步骤。用户确认前，Agent 不会试跑。</p>
+  </div>
+
+  <div class="cinema-control-strip" aria-label="录制片段演示阶段">
+    <button class="cinema-step active" type="button" data-cinema-step="0">1 录制窗口</button>
+    <button class="cinema-step" type="button" data-cinema-step="1">2 抽关键帧</button>
+    <button class="cinema-step" type="button" data-cinema-step="2">3 生成草稿</button>
+    <button class="cinema-step confirm-step" type="button" data-cinema-step="3">4 安全试跑</button>
+  </div>
+
+  <div class="cinema-flowline" aria-label="记录片段从人类演示到安全试跑的四段流向">
+    <span class="active" data-cinema-flow="0">人演示</span>
+    <i></i>
+    <span data-cinema-flow="1">留下 3 个关键时刻</span>
+    <i></i>
+    <span data-cinema-flow="2">生成步骤草稿</span>
+    <i></i>
+    <span data-cinema-flow="3">确认后安全试跑</span>
+  </div>
+
+  <div class="cinema-stage">
+    <section class="cinema-window human-window" aria-label="用户演示窗口">
+      <div class="cinema-window-bar">
+        <span></span><span></span><span></span>
+        <b>用户正在演示 · 定价页</b>
+      </div>
+      <div class="cinema-screen">
+        <div class="cinema-sidebar"><i></i><i></i><i></i></div>
+        <div class="cinema-content">
+          <div class="cinema-tabs"><span>Team</span><span class="active">Enterprise</span></div>
+          <article>
+            <small>企业版</small>
+            <strong>自定义报价</strong>
+            <p>权限、审计、SLA、合规条款</p>
+          </article>
+          <div class="human-cursor" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="cinema-status">
+        <b>00:42</b>
+        <span>已标记 3 个关键时刻</span>
+      </div>
+    </section>
+
+    <div class="cinema-lens" aria-label="WorkRecorder 正在整理成步骤草稿">
+      <div class="skill-draft-card" aria-label="WorkRecorder 生成的步骤草稿">
+        <div class="skill-draft-head">
+          <span>WorkRecorder</span>
+          <strong data-lens-label="0">演示已进入整理</strong>
+          <strong data-lens-label="1">抽关键帧</strong>
+          <strong data-lens-label="2">步骤草稿</strong>
+          <strong data-lens-label="3">安全试跑</strong>
+        </div>
+        <div class="recording-live-note">
+          <b>正在观察选中的窗口</b>
+          <em>先保存视频和操作现场。结束录制后，再整理关键时刻和步骤草稿。</em>
+          <span>Agent 试跑被锁住；录制期间只记录，不操作电脑。</span>
+        </div>
+        <div class="lens-artifacts" aria-label="从视频到关键时刻再到步骤草稿">
+          <div class="keyframe-tray">
+            <span>关键时刻 01<br />开始</span>
+            <span>关键时刻 02<br />点击</span>
+            <span>关键时刻 03<br />稳定</span>
+          </div>
+          <div class="draft-card-mini">
+            <b>待确认步骤</b>
+            <em>3 个关键帧 + 4 个安全步骤，等待确认。</em>
+          </div>
+        </div>
+        <div class="skill-draft-steps">
+          <b>步骤草稿 · 等待用户确认</b>
+          <em>打开同类定价页</em>
+          <em>找到 Enterprise / 企业版入口</em>
+          <em>提取 SLA、权限、价格差异</em>
+          <em>遇到提交、购买、发送时停住</em>
+        </div>
+        <div class="skill-draft-guard">
+          <span>视觉锚点：Enterprise 按钮</span>
+          <span>复用条件：同类页面结构</span>
+          <span>安全停点：提交 / 购买前</span>
+        </div>
+        <div class="skill-decision-gate" aria-label="用户确认闸门">
+          <b>用户确认闸门</b>
+          <span>确认前只预览草稿；确认后也会在提交、购买、发送前停住。</span>
+        </div>
+        <div class="skill-review-actions" aria-label="用户确认步骤草稿">
+          <button class="skill-secondary-button" type="button">修改步骤</button>
+          <button class="skill-confirm-button" type="button" data-cinema-confirm-step="3">确认后安全试跑</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="cinema-window agent-window" aria-label="Agent 安全试跑窗口">
+      <div class="cinema-window-bar">
+        <span></span><span></span><span></span>
+        <b>Agent 安全试跑 · 相似页面</b>
+      </div>
+      <div class="cinema-screen">
+        <div class="cinema-sidebar muted"><i></i><i></i><i></i></div>
+        <div class="cinema-content agent-content">
+        <div class="agent-lock-note">确认前只预览，不执行</div>
+          <div class="skill-chip">已确认 · 安全试跑</div>
+          <div class="cua-run-trace" aria-label="Agent 试跑步骤">
+            <span>读取步骤草稿</span>
+            <span>找到相似 Enterprise 控件</span>
+            <span>模拟点击并等待页面稳定</span>
+            <span>提取字段，停在确认前</span>
+          </div>
+          <article>
+            <small>试跑目标</small>
+            <strong>Enterprise</strong>
+            <p>找到同类控件，停在提交前等待确认。</p>
+          </article>
+          <div class="agent-confirm-card" aria-hidden="true">
+            <b>需要确认</b>
+            <span>检测到“提交 / 购买”动作，试跑已停止。</span>
+          </div>
+          <div class="agent-cursor" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="cinema-status warning">
+        <b>不会自动提交</b>
+        <span>每一步继续留下证据</span>
+      </div>
+    </section>
+
+    <div class="cinema-evidence-flow" aria-hidden="true">
+      <span class="flow-dot flow-one">关键帧</span>
+      <span class="flow-dot flow-two">草稿</span>
+      <span class="flow-dot flow-three">试跑</span>
+    </div>
+  </div>
+
+  <div class="cinema-storyboard compact" aria-label="当前演示状态">
+    <span class="active" data-cinema-pane="0">正在录制选中窗口</span>
+    <span data-cinema-pane="1">留下 3 个关键时刻</span>
+    <span data-cinema-pane="2">生成待确认步骤草稿</span>
+    <span data-cinema-pane="3">确认后安全试跑</span>
+  </div>
+</div>

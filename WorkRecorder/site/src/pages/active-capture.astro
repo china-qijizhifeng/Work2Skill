@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RecordingSkillShowcase from "../components/RecordingSkillShowcase.astro";
+---
+
+<BaseLayout
+  title="记录片段"
+  description="WorkRecorder 记录一段用户主动演示的操作，把本地视频、关键帧、文字和步骤草稿分开保存，给人回看，也给 Agent 安全引用。"
+  activePath="active-capture.html"
+>
+  <section class="page-hero active-capture-hero">
+    <div class="shell">
+      <div class="recording-hero-grid">
+        <div class="section-head reveal">
+          <p class="eyebrow">下一阶段 · 记录片段</p>
+          <h1>录下你怎么做，先生成可检查的步骤草稿。</h1>
+          <p>
+            截图解决“一刻”的上下文，记录片段解决“一段操作”的上下文。它不是后台无限录屏，
+            也不是直接接管电脑；人演示，WorkRecorder 整理，用户确认后，Agent 才能按草稿安全试跑。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#recording-demo">看生成的步骤草稿</a>
+            <a class="button secondary" href="#storyboard">看确认前如何停住</a>
+          </div>
+        </div>
+        <div class="recording-hero-proof reveal" aria-label="记录片段会被拆成哪些结果">
+          <span>录制结束后</span>
+          <strong>先整理成三份材料，给人检查。</strong>
+          <div>
+            <b>01</b><em>本机视频回放</em>
+          </div>
+          <div>
+            <b>02</b><em>关键帧和识别文字</em>
+          </div>
+          <div class="confirm-gate">
+            <b>03</b><em>用户确认步骤草稿</em>
+          </div>
+          <small>确认后才进入 Agent 安全试跑；提交、购买、发送前仍会停住。</small>
+        </div>
+      </div>
+      <RecordingSkillShowcase />
+    </div>
+  </section>
+
+  <section class="section soft" id="skill-showcase">
+    <div class="shell">
+      <div class="section-head reveal">
+        <p class="eyebrow">为什么不是普通录屏</p>
+        <h2>录完先得到关键时刻和一份步骤草稿。</h2>
+        <p>WorkRecorder 会保留视频给人回看，同时只把少量关键帧、识别文字和操作线索整理给 Agent 查。原始视频默认锁住。</p>
+      </div>
+      <div class="recording-principles reveal">
+        <article><span>01</span><b>开始、结束、用户标记必须留下</b><em>保证片段能复盘</em></article>
+        <article><span>02</span><b>只保留点击后稳定、弹窗、错误提示等变化</b><em>避免低帧率录屏式噪声</em></article>
+        <article><span>03</span><b>识别文字和可读正文先变成安全文本</b><em>原始视频仍然锁住</em></article>
+        <article><span>04</span><b>步骤草稿必须确认后才允许 Agent 安全试跑</b><em>高风险动作停在确认前</em></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="storyboard">
+    <div class="shell recording-outcome-panel reveal">
+      <div>
+        <p class="eyebrow">录完后得到什么</p>
+        <h2>一段视频，一条关键时刻列表，一个待确认步骤草稿。</h2>
+        <p>视频给人回看；关键帧和识别文字给 Agent 查找；步骤草稿必须由用户确认后才会安全试跑。</p>
+      </div>
+      <div class="recording-outcome-list">
+        <span><b>视频回放</b><em>本机保存，默认锁住</em></span>
+        <span><b>关键时刻列表</b><em>开始、点击、稳定、标记</em></span>
+        <span><b>安全文本</b><em>识别文字和可读正文</em></span>
+        <span><b>步骤草稿</b><em>确认后才允许安全试跑</em></span>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
